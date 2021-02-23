@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@{BuilderBg.getSimpleDrawableRoundedTop(16f,BuilderBg.gc(R.color.white))}"
+        android:elevation="12dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lal_news"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TvFawLight.L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/faw_news"
+                android:textColor="@color/gray5" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/news"
+                android:textColor="@color/gray5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lal_timetable"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TvFawLight.L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/faw_clock"
+                android:textColor="@color/gray5" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/timetable"
+                android:textColor="@color/gray5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lal_users"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TvFawLight.L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/faw_users"
+                android:textColor="@color/gray5" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/visitors"
+                android:textColor="@color/gray5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lal_notes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TvFawLight.L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/faw_envelope_opened"
+                android:textColor="@color/gray5" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/notes"
+                android:textColor="@color/gray5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lal_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TvFawLight.L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/faw_user"
+                android:textColor="@color/gray5" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/profile"
+                android:textColor="@color/gray5" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

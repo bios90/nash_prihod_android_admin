@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "607937407813",
+    "project_id": "nashprihodapp",
+    "storage_bucket": "nashprihodapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607937407813:android:65770a89d7344f81c76c2c",
+        "android_client_info": {
+          "package_name": "com.dimfcompany.nashprihodadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607937407813-ih7eqci5ur6kqfq4q53jh9kaojs7nnde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRodQu52MAJtH9_iV8wKBfPvIfIbYWdoc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607937407813-ih7eqci5ur6kqfq4q53jh9kaojs7nnde.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
