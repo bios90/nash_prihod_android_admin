@@ -19,15 +19,15 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".ui.act_first.ActFirst">
-
-        </activity>
-        <activity android:name=".ui.act_register.ActRegister" />
-        <activity android:name=".ui.act_main.ActMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.act_register.ActRegister" />
+        <activity android:name=".ui.act_main.ActMain">
+
         </activity>
 
         <provider
