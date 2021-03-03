@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.dimfcompany.aknewsadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.aknewsadmin.R" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="117dp"
+        android:layout_height="126dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_centerVertical="true"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="12dp"
+            app:cardPreventCornerOverlap="false">
+
+            <ImageView
+                android:background="@{BuilderBg.getSimpleDrawableRipple(4f,BuilderBg.gc(R.color.transparent),BuilderBg.gc(R.color.red_trans_50))}"
+                android:foreground="@{BuilderBg.getSimpleDrawableRipple(4f,BuilderBg.gc(R.color.transparent),BuilderBg.gc(R.color.red_trans_50))}"
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_remove"
+            style="@style/TvFawSolid.S"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@{BuilderBg.getSimpleDrawableRipple(9f,BuilderBg.gc(R.color.red),BuilderBg.gc(R.color.red_dark))}"
+            android:clipToPadding="false"
+            android:elevation="13dp"
+            android:gravity="center"
+            android:text="@string/faw_times"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+</layout>
