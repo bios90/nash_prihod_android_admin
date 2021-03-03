@@ -15,4 +15,9 @@ enum class TypeTab
             return TypeTab.values().get(pos)
         }
     }
+
+    fun getPos():Int
+    {
+        return TypeTab.values().indexOf(this)
+    }
 }

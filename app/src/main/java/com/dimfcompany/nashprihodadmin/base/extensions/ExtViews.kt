@@ -2,6 +2,7 @@ package com.dimfcompany.nashprihodadmin.base.extensions
 
 import android.animation.Animator
 import android.app.Dialog
+import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
@@ -9,11 +10,14 @@ import android.os.Build
 import android.text.Html
 import android.util.DisplayMetrics
 import android.util.Log
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.animation.LinearInterpolator
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
+import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.AppClass
+import com.google.android.gms.common.util.DeviceProperties.isTablet
 
 fun View.setMargins(left: Int? = null, top: Int? = null, right: Int? = null, bottom: Int? = null)
 {
@@ -64,7 +68,7 @@ fun View.animateFadeOut(duration: Int = 300)
             .setInterpolator(LinearInterpolator()).start()
 }
 
-fun View.animateFadeIn(duration: Int, visibility: Int = View.GONE)
+fun View.animateFadeIn(duration: Int = 300, visibility: Int = View.GONE)
 {
     this.animate().alpha(0f).setDuration(duration.toLong())
             .setListener(object : Animator.AnimatorListener
@@ -133,4 +137,30 @@ fun Dialog.setNavigationBarColor(color: Int)
 
         window.setBackgroundDrawable(windowBackground)
     }
+}
+
+fun isTablet(): Boolean
+{
+    val resources = AppClass.app.resources
+    val is_tablet = (resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE
+    return is_tablet
+}
+
+fun RadioGroup.getCheckedPosition(): Int?
+{
+    if (this.childCount == 0)
+    {
+        return null
+    }
+
+    for (a in 0 until this.childCount)
+    {
+        val rb = this.getChildAt(a) as RadioButton
+        if (rb.isChecked)
+        {
+            return a
+        }
+    }
+
+    return null
 }

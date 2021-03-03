@@ -12,4 +12,14 @@ enum class TypeFile
 
     @SerializedName("video")
     VIDEO;
+
+    fun toTypeMedia(): TypeMedia?
+    {
+        return when (this)
+        {
+            IMAGE -> TypeMedia.IMAGE
+            VIDEO -> TypeMedia.VIDEO
+            else -> return null
+        }
+    }
 }

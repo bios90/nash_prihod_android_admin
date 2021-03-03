@@ -2,6 +2,7 @@ package com.dimfcompany.nashprihodadmin.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.dimfcompany.nashprihodadmin.databinding.LaMediaVideoBinding
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
@@ -17,8 +18,16 @@ import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.timetable.LaTimeTableMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.timetable.LaTimeTableMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors.LaVisitorsMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors.LaVisitorsMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvp
+import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvp
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvpView
+import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvp
+import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvpView
+import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvp
+import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvpView
 import javax.inject.Inject
 
 class ViewFactory @Inject constructor(private val activity: BaseActivity)
@@ -68,5 +77,25 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
     fun getLaProfileMvpView(parent: ViewGroup?): LaProfileMvp.MvpView
     {
         return LaProfileMvpView(layout_inflater, parent)
+    }
+
+    fun getActNewsMvpView(parent: ViewGroup?): ActNewsAddEditMvp.MvpView
+    {
+        return ActNewsAddEditMvpView(layout_inflater, parent)
+    }
+
+    fun getActCarouselMvpView(parent: ViewGroup?): ActCarouselMvp.MvpView
+    {
+        return ActCarouselMvpView(layout_inflater, parent)
+    }
+
+    fun getMediaVideoMvpView(parent: ViewGroup?): LaMediaVideoMvp.MvpView
+    {
+        return LaMediaVideoMvpView(layout_inflater, parent)
+    }
+
+    fun getMediaImageMvpView(parent: ViewGroup?): LaMediaImageMvp.MvpView
+    {
+        return LaMediaImageMvpView(layout_inflater, parent)
     }
 }

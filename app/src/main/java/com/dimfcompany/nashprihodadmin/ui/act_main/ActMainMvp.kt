@@ -9,6 +9,7 @@ interface ActMainMvp
     interface MvpView : BaseMvpView<Presenter>
     {
         fun setViews(views: ArrayList<View>)
+        fun scrollToTab(tab: TypeTab)
     }
 
     interface Presenter

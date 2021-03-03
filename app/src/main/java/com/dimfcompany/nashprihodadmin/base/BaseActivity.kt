@@ -7,10 +7,12 @@ import com.dimfcompany.nashprihodadmin.base.extensions.*
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
 import com.dimfcompany.nashprihodadmin.logic.utils.MessagesManager
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogBottom
+import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderMediaPicker
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.dimfcompany.nashprihodadmin.logic.utils.images.ImageCameraManager
 import com.dimfcompany.nashprihodadmin.networking.BaseNetworker
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiAuth
+import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
 import com.justordercompany.barista.logic.utils.BuilderPermRequest
 import com.justordercompany.barista.logic.utils.PermissionManager
 import dagger.android.support.DaggerAppCompatActivity
@@ -33,6 +35,9 @@ abstract class BaseActivity : DaggerAppCompatActivity()
 
     @Inject
     lateinit var api_auth: ApiAuth
+
+    @Inject
+    lateinit var api_files: ApiFiles
 
     @Inject
     lateinit var base_networker: BaseNetworker
@@ -94,20 +99,22 @@ abstract class BaseActivity : DaggerAppCompatActivity()
     {
         checkPermissions(PermissionManager.permissions_camera,
             {
-                BuilderDialogBottom()
-                        .addBtn(BtnAction(getStringMy(R.string.gallery),
-                            {
-                                val pick = ImageCameraManager.TypePick.GALLERY_IMAGE
-                                pick.action_success = action_picked
-                                makePick(pick)
-                            }, getStringMy(R.string.faw_images)))
-                        .addBtn(BtnAction(getStringMy(R.string.camera),
-                            {
-                                val pick = ImageCameraManager.TypePick.CAMERA_IMAGE
-                                pick.action_success = action_picked
-                                makePick(pick)
-                            }, getStringMy(R.string.faw_camera)))
-                        .show(supportFragmentManager)
+                BuilderMediaPicker()
+                        .setActivity(this)
+                        .setActionPickImage(action_picked)
+                        .build()
+            })
+    }
+
+    fun checkAndPickImageAndVideo(action_picked_image: (MyFileItem) -> Unit, action_picked_video: (MyFileItem) -> Unit)
+    {
+        checkPermissions(PermissionManager.permissions_camera,
+            {
+                BuilderMediaPicker()
+                        .setActivity(this)
+                        .setActionPickImage(action_picked_image)
+                        .setActionPickVideo(action_picked_video)
+                        .build()
             })
     }
 

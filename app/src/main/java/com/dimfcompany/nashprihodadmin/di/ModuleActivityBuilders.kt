@@ -3,6 +3,8 @@ package com.dimfcompany.nashprihodadmin.di
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirst
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
+import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarousel
+import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegister
 import com.dimfcompany.nashprihodadmin.ui.act_test.ActTest
 import dagger.Binds
@@ -23,6 +25,12 @@ abstract class ModuleActivityBuilders
 
     @ContributesAndroidInjector(modules = [ModuleActMain::class])
     abstract fun contributeActMain(): ActMain
+
+    @ContributesAndroidInjector(modules = [ModuleActNewsAddEdit::class])
+    abstract fun contributeActNewsAddEdit(): ActNewsAddEdit
+
+    @ContributesAndroidInjector(modules = [ModuleActCarousel::class])
+    abstract fun contributeActCarousel(): ActCarousel
 }
 
 @Module
@@ -52,4 +60,18 @@ abstract class ModuleActTest
 {
     @Binds
     abstract fun bindBaseActivity(act: ActTest): BaseActivity
+}
+
+@Module
+abstract class ModuleActNewsAddEdit
+{
+    @Binds
+    abstract fun bindBaseActivity(act: ActNewsAddEdit): BaseActivity
+}
+
+@Module
+abstract class ModuleActCarousel
+{
+    @Binds
+    abstract fun bindBaseActivity(act: ActCarousel): BaseActivity
 }

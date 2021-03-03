@@ -7,8 +7,8 @@
     <ImageButton
         android:id="@id/exo_play"
         style="@style/ExoMediaButton.Play"
-        android:layout_width="@dimen/play_circle_size"
-        android:layout_height="@dimen/play_circle_size"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:background="@drawable/oval_gray4trans" />
@@ -16,16 +16,17 @@
     <ImageButton
         android:id="@id/exo_pause"
         style="@style/ExoMediaButton.Pause"
-        android:layout_width="@dimen/play_circle_size"
-        android:layout_height="@dimen/play_circle_size"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:background="@drawable/oval_gray4trans" />
 
     <RelativeLayout
+        android:id="@+id/lar_bottom_btns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@id/view_fake_navbar"
         android:background="#99000000"
         android:paddingLeft="16dp"
         android:paddingTop="12dp"
@@ -34,7 +35,7 @@
 
         <TextView
             android:id="@id/exo_position"
-            style="@style/TVReg.S"
+            style="@style/TvReg.Xs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -54,7 +55,7 @@
 
         <TextView
             android:id="@id/exo_duration"
-            style="@style/TVReg.S"
+            style="@style/TvReg.Xs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -63,5 +64,12 @@
             tools:text="00:00:00" />
 
     </RelativeLayout>
+
+    <View
+        android:id="@+id/view_fake_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent" />
 
 </RelativeLayout>

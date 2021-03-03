@@ -247,8 +247,7 @@
         <item name="android:fontFamily">@font/rubik_reg</item>
     </style>
 
-    <style name="Radio.Red">
-
+    <style name="Radio.Blue">
         <item name="android:paddingLeft">30dp</item>
         <item name="android:buttonTint">@color/sel_radio_blue</item>
         <item name="android:textColor">@color/sel_radio_blue</item>

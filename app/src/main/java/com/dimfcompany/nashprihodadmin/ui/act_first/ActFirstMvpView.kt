@@ -10,6 +10,7 @@ import com.dimfcompany.nashprihodadmin.base.extensions.getNullableText
 import com.dimfcompany.nashprihodadmin.base.extensions.setMargins
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ActFirstBinding
+import com.rucode.autopass.logic.utils.images.GlideManager
 
 class ActFirstMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     : BaseMvpViewImpl<ActFirstMvp.Presenter>(), ActFirstMvp.MvpView

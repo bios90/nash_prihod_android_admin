@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
+import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
 import com.dimfcompany.nashprihodadmin.logic.utils.StringManager
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderAlerter
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
@@ -142,6 +143,14 @@ class ValidationManager
             val data = ValidationData()
             data.validateNotNullString(password, "Пароль", 8)
             data.validateEmail(email)
+            return data
+        }
+
+        fun validateNewsAddEdit(news: ModelNews): ValidationData
+        {
+            val data = ValidationData()
+            data.validateNotNullString(news.title, "Название", 3)
+            data.validateNotNullString(news.text, "Текст", 8)
             return data
         }
     }

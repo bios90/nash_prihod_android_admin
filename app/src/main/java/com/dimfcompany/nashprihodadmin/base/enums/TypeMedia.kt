@@ -1,5 +1,7 @@
 package com.dimfcompany.nashprihodadmin.base.enums
 
-interface TypeMedia
+enum class TypeMedia
 {
+    IMAGE,
+    VIDEO;
 }

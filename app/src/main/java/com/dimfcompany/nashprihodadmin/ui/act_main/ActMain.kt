@@ -4,8 +4,11 @@ import android.os.Bundle
 import com.dimfcompany.akcsl.base.adapters.AdapterVpUniversal
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
+import com.dimfcompany.nashprihodadmin.base.BusMainEvents
 import com.dimfcompany.nashprihodadmin.base.enums.TypeTab
+import com.dimfcompany.nashprihodadmin.base.extensions.disposeBy
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
+import com.dimfcompany.nashprihodadmin.base.extensions.mainThreaded
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.news.TabNews
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.notes.TabNotes
@@ -32,6 +35,7 @@ class ActMain : BaseActivity()
         mvp_view.registerPresenter(PresenterImplementer())
 
         setViewPager()
+        setEvents()
     }
 
     fun setNavStatus()
@@ -56,11 +60,22 @@ class ActMain : BaseActivity()
         mvp_view.setViews(views)
     }
 
+    private fun setEvents()
+    {
+        BusMainEvents.bs_current_tab
+                .mainThreaded()
+                .subscribe(
+                    {
+                        mvp_view.scrollToTab(it)
+                    })
+                .disposeBy(composite_disposable)
+    }
+
     inner class PresenterImplementer : ActMainMvp.Presenter
     {
         override fun clickedTab(tab: TypeTab)
         {
-
+            BusMainEvents.bs_current_tab.onNext(tab)
         }
     }
 }

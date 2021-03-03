@@ -1,10 +1,8 @@
 package com.dimfcompany.nashprihodadmin.logic.models
 
-import com.dimfcompany.nashprihodadmin.base.ObjWithFile
-import com.dimfcompany.nashprihodadmin.base.ObjWithImageUrl
-import com.dimfcompany.nashprihodadmin.base.ObjectWithDates
-import com.dimfcompany.nashprihodadmin.base.ObjectWithId
+import com.dimfcompany.nashprihodadmin.base.*
 import com.dimfcompany.nashprihodadmin.base.enums.TypeFile
+import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
@@ -23,11 +21,38 @@ class ModelFile
         var file_mime_type: String? = null,
         var file_size: Long? = null,
         @SerializedName("file_type")
-        var type: TypeFile,
+        var server_file_type: TypeFile?,
         var url: String? = null,
         var preview_image: ModelFile? = null
-) : Serializable, ObjectWithId, ObjectWithDates, ObjWithImageUrl
+) : Serializable, ObjectWithId, ObjectWithDates, ObjWithMedia, ObjWithImageUrl, ObjWithVideo
 {
-    override val image_url: String?
-        get() = url
+    override val image_url: String? = url
+
+    override val video_url: String? = url
+    override val video_preview_url: String? = preview_image?.image_url
+
+    override var type: TypeMedia?
+        get()
+        {
+            return this.server_file_type?.toTypeMedia()
+        }
+        set(value)
+        {
+        }
+
+    override var preview_url: String?
+        get()
+        {
+            if (server_file_type == TypeFile.VIDEO)
+            {
+                return preview_image?.image_url
+            }
+            else
+            {
+                return url
+            }
+        }
+        set(value)
+        {
+        }
 }

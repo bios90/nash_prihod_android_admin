@@ -10,5 +10,6 @@ interface LaNewsMvp
 
     interface Presenter
     {
+        fun clickedAddNews()
     }
 }

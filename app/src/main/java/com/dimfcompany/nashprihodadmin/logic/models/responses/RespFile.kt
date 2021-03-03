@@ -1,10 +1,11 @@
 package com.dimfcompany.nashprihodadmin.logic.models.responses
 
+import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
 import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
 import com.google.gson.annotations.SerializedName
 
-class RespUser
+class RespFile
     (
         @SerializedName("data")
-        val user: ModelUser? = null
+        val file: ModelFile? = null
 ) : BaseResponse()

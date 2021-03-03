@@ -1,23 +1,30 @@
 package com.dimfcompany.nashprihodadmin.logic.utils.files
 
+import android.graphics.Bitmap
+import android.media.ThumbnailUtils
 import android.net.Uri
-import java.io.File
-import android.content.Intent
+import android.os.CancellationSignal
 import android.util.Log
+import android.util.Size
 import com.dimfcompany.nashprihodadmin.base.ObjWithFile
 import com.dimfcompany.nashprihodadmin.base.ObjWithImageUrl
+import com.dimfcompany.nashprihodadmin.base.ObjWithMedia
+import com.dimfcompany.nashprihodadmin.base.ObjWithVideo
+import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
 import okhttp3.MultipartBody
+import java.io.File
 import java.io.Serializable
-import java.lang.RuntimeException
 import java.util.*
 
-class MyFileItem(private var uri: String) : Serializable, ObjWithImageUrl, ObjWithFile
+
+class MyFileItem(private var uri: String) : Serializable, ObjWithImageUrl, ObjWithFile, ObjWithVideo, ObjWithMedia
 {
     companion object
     {
         fun createFromData(data: Uri): MyFileItem
         {
             val file: File
+
             if (FileManager.isContentImage(data))
             {
                 val extension = FileManager.getExtensionFromContentUri(data)
@@ -36,6 +43,7 @@ class MyFileItem(private var uri: String) : Serializable, ObjWithImageUrl, ObjWi
             FileManager.copyToFileFromIntentData(file, data)
             val myFile = MyFileItem(file.absolutePath)
             myFile.original_name = FileManager.getUriFileName(data)
+            myFile.type = FileManager.getMyTypeFromUri(data)
             return myFile
         }
 
@@ -46,11 +54,14 @@ class MyFileItem(private var uri: String) : Serializable, ObjWithImageUrl, ObjWi
     }
 
     var original_name: String? = null
-    override var image_url: String? = null
-        get()
-        {
-            return uri
-        }
+
+    override var type: TypeMedia? = null
+    override var preview_url: String? = uri
+
+    override var image_url = uri
+
+    override val video_url = uri
+    override val video_preview_url = uri
 
     fun getUri(): Uri
     {
@@ -78,7 +89,7 @@ class MyFileItem(private var uri: String) : Serializable, ObjWithImageUrl, ObjWi
         return FileManager.uriFromFile(getFile())
     }
 
-    fun toMultiPartData(field_name: String,media_type:String = "multipart/form-data"): MultipartBody.Part?
+    fun toMultiPartData(field_name: String = "file", media_type: String = "multipart/form-data"): MultipartBody.Part?
     {
         return getFile().toPartBody(field_name)
     }

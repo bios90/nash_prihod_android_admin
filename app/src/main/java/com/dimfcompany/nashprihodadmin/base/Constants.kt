@@ -12,12 +12,13 @@ object Constants
 
     object Urls
     {
-        const val test_mode = false
+        const val test_mode = true
         val URL_BASE: String
             get()
             {
                 if (test_mode)
                 {
+//                    return "http://nashprihod.test"
 //                    return "http://10.0.2.2:8080/nash_prihod/"
 //                    return "http://192.168.1.68/akcsl/"
                     return "http://192.168.1.68/"
@@ -32,6 +33,8 @@ object Constants
         const val REGISTER = "register"
         const val LOGIN = "login"
         const val FORGOT_PASS = "forgotpass"
+        const val UPLOAD_IMAGE = "upload_image"
+        const val UPLOAD_VIDEO = "upload_video"
     }
 
     object Extras
@@ -39,5 +42,8 @@ object Constants
         const val REGISTER_MADE = "register_made"
         const val EMAIL = "email"
         const val MY_PUSH = "my_push"
+        const val MEDIA_OBJECTS = "media_objects"
+        const val MEDIA_OBJECTS_START_POS = "media_objects_start_pos"
+        const val NEWS_TO_EDIT = "news_to_edit"
     }
 }

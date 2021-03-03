@@ -2,10 +2,13 @@ package com.dimfcompany.nashprihodadmin.base
 
 import android.util.Log
 import android.view.View
+import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
 import com.dimfcompany.nashprihodadmin.base.extensions.animateFadeIn
 import com.dimfcompany.nashprihodadmin.base.extensions.animateFadeOut
 import com.dimfcompany.nashprihodadmin.logic.utils.getHourMinuteDiff
+import java.io.Serializable
 import java.util.*
+import kotlin.collections.ArrayList
 
 interface TabView
 {
@@ -47,6 +50,20 @@ interface ObjectWithDates
         val diff_hours = getHourMinuteDiff(updated!!, Date()).first
         return diff_hours < 48
     }
+}
+
+class MediaItemsWrapper(var items: ArrayList<ObjWithMedia> = arrayListOf()) : Serializable
+
+interface ObjWithMedia
+{
+    var type: TypeMedia?
+    var preview_url: String?
+}
+
+interface ObjWithVideo
+{
+    val video_url: String?
+    val video_preview_url: String?
 }
 
 interface ObjWithImageUrl

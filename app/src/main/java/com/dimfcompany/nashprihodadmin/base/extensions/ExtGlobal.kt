@@ -2,8 +2,10 @@ package com.dimfcompany.nashprihodadmin.base.extensions
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.Typeface
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
@@ -14,11 +16,17 @@ import android.provider.Settings
 import android.text.TextUtils
 import android.util.Log
 import android.util.TypedValue
+import android.view.KeyCharacterMap
+import android.view.KeyEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.HorizontalScrollView
+import android.widget.ScrollView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import com.dimfcompany.nashprihodadmin.base.AppClass
 import kotlinx.coroutines.*
@@ -105,6 +113,11 @@ fun getStringMy(id: Int, text: String): String
 fun getStringMy(id: Int, vararg values: Any): String
 {
     return AppClass.app.getResources().getString(id, *values)
+}
+
+fun getTypeFaceFromResource(id: Int): Typeface
+{
+    return ResourcesCompat.getFont(AppClass.app, id)!!
 }
 
 fun Int.applyTransparency(percent: Int): Int
@@ -392,13 +405,33 @@ fun getStatusBarHeight(): Int
 
 fun getNavbarHeight(): Int
 {
+    val has_menu_key = ViewConfiguration.get(AppClass.app).hasPermanentMenuKey()
+    val has_back_key = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
+
     var result = 0
-    val resources = AppClass.app.resources
-    val resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android")
-    if (resourceId > 0)
+    if (!has_back_key && !has_menu_key)
     {
-        result = resources.getDimensionPixelSize(resourceId)
+        val resources = AppClass.app.resources
+        val orientation = resources.configuration.orientation
+
+        val resource_name: String
+        if (isTablet())
+        {
+            resource_name = if (orientation == Configuration.ORIENTATION_PORTRAIT) "navigation_bar_height" else "navigation_bar_height_landscape"
+        }
+        else
+        {
+            resource_name = if (orientation == Configuration.ORIENTATION_PORTRAIT) "navigation_bar_height" else "navigation_bar_width"
+        }
+
+        val resource_id = resources.getIdentifier(resource_name, "dimen", "android")
+
+        if (resource_id > 0)
+        {
+            result = resources.getDimensionPixelSize(resource_id)
+        }
     }
+
     return result
 }
 
@@ -430,3 +463,14 @@ fun AlertDialog.makeTransparentBg()
 {
     this.window?.setBackgroundDrawableResource(android.R.color.transparent);
 }
+
+fun HorizontalScrollView.scrollRight()
+{
+    smoothScrollTo(this.right, 0)
+}
+
+fun ScrollView.scrollBottom()
+{
+    smoothScrollTo(0, this.bottom)
+}
+

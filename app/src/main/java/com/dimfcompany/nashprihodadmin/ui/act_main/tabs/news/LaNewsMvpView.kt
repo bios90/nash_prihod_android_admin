@@ -18,5 +18,15 @@ class LaNewsMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         bnd_la_news = DataBindingUtil.inflate(layoutInflater, R.layout.la_news, parent, false)
         setRootView(bnd_la_news.root)
+
+        setListeners()
+    }
+
+    private fun setListeners()
+    {
+        bnd_la_news.tvAddNews.setOnClickListener(
+            {
+                getPresenter().clickedAddNews()
+            })
     }
 }

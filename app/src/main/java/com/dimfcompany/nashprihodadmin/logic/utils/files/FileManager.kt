@@ -2,6 +2,8 @@ package com.dimfcompany.nashprihodadmin.logic.utils.files
 
 import android.content.ContentResolver
 import android.database.Cursor
+import android.graphics.Bitmap
+import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
@@ -12,6 +14,7 @@ import android.webkit.MimeTypeMap
 import androidx.core.content.FileProvider
 import com.dimfcompany.nashprihodadmin.base.AppClass
 import com.dimfcompany.nashprihodadmin.base.Constants
+import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
 import com.dimfcompany.nashprihodadmin.logic.utils.StringManager
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -131,6 +134,22 @@ class FileManager
             return type != null && type!!.startsWith("video")
         }
 
+        fun getMyTypeFromUri(uri: Uri): TypeMedia?
+        {
+            if (isContentImage(uri))
+            {
+                return TypeMedia.IMAGE
+            }
+            else if (isContentVideo(uri))
+            {
+                return TypeMedia.VIDEO
+            }
+            else
+            {
+                return null
+            }
+        }
+
         fun getExtensionFromContentUri(uri: Uri): String?
         {
             var extension: String?
@@ -245,6 +264,43 @@ class FileManager
                 type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)
             }
             return type
+        }
+
+        fun getPosterFromVideo(uri: String): File?
+        {
+            var file: File? = null
+            try
+            {
+                val retriever = MediaMetadataRetriever()
+                retriever.setDataSource(AppClass.app, Uri.parse(uri))
+                val video_length =
+                        retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)!!.toLong()
+                val frame_pos = video_length / 2
+                val bitmap = retriever.getFrameAtTime(frame_pos, MediaMetadataRetriever.OPTION_CLOSEST_SYNC)!!
+                file = FileManager.savePosterOfVideo(bitmap)
+            }
+            catch (e: Exception)
+            {
+                e.printStackTrace()
+                Log.e("FileManager", "getPosterFromVideo: error on getting poster")
+            }
+
+            return file
+        }
+
+        fun savePosterOfVideo(bitmap: Bitmap): File
+        {
+            val file = create_temp_image_file()
+            val out = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
+            out.flush()
+            out.close()
+            return file
+        }
+
+        suspend fun saveThumbnailOfVideo()
+        {
+
         }
     }
 }

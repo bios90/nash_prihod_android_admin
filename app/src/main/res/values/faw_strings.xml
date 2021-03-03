@@ -34,6 +34,7 @@
     <string name="faw_news" translatable="false">&#xf1ea;</string>
     <string name="faw_clock" translatable="false">&#xf017;</string>
     <string name="faw_envelope_opened" translatable="false">&#xf2b6;</string>
+    <string name="faw_play" translatable="false">&#xf04b;</string>
 
 
 </resources>

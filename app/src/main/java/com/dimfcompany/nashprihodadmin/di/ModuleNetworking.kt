@@ -3,6 +3,7 @@ package com.dimfcompany.nashprihodadmin.di
 import com.dimfcompany.nashprihodadmin.base.AppClass
 import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiAuth
+import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
 import com.grapesnberries.curllogger.CurlLoggerInterceptor
 import dagger.Module
 import dagger.Provides
@@ -69,5 +70,12 @@ class ModuleNetworking
     fun provideApiAuth(retrofit: Retrofit): ApiAuth
     {
         return retrofit.create(ApiAuth::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideApiFiles(retrofit: Retrofit): ApiFiles
+    {
+        return retrofit.create(ApiFiles::class.java)
     }
 }
