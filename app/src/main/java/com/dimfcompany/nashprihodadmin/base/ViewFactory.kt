@@ -22,6 +22,8 @@ import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvp
 import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvp
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvp
@@ -97,5 +99,10 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
     fun getMediaImageMvpView(parent: ViewGroup?): LaMediaImageMvp.MvpView
     {
         return LaMediaImageMvpView(layout_inflater, parent)
+    }
+
+    fun getActNoticeAddEditMvpView(parent: ViewGroup?): ActNoticeAddEditMvp.MvpView
+    {
+        return ActNoticeAddEditMvpView(layout_inflater, parent)
     }
 }
