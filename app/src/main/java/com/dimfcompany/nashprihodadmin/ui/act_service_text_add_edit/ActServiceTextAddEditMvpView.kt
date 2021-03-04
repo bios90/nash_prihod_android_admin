@@ -1,19 +1,19 @@
-package com.dimfcompany.nashprihodadmin.ui.act_service_text_add
+package com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
-import com.dimfcompany.nashprihodadmin.databinding.ActServiceTextAddBinding
+import com.dimfcompany.nashprihodadmin.databinding.ActServiceTextAddEditBinding
 
-class ActServiceTextAddMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
-    : BaseMvpViewImpl<ActServiceTextAddMvp.Presenter>(), ActServiceTextAddMvp.MvpView
+class ActServiceTextAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
+    : BaseMvpViewImpl<ActServiceTextAddEditMvp.Presenter>(), ActServiceTextAddEditMvp.MvpView
 {
-    val bnd_act_service_text_add: ActServiceTextAddBinding
+    val bnd_act_service_text_add: ActServiceTextAddEditBinding
     init
     {
-        bnd_act_service_text_add = DataBindingUtil.inflate(layoutInflater, R.layout.act_service_text_add, parent, false)
+        bnd_act_service_text_add = DataBindingUtil.inflate(layoutInflater, R.layout.act_service_text_add_edit, parent, false)
         setRootView(bnd_act_service_text_add.root)
         setListeners()
     }

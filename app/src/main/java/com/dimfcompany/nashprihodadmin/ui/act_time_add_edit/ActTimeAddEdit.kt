@@ -1,19 +1,22 @@
-package com.dimfcompany.nashprihodadmin.ui.act_service_text_add
+package com.dimfcompany.nashprihodadmin.ui.act_time_add_edit
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
-import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
+import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEdit
 
-class ActServiceTextAdd : BaseActivity()
+class ActTimeAddEdit : BaseActivity()
 {
-    lateinit var mvp_view: ActServiceTextAddMvp.MvpView
+    lateinit var mvp_view: ActTimeAddEditMvp.MvpView
     override fun onCreate(savedInstanceState: Bundle?)
     {
         setNavStatus()
         super.onCreate(savedInstanceState)
-        mvp_view = view_factory.getActServiceTextAddMvpView(null)
+        mvp_view = view_factory.getActTimeAddEditMvpView(null)
         setContentView(mvp_view.getRootView())
         mvp_view.registerPresenter(PresenterImplementer())
     }
@@ -28,13 +31,13 @@ class ActServiceTextAdd : BaseActivity()
         is_light_nav_bar = false
     }
 
-    inner class PresenterImplementer : ActServiceTextAddMvp.Presenter
+    inner class PresenterImplementer : ActTimeAddEditMvp.Presenter
     {
         override fun clickedAdd()
         {
-            mvp_view.getEtTextTitle()
-            mvp_view.getEtTextContent()
+            BuilderIntent()
+                    .setActivityToStart(ActServiceTextAddEdit::class.java)
+                    .startActivity(this@ActTimeAddEdit)
         }
-
     }
 }

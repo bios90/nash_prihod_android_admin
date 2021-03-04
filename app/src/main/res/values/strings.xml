@@ -62,4 +62,7 @@
     <string name="title">Заглавие</string>
     <string name="content">Текст</string>
     <string name="add_service_text">Добавить</string>
+    <string name="time">Время</string>
+    <string name="time_title">Время</string>
+    <string name="service_title">Служба</string>
 </resources>

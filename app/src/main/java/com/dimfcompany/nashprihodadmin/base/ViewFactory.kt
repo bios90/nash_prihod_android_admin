@@ -2,10 +2,8 @@ package com.dimfcompany.nashprihodadmin.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.dimfcompany.nashprihodadmin.databinding.LaMediaVideoBinding
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMainMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMainMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.news.LaNewsMvp
@@ -26,8 +24,10 @@ import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMv
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvp
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_service_text_add.ActServiceTextAddMvp
-import com.dimfcompany.nashprihodadmin.ui.act_service_text_add.ActServiceTextAddMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_time_add_edit.ActTimeAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_time_add_edit.ActTimeAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvp
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvp
@@ -108,8 +108,13 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
         return ActNoticeAddEditMvpView(layout_inflater, parent)
     }
 
-    fun getActServiceTextAddMvpView(parent: ViewGroup?): ActServiceTextAddMvp.MvpView
+    fun getActServiceTextAddMvpView(parent: ViewGroup?): ActServiceTextAddEditMvp.MvpView
     {
-        return ActServiceTextAddMvpView(layout_inflater, parent)
+        return ActServiceTextAddEditMvpView(layout_inflater, parent)
+    }
+
+    fun getActTimeAddEditMvpView(parent: ViewGroup?): ActTimeAddEditMvp.MvpView
+    {
+        return ActTimeAddEditMvpView(layout_inflater, parent)
     }
 }
