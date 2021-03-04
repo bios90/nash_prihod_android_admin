@@ -7,6 +7,7 @@ import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarousel
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegister
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add.ActServiceTextAdd
 import com.dimfcompany.nashprihodadmin.ui.act_test.ActTest
 import dagger.Binds
 import dagger.Module
@@ -35,6 +36,9 @@ abstract class ModuleActivityBuilders
 
     @ContributesAndroidInjector(modules = [ModuleActNoticeAddEdit::class])
     abstract fun contributeActNoticeAddEdit():ActNoticeAddEdit
+
+    @ContributesAndroidInjector(modules = [ModuleActServiceTextAdd::class])
+    abstract fun contributeActServiceTextAdd(): ActServiceTextAdd
 }
 
 @Module
@@ -85,4 +89,11 @@ abstract class ModuleActNoticeAddEdit
 {
     @Binds
     abstract fun bindBaseActivity(act: ActNoticeAddEdit): BaseActivity
+}
+
+@Module
+abstract class ModuleActServiceTextAdd
+{
+    @Binds
+    abstract fun bindBaseActivity(act: ActServiceTextAdd): BaseActivity
 }

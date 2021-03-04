@@ -4,7 +4,6 @@ import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpView
 
 interface ActNoticeAddEditMvp
 {
-
     interface MvpView : BaseMvpView<Presenter>
     {
         fun getEtText(): String?

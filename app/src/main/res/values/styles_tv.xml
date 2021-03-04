@@ -10,7 +10,7 @@
         <item name="android:paddingRight">8dp</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
-        <item name="android:textSize">@dimen/size_m</item>
+        <item name="android:textSize">@dimen/size_l</item>
         <item name="android:textColor">@color/gray7</item>
         <item name="hintTextColor">@color/gray4</item>
     </style>
