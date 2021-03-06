@@ -52,7 +52,6 @@ dependencies {
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.4'
     implementation 'com.github.mohammadatif:Animatoo:master'
-    implementation 'com.github.grapesnberries:curlloggerinterceptor:0.1'
     implementation 'joda-time:joda-time:2.10.9'
     implementation 'com.google.firebase:firebase-messaging:21.0.1'
 

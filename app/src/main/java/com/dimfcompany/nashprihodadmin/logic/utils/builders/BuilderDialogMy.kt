@@ -116,6 +116,7 @@ class BuilderDialogMy()
     fun build(context: Context)
     {
         if (view == null && view_id == null)
+        if (view == null && view_id == null)
         {
             throw RuntimeException("**** Error view or view_id should be passed ****")
         }

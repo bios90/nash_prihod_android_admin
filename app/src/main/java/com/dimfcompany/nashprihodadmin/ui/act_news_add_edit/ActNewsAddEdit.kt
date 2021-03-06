@@ -146,8 +146,11 @@ class ActNewsAddEdit : BaseActivity()
                             {
                                 if (obj.type == TypeMedia.VIDEO)
                                 {
-                                    val uploaded_file_id = BaseNetworker.uploadVideo(obj, api_files).id ?: return@setActionMultiRequests
-                                    uploaded_file_ids.add(uploaded_file_id)
+                                    val uploaded_file_id = BaseNetworker.uploadVideo(obj, api_files).id
+                                    if (uploaded_file_id != null)
+                                    {
+                                        uploaded_file_ids.add(uploaded_file_id)
+                                    }
                                 }
                             }
                         }
