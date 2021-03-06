@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_trans_50">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="16dp"
+            android:background="@{BuilderBg.getSimpleDrawable(10f, BuilderBg.gc(R.color.white))}"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TvBold.Xxxl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="16dp"
+                android:gravity="left"
+                android:text="@string/service_text"
+                android:textColor="@color/gray7" />
+
+            <TextView
+                style="@style/TvBold.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="16dp"
+                android:gravity="left"
+                android:text="@string/title"
+                android:textColor="@color/gray5" />
+
+            <EditText
+                android:id="@+id/et_title_service_text"
+                style="@style/EditText.Multiline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@{BuilderBg.getStrokedEt()}" />
+
+            <TextView
+                style="@style/TvBold.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginRight="16dp"
+                android:gravity="left"
+                android:text="@string/content"
+                android:textColor="@color/gray5" />
+
+            <EditText
+                android:id="@+id/et_content_service_text"
+                style="@style/EditText.Multiline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@{BuilderBg.getStrokedEt()}" />
+
+            <TextView
+                android:id="@+id/tv_add_service_text"
+                style="@style/TvBold.Xl"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="16dp"
+                android:background="@{BuilderBg.getSimpleDrawableRipple(4f,BuilderBg.gc(R.color.blue),BuilderBg.gc(R.color.blue_dark))}"
+                android:elevation="12dp"
+                android:text="@string/add_service_text"
+                android:textColor="@color/white" />
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

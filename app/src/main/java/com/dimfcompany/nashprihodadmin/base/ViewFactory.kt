@@ -22,8 +22,12 @@ import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvp
 import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvp
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add.ActServiceTextAddMvp
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add.ActServiceTextAddMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvp
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvp
@@ -97,5 +101,15 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
     fun getMediaImageMvpView(parent: ViewGroup?): LaMediaImageMvp.MvpView
     {
         return LaMediaImageMvpView(layout_inflater, parent)
+    }
+
+    fun getActNoticeAddEditMvpView(parent: ViewGroup?): ActNoticeAddEditMvp.MvpView
+    {
+        return ActNoticeAddEditMvpView(layout_inflater, parent)
+    }
+
+    fun getActServiceTextAddMvpView(parent: ViewGroup?): ActServiceTextAddMvp.MvpView
+    {
+        return ActServiceTextAddMvpView(layout_inflater, parent)
     }
 }
