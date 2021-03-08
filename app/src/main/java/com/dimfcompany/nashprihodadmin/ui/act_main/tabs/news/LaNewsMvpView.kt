@@ -2,7 +2,6 @@ package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.news
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimfcompany.akcsl.base.FeedDisplayInfo
@@ -12,7 +11,6 @@ import com.dimfcompany.nashprihodadmin.base.extensions.dp2pxInt
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
 import com.dimfcompany.nashprihodadmin.base.extensions.setDivider
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
-import com.dimfcompany.nashprihodadmin.databinding.ActMainBinding
 import com.dimfcompany.nashprihodadmin.databinding.LaNewsBinding
 import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
 
@@ -47,6 +45,11 @@ class LaNewsMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
         bnd_la_news.tvAddNews.setOnClickListener(
             {
                 getPresenter().clickedAddNews()
+            })
+
+        bnd_la_news.tvAddNotice.setOnClickListener(
+            {
+                getPresenter().clickedAddNotice()
             })
     }
 

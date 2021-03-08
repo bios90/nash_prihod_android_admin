@@ -37,6 +37,7 @@
                         android:text="@string/notices" />
 
                     <TextView
+                        android:id="@+id/tv_add_notice"
                         style="@style/TvReg"
                         android:layout_width="28dp"
                         android:layout_height="28dp"

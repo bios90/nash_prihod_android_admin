@@ -21,6 +21,7 @@ import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegister
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
@@ -84,6 +85,13 @@ class TabNews(val act_main: ActMain) : TabPresenter
         {
             BuilderIntent()
                     .setActivityToStart(ActNewsAddEdit::class.java)
+                    .startActivity(act_main)
+        }
+
+        override fun clickedAddNotice()
+        {
+            BuilderIntent()
+                    .setActivityToStart(ActNoticeAddEdit::class.java)
                     .startActivity(act_main)
         }
 

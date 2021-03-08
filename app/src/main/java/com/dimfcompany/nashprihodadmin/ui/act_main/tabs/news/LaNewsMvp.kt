@@ -16,5 +16,6 @@ interface LaNewsMvp
     interface Presenter : BaseRvListener<ModelNews>
     {
         fun clickedAddNews()
+        fun clickedAddNotice()
     }
 }
