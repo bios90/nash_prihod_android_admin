@@ -38,4 +38,8 @@
     <color name="green_trans_50">#802AB398</color>
     <color name="green_dark">#11998E</color>
     <color name="green_light">#43CEA2</color>
+    
+    <color name="blue_type_news">#4A90E2</color>
+    <color name="blue_type_preaching">#3BB273</color>
+    <color name="blue_type_event">#FFB800</color>
 </resources>

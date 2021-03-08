@@ -35,6 +35,9 @@ object Constants
         const val FORGOT_PASS = "forgotpass"
         const val UPLOAD_IMAGE = "upload_image"
         const val UPLOAD_VIDEO = "upload_video"
+        const val INSERT_OR_UPDATE_NEWS = "upsert_news"
+        const val GET_NEWS = "get_news"
+        const val GET_NEWS_BY_ID = "get_news_by_id"
     }
 
     object Extras

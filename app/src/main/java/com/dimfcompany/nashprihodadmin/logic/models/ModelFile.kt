@@ -1,5 +1,6 @@
 package com.dimfcompany.nashprihodadmin.logic.models
 
+import android.util.Log
 import com.dimfcompany.nashprihodadmin.base.*
 import com.dimfcompany.nashprihodadmin.base.enums.TypeFile
 import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
@@ -26,10 +27,22 @@ class ModelFile
         var preview_image: ModelFile? = null
 ) : Serializable, ObjectWithId, ObjectWithDates, ObjWithMedia, ObjWithImageUrl, ObjWithVideo
 {
-    override val image_url: String? = url
+    override val image_url: String?
+        get()
+        {
+            return url
+        }
 
-    override val video_url: String? = url
-    override val video_preview_url: String? = preview_image?.image_url
+    override val video_url: String?
+        get()
+        {
+            return url
+        }
+    override val video_preview_url: String?
+        get()
+        {
+            return preview_image?.image_url
+        }
 
     override var type: TypeMedia?
         get()

@@ -13,6 +13,73 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp">
+
+                    <TextView
+                        style="@style/TvReg.L"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="@string/notices" />
+
+                    <TextView
+                        style="@style/TvReg"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(14f,BuilderBg.gc(R.color.transparent),BuilderBg.gc(R.color.red_trans_50),BuilderBg.gc(R.color.red),1f)}"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/red"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_notices"
+                    android:layout_width="match_parent"
+                    android:layout_height="132dp" />
+
+                <TextView
+                    style="@style/TvReg.L"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/news" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="72dp" />
+
+            </LinearLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
         <TextView
             android:id="@+id/tv_add_news"
             style="@style/TvBold"

@@ -6,6 +6,7 @@ import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
 import com.dimfcompany.nashprihodadmin.base.extensions.animateFadeIn
 import com.dimfcompany.nashprihodadmin.base.extensions.animateFadeOut
 import com.dimfcompany.nashprihodadmin.logic.utils.getHourMinuteDiff
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
@@ -39,17 +40,6 @@ interface ObjectWithDates
     var created: Date?
     var updated: Date?
     var deleted: Date?
-
-    fun isNew(): Boolean
-    {
-        if (updated == null)
-        {
-            return false
-        }
-
-        val diff_hours = getHourMinuteDiff(updated!!, Date()).first
-        return diff_hours < 48
-    }
 }
 
 class MediaItemsWrapper(var items: ArrayList<ObjWithMedia> = arrayListOf()) : Serializable
