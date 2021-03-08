@@ -19,5 +19,7 @@ class LaProfileMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         bnd_la_news = DataBindingUtil.inflate(layoutInflater, R.layout.la_profile, parent, false)
         setRootView(bnd_la_news.root)
+        bnd_la_news.prAboutMe.setText("")
+
     }
 }

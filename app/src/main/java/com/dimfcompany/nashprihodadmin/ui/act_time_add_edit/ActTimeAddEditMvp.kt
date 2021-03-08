@@ -8,10 +8,12 @@ interface ActTimeAddEditMvp
     {
         fun getEtTextTime(): String?
         fun getEtService(): String?
+
     }
 
     interface Presenter
     {
         fun clickedAdd()
+        fun clickedTime()
     }
 }

@@ -7,4 +7,11 @@
         <item name="android:textColor">@color/gray6</item>
         <item name="android:fontFamily">@font/rubik_reg</item>
     </style>
+
+    <style name="TvLight">
+        <item name="android:hyphenationFrequency">none</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/gray6</item>
+        <item name="android:fontFamily">@font/rubik_light</item>
+    </style>
 </resources>

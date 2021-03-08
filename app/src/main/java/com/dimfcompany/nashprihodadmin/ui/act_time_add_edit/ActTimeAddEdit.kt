@@ -39,5 +39,10 @@ class ActTimeAddEdit : BaseActivity()
                     .setActivityToStart(ActServiceTextAddEdit::class.java)
                     .startActivity(this@ActTimeAddEdit)
         }
+
+        override fun clickedTime()
+        {
+            mvp_view
+        }
     }
 }

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
@@ -9,18 +10,8 @@
     </data>
 
     <RelativeLayout
-        android:background="@color/green_light"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rec_tab_timetable"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
     </RelativeLayout>
-
-
 </layout>

@@ -65,4 +65,18 @@
     <string name="time">Время</string>
     <string name="time_title">Время</string>
     <string name="service_title">Служба</string>
+    <string name="add_time">9:00</string>
+    <string name="add_service_title">Водосвятный молебен. Часы. Исповедь. Божественная Литургия</string>
+    <string name="phone_number">+7 925 406 66 70</string>
+    <string name="phone">Телефон</string>
+    <string name="about_me">Расскажите что - нибудь о себе</string>
+    <string name="edit">Редактировать</string>
+    <string name="exit">Выйти</string>
+    <string name="email_value">vas2011@ya.ru</string>
+    <string name="email">Email</string>
+    <string name="nameday_date">14 января</string>
+    <string name="nameday">Именины</string>
+    <string name="birthday_value">17 ноября 1970</string>
+    <string name="birthday">День рождения</string>
+    <string name="user_name">Ляшенко Василий</string>
 </resources>

@@ -242,7 +242,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    o<style name="Radio">
+    <style name="Radio">
         <item name="android:textSize">@dimen/size_l</item>
         <item name="android:fontFamily">@font/rubik_reg</item>
     </style>
@@ -251,6 +251,38 @@
         <item name="android:paddingLeft">30dp</item>
         <item name="android:buttonTint">@color/sel_radio_blue</item>
         <item name="android:textColor">@color/sel_radio_blue</item>
+    </style>
+
+    <style name="BlueButton">
+        <item name="android:background">@drawable/rounded4_blue</item>
+        <item name="android:layout_width">@dimen/view_width</item>
+        <item name="android:layout_height">@dimen/view_height</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/size_l</item>
+        <item name="fontFamily">@font/fa_regular</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="BSButton">
+        <item name="android:background">@drawable/rounded4_white_blue_stroke</item>
+        <item name="android:layout_width">@dimen/view_width</item>
+        <item name="android:layout_height">@dimen/view_height</item>
+        <item name="android:textColor">@color/blue_dark</item>
+        <item name="android:textSize">@dimen/size_l</item>
+        <item name="fontFamily">@font/fa_regular</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="TVStroke">
+        <item name="android:background">@drawable/rounded4_white_gray_stroke</item>
+        <item name="android:minLines">5</item>
+        <item name="fontFamily">@style/TvReg.S</item>
+    </style>
+
+    <style name="BlueRoundButton">
+        <item name="android:background">@drawable/round_button_blue_stroke</item>"
+        <item name="android:textColor">@color/blue_dark</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

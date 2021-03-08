@@ -34,7 +34,7 @@
                 android:textColor="@color/gray7" />
 
             <TextView
-                style="@style/TvBold.M"
+                style="@style/TvReg.M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -44,16 +44,15 @@
                 android:text="@string/time_title"
                 android:textColor="@color/gray5" />
 
-            <EditText
-                android:id="@+id/et_time"
-                style="@style/EditText"
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/TvReg.M"
                 android:textAlignment="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="36dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="16dp"
-                android:background="@{BuilderBg.getStrokedEt()}" />
+                android:layout_marginRight="16dp" />
 
             <TextView
                 style="@style/TvBold.M"

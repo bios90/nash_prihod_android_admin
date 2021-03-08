@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="12dp"
+        android:background="@color/gray0"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TvBold.Xxl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:padding="24dp"
+            android:text="Расписание" />
+
+        <TextView
+            style="@style/TvReg.S"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:gravity="start"
+            android:text="Праздник"
+            android:textColor="@color/gray4" />
+
+        <TextView
+            style="@style/TvReg.M"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:gravity="start"
+            android:padding="8dp"
+            android:text="Неделя 24-я по Пятидесятнице" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TvReg.S"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Время"
+                android:textColor="@color/gray4" />
+
+            <TextView
+                style="@style/BlueRoundButton"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="+" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/TvReg.S"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="9:00"
+                android:textAlignment="viewStart"
+                android:textColor="@color/blue_dark" />
+
+            <TextView
+                style="@style/TvReg.S"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="start"
+                android:text="Часы. Исповедь" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/TvReg.S"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="10:00"
+                android:textAlignment="viewStart"
+                android:textColor="@color/blue_dark" />
+
+            <TextView
+                style="@style/TvReg.S"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:gravity="start"
+                android:text="Божественная Литургия. Панихида" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TvReg.S"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Текст службы"
+                android:textColor="@color/gray4" />
+
+            <TextView
+                style="@style/BlueRoundButton"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text="+" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/TvReg.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="start"
+                android:text="Тропарь" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="А́нгельския Си́лы на гро́бе Твое́м,/ и стрегу́щии омертве́ша;/ и стоя́ше Мари́я во гро́бе,/ и́щущи Пречи́стаго Те́ла Твоего́./ Плени́л еси́ ад, не искуси́вся от него́;/ сре́тил еси́ Де́ву, да́руяй живо́т.// Воскресы́й из ме́ртвых, Го́споди, сла́ва Тебе́. " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/TvReg.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="start"
+                android:text="Кондак" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="Егда́ прии́деши, Бо́же, на зе́млю со сла́вою,/ и трепе́щут вся́ческая,/ река́ же о́гненная пред суди́щем влече́т,/ кни́ги разгиба́ются, и та́йная явля́ются,/ то-гда́ изба́ви мя от огня́ неугаси́маго// и сподо́би мя одесну́ю Тебе́ ста́ти, Судие́ Пра́веднейший." />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/TvReg.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="start"
+                android:text="Апостол" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TvReg.Xs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Бра́тие, бра́шно нас не поста́вит пред Бо́гом: ниже́ бо а́ще я́мы, из-бы́точествуем, ниже́ а́ще не я́мы, лиша́емся. Блюди́те же, да не ка́ко власть ва́ша сия́ преткнове́ние бу́дет немощны́м. А́ще бо кто ви́дит тя, иму́ща ра́зум, в тре́бищи возлежа́ща, не со́весть ли его́ немощна́ су́щи сози́ждется идоло-же́ртвенная я́сти? И поги́бнет немощны́й брат в твое́м ра́зуме, его́же ра́ди Христо́с у́мре. Та́коже согреша́юще в бра́тию, и бию́ще их со́весть не́мощну су́щу, во Христа́ согреша́ете. Те́мже а́ще бра́шно соблазня́ет бра́та моего́, не и́мам я́сти мя́са во ве́ки, да не соблазню́ бра́та моего́. Несмь ли апо́стол? Несмь ли свобо́дь? Не Иису́са Христа́ ли Го́спода на́шего ви́дех? Не де́ло ли мое́ вы есте́ о Го́споде? А́ще у́бо ины́м несмь апо́стол, но у́бо вам есмь. Печа́ть бо моего́ апо́стольства вы есте́ о Го́споде." />
+            </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/white"
+            android:elevation="12dp"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="visible">
+
+            <TextView
+                style="@style/TvReg.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="start"
+                android:text="Св. Евангелие" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TvReg.Xs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Рече́ Госпо́дь: егда́ прии́дет Сын Челове́ческий в сла́ве Свое́й и вси святи́и а́нгели с Ним, тогда́ ся́дет на престо́ле сла́вы Своея́. И соберу́тся пред Ним вси язы́цы, и разлучи́т их друг от дру́га, я́коже па́стырь разлуча́ет о́вцы от ко́злищ. И поста́вит о́вцы одесну́ю Себе́, а ко́злища ошу́юю. То-гда́ рече́т Царь су́щим одесну́ю Его́: прииди́те, благослове́ннии Отца́ Моего́, насле́дуйте уго-то́ванное вам Ца́рствие от сложе́ния ми́ра. Взалка́хся бо, и да́сте Ми я́сти: возжада́хся, и напои́сте Мя: стра́нен бех, и введо́сте Мене́. Наг, и оде́ясте Мя: бо́лен, и посети́сте Мене́: в темни́це бех, и приидо́сте ко Мне. Тогда́ отвеща́ют Ему́ пра́ведницы, глаго́люще: Го́споди, когда́ Тя ви́дехом а́лчуща, и напита́хом; или́ жа́ждуща, и напои́хом? Когда́ же Тя ви́дехом стра́нна, и введо́хом; или́ на́га, и оде́яхом? Когда́ же Тя ви́дехом боля́ща, или́ в темни́це, и приидо́хом к Тебе́? И отвеща́в Царь рече́т им: ами́нь глаго́лю вам, поне́же сотвори́сте еди́ному сих бра́тий Мои́х ме́ньших, Мне сотво-ри́сте. Тогда́ рече́т и су́щим ошу́юю Его́: иди́те от Мене́, прокля́тии, во о́гнь ве́чный, угото́ванный диа́волу и а́ггелом его́. Взалка́хся бо, и не да́сте Ми я́сти: возжада́хся, и не напои́сте Мене́. Стра́нен бех, и не введо́сте Мене́; наг, и не оде́ясте Мене́; бо́лен и в темни́це, и не посети́сте Мене́. Тогда́ отвеща́ют Ему́ и ти́и, глаго́люще: Го́споди, когда́ Тя ви́дехом а́лчуща, или́ жа́ждуща, или́ стра́нна, или́ на́га, или́ бо́льна, или́ в темни́це, и не послужи́хом Тебе́? Тогда́ отвеща́ет им, глаго́ля: ами́нь глаго́лю вам, поне́же не сотвори́сте еди́ному сих ме́нших, ни Мне сотвори́сте. И и́дут си́и в му́ку ве́чную, пра́ведницы же в живо́т ве́чный." />
+
+            </ScrollView>
+        </LinearLayout>
+
+        <TextView
+            style="@style/BlueButton"
+            android:layout_width="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:text="Создать" />
+    </LinearLayout>
+
+
+</layout>
