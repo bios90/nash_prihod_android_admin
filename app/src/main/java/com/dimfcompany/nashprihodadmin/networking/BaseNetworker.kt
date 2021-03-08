@@ -7,12 +7,14 @@ import com.dimfcompany.nashprihodadmin.base.extensions.addParseCheckerForObj
 import com.dimfcompany.nashprihodadmin.base.extensions.toObjOrThrow
 import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
 import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
+import com.dimfcompany.nashprihodadmin.logic.models.ModelNotice
 import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
 import com.dimfcompany.nashprihodadmin.logic.models.responses.*
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderNet
 import com.dimfcompany.nashprihodadmin.logic.utils.files.FileManager
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
+import com.dimfcompany.nashprihodadmin.networking.apis.makeInsertOrUpdateNotice
 import okhttp3.MultipartBody
 import javax.inject.Inject
 
@@ -217,4 +219,74 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
                     })
                 .run()
     }
+
+    fun makeNoticeUpsert(notice: ModelNotice, action_success: (ModelNotice) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNoticeSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_news.makeInsertOrUpdateNotice(notice)
+                    })
+                .setObjClass(RespNoticeSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        it.notice?.id != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.notice!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+
+    fun getNotices(action_success: (ArrayList<ModelNotice>) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNotices>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_news.getNotices()
+                    })
+                .setObjClass(RespNotices::class.java)
+                .setActionSuccess(
+                    {
+                        action_success(it.notices ?: arrayListOf())
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun getNoticeById(notice_id: Long, action_success: (ModelNotice) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNoticeSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_news.getNoticeById(notice_id)
+                    })
+                .setObjClass(RespNoticeSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        it.notice != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.notice!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
 }

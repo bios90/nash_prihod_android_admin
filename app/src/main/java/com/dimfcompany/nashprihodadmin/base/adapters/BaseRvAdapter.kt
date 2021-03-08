@@ -17,7 +17,7 @@ abstract class BaseRvAdapter<M : ObjectWithId, VB : ViewDataBinding> : RecyclerV
     var items: ArrayList<M> = arrayListOf()
     var action_on_create: ((VB) -> Unit)? = null
 
-    var listener:BaseRvListener<M>? = null
+    var listener:((M)->Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<M, VB>
     {

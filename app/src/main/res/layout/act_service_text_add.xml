@@ -45,7 +45,7 @@
 
             <EditText
                 android:id="@+id/et_title_service_text"
-                style="@style/EditText.Multiline"
+                style="@style/EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"

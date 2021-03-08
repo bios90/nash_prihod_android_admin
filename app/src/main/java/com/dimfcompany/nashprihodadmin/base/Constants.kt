@@ -38,6 +38,9 @@ object Constants
         const val INSERT_OR_UPDATE_NEWS = "upsert_news"
         const val GET_NEWS = "get_news"
         const val GET_NEWS_BY_ID = "get_news_by_id"
+        const val INSERT_OR_UPDATE_NOTICE = "upsert_notice"
+        const val GET_NOTICES = "get_notices"
+        const val GET_NOTICE_BY_ID = "get_notice_by_id"
     }
 
     object Extras
@@ -48,5 +51,6 @@ object Constants
         const val MEDIA_OBJECTS = "media_objects"
         const val MEDIA_OBJECTS_START_POS = "media_objects_start_pos"
         const val NEWS_TO_EDIT = "news_to_edit"
+        const val NOTICE_TO_EDIT = "notice_to_edit"
     }
 }

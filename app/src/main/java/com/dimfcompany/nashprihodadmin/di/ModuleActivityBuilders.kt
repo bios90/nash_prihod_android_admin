@@ -16,8 +16,8 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ModuleActivityBuilders
 {
-    @ContributesAndroidInjector(modules = [ModuleActTest::class])
-    abstract fun contributeActTest(): ActTest
+//    @ContributesAndroidInjector(modules = [ModuleActTest::class])
+//    abstract fun contributeActTest(): ActTest
 
     @ContributesAndroidInjector(modules = [ModuleActFirst::class])
     abstract fun contributeActFirst(): ActFirst
@@ -63,12 +63,12 @@ abstract class ModuleActMain
 }
 
 
-@Module
-abstract class ModuleActTest
-{
-    @Binds
-    abstract fun bindBaseActivity(act: ActTest): BaseActivity
-}
+//@Module
+//abstract class ModuleActTest
+//{
+//    @Binds
+//    abstract fun bindBaseActivity(act: ActTest): BaseActivity
+//}
 
 @Module
 abstract class ModuleActNewsAddEdit

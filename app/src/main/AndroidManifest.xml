@@ -29,15 +29,22 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.act_test.ActTest"
+            android:theme="@style/Theme.Transparent">
 
-        <activity android:name=".ui.act_test.ActTest"></activity>
+        </activity>
 
         <activity android:name=".ui.act_news_add_edit.ActNewsAddEdit" />
         <activity android:name=".ui.act_media_carousel.ActCarousel" />
         <activity android:name=".ui.act_service_text_add.ActServiceTextAdd">
 
         </activity>
-        <activity android:name=".ui.act_notice_add_edit.ActNoticeAddEdit"></activity>
+        <activity
+            android:name=".ui.act_notice_add_edit.ActNoticeAddEdit"
+            android:theme="@style/Theme.Transparent">
+
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
