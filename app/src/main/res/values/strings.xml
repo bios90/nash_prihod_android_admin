@@ -62,6 +62,7 @@
     <string name="title">Заглавие</string>
     <string name="content">Текст</string>
     <string name="add_service_text">Добавить</string>
+
     <string name="time">Время</string>
     <string name="time_title">Время</string>
     <string name="service_title">Служба</string>
@@ -79,4 +80,9 @@
     <string name="birthday_value">17 ноября 1970</string>
     <string name="birthday">День рождения</string>
     <string name="user_name">Ляшенко Василий</string>
+
+    <string name="notices">Объявления</string>
+    <string name="watching">Просмотр</string>
+    <string name="editing">Редактирование</string>
+
 </resources>

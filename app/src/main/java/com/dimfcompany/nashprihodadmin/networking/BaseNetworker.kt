@@ -1,13 +1,14 @@
 package com.dimfcompany.nashprihodadmin.networking
 
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
+import com.dimfcompany.nashprihodadmin.base.ObjWithMedia
+import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
 import com.dimfcompany.nashprihodadmin.base.extensions.addParseCheckerForObj
 import com.dimfcompany.nashprihodadmin.base.extensions.toObjOrThrow
 import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
+import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
 import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
-import com.dimfcompany.nashprihodadmin.logic.models.responses.BaseResponse
-import com.dimfcompany.nashprihodadmin.logic.models.responses.RespFile
-import com.dimfcompany.nashprihodadmin.logic.models.responses.RespUser
+import com.dimfcompany.nashprihodadmin.logic.models.responses.*
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderNet
 import com.dimfcompany.nashprihodadmin.logic.utils.files.FileManager
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
@@ -19,6 +20,54 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
 {
     companion object
     {
+        suspend fun uploadObjsWithMedia(objs: ArrayList<ObjWithMedia>, api_files: ApiFiles): ArrayList<Long>
+        {
+            val uploaded_file_ids: ArrayList<Long> = arrayListOf()
+
+            for (obj in objs)
+            {
+                if (obj is ModelFile)
+                {
+                    obj.id?.let(
+                        {
+                            uploaded_file_ids.add(it)
+                        })
+                }
+                else if (obj is MyFileItem)
+                {
+                    if (obj.type == TypeMedia.VIDEO)
+                    {
+                        val uploaded_file_id = BaseNetworker.uploadVideo(obj, api_files).id
+                        if (uploaded_file_id != null)
+                        {
+                            uploaded_file_ids.add(uploaded_file_id)
+                        }
+                    }
+                    else if (obj.type == TypeMedia.IMAGE)
+                    {
+                        val uploaded_file_id = BaseNetworker.uploadImage(obj, api_files).id
+                        if (uploaded_file_id != null)
+                        {
+                            uploaded_file_ids.add(uploaded_file_id)
+                        }
+                    }
+                }
+            }
+
+            return uploaded_file_ids
+        }
+
+        suspend fun uploadImage(my_file_item: MyFileItem, api_files: ApiFiles): ModelFile
+        {
+            val part_file = my_file_item.toMultiPartData()
+            val model_file = api_files.uploadImage(part_file)
+                    .toObjOrThrow(RespFile::class.java)
+                    .addParseCheckerForObj({ it.file?.id != null })
+                    .file!!
+
+            return model_file
+        }
+
         suspend fun uploadVideo(file_video: MyFileItem, api_files: ApiFiles): ModelFile
         {
             val file = FileManager.getPosterFromVideo(file_video.getUriAsString())
@@ -27,11 +76,7 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
             if (file != null)
             {
                 val my_file = MyFileItem.createFromFile(file)
-                val part_file = my_file.toMultiPartData()
-                preview_file_id = api_files.uploadImage(part_file)
-                        .toObjOrThrow(RespFile::class.java)
-                        .addParseCheckerForObj({ it.file?.id != null })
-                        .file?.id
+                preview_file_id = uploadImage(my_file, api_files).id
             }
 
             val part_file_vide = file_video.toMultiPartData()
@@ -121,6 +166,50 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
                 .setActionSuccess(
                     {
                         action_success(it.user!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun getNews(action_success: (ArrayList<ModelNews>) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNews>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_news.getNews()
+                    })
+                .setObjClass(RespNews::class.java)
+                .setActionSuccess(
+                    {
+                        action_success(it.news ?: arrayListOf())
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun getNewsById(news_id: Long, action_success: (ModelNews) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNewsSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_news.getNewsById(news_id)
+                    })
+                .setObjClass(RespNewsSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        it.news != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.news!!)
                     })
                 .setActionError(
                     {

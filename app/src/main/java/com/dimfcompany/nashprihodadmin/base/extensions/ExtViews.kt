@@ -15,6 +15,9 @@ import android.view.animation.LinearInterpolator
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import androidx.core.view.children
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.AppClass
 import com.google.android.gms.common.util.DeviceProperties.isTablet
@@ -163,4 +166,44 @@ fun RadioGroup.getCheckedPosition(): Int?
     }
 
     return null
+}
+
+fun RadioGroup.setCheckedAtPos(pos: Int): Boolean
+{
+    if (this.childCount < pos)
+    {
+        return false
+    }
+
+    val rb = this.getChildAt(pos) as RadioButton
+    if (rb.isChecked)
+    {
+        return false
+    }
+
+    rb.isChecked = true
+    return true
+}
+
+fun RecyclerView.setDivider(color: Int, size: Int, orientation: Int = DividerItemDecoration.VERTICAL)
+{
+    val drw = GradientDrawable()
+    drw.shape = GradientDrawable.RECTANGLE
+
+    val itemDecorator: DividerItemDecoration
+    if (orientation == DividerItemDecoration.VERTICAL)
+    {
+        drw.setSize(0, size)
+        itemDecorator = DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL)
+    }
+    else
+    {
+        drw.setSize(size, 0)
+        itemDecorator = DividerItemDecoration(this.context, DividerItemDecoration.HORIZONTAL)
+    }
+
+    drw.setColor(color)
+
+    itemDecorator.setDrawable(drw)
+    this.addItemDecoration(itemDecorator)
 }

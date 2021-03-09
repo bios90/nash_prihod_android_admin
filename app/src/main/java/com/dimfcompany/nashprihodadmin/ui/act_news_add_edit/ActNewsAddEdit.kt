@@ -4,31 +4,26 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.dimfcompany.nashprihodadmin.R
-import com.dimfcompany.nashprihodadmin.base.BaseActivity
-import com.dimfcompany.nashprihodadmin.base.Constants
-import com.dimfcompany.nashprihodadmin.base.MediaItemsWrapper
-import com.dimfcompany.nashprihodadmin.base.ObjWithMedia
-import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
+import com.dimfcompany.nashprihodadmin.base.*
 import com.dimfcompany.nashprihodadmin.base.enums.TypeNews
 import com.dimfcompany.nashprihodadmin.base.extensions.*
-import com.dimfcompany.nashprihodadmin.logic.ValidationData
 import com.dimfcompany.nashprihodadmin.logic.ValidationManager
-import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
 import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
-import com.dimfcompany.nashprihodadmin.logic.models.responses.RespFile
+import com.dimfcompany.nashprihodadmin.logic.models.responses.RespNewsSingle
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogMy
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderNet
-import com.dimfcompany.nashprihodadmin.logic.utils.files.FileManager
-import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.dimfcompany.nashprihodadmin.networking.BaseNetworker
+import com.dimfcompany.nashprihodadmin.networking.apis.makeInsertOrUpdateNews
 import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarousel
+import io.reactivex.subjects.BehaviorSubject
 
 class ActNewsAddEdit : BaseActivity()
 {
     lateinit var mvp_view: ActNewsAddEditMvp.MvpView
     val medias: ArrayList<ObjWithMedia> = arrayListOf()
+    val bs_news_to_edit: BehaviorSubject<ModelNews> = BehaviorSubject.create()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -37,6 +32,9 @@ class ActNewsAddEdit : BaseActivity()
         mvp_view = view_factory.getActNewsMvpView(null)
         setContentView(mvp_view.getRootView())
         mvp_view.registerPresenter(PresenterImplementer())
+
+        setEvents()
+        checkForExtra()
     }
 
     fun setNavStatus()
@@ -49,6 +47,19 @@ class ActNewsAddEdit : BaseActivity()
         is_light_nav_bar = false
     }
 
+    private fun setEvents()
+    {
+        bs_news_to_edit
+                .mainThreaded()
+                .subscribe(
+                    {
+                        mvp_view.bindNewsToEdit(it)
+                        this.medias.clear()
+                        this.medias.addAll(it.media_objs ?: arrayListOf())
+                    })
+                .disposeBy(composite_disposable)
+    }
+
     private fun addMediaObj(obj: ObjWithMedia)
     {
         this.medias.add(obj)
@@ -57,7 +68,6 @@ class ActNewsAddEdit : BaseActivity()
             {
                 mvp_view.scrollImagesToEnd()
             })
-
     }
 
     private fun getIdToEditExtra(): Long?
@@ -120,39 +130,42 @@ class ActNewsAddEdit : BaseActivity()
                 return
             }
 
-            upload(news)
-
+            upload(news,
+                {
+                    BusMainEvents.ps_news_add_or_edit.onNext(it.id!!)
+                    finish()
+                })
         }
     }
 
-    private fun upload(news: ModelNews)
+    private fun upload(news: ModelNews, action_result: (ModelNews) -> Unit)
     {
-        val uploaded_file_ids: ArrayList<Long> = arrayListOf()
-
         BuilderNet<Any>()
                 .setBaseActivity(this)
                 .setActionMultiRequests(
                     {
-                        for (obj in news.media_objs ?: arrayListOf())
-                        {
-                            if (obj is ModelFile)
-                            {
-                                obj.id?.let(
-                                    {
-                                        uploaded_file_ids.add(it)
-                                    })
-                            }
-                            else if (obj is MyFileItem)
-                            {
-                                if (obj.type == TypeMedia.VIDEO)
-                                {
-                                    val uploaded_file_id = BaseNetworker.uploadVideo(obj, api_files).id ?: return@setActionMultiRequests
-                                    uploaded_file_ids.add(uploaded_file_id)
-                                }
-                            }
-                        }
+                        val objs_media = news.media_objs ?: arrayListOf()
+                        val media_ids = BaseNetworker.uploadObjsWithMedia(objs_media, api_files)
+
+                        val news_from_server = api_news.makeInsertOrUpdateNews(news, media_ids)
+                                .toObjOrThrow(RespNewsSingle::class.java)
+                                .addParseCheckerForObj({ it.news?.id != null })
+                                .news!!
+
+                        action_result(news_from_server)
                     })
                 .run()
     }
 
+    private fun checkForExtra()
+    {
+        val news_id = getIdToEditExtra()
+        if (news_id != null)
+        {
+            base_networker.getNewsById(news_id,
+                {
+                    bs_news_to_edit.onNext(it)
+                })
+        }
+    }
 }

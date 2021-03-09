@@ -11,7 +11,174 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/black_trans_50">
+
+        <include
+            android:id="@+id/cv_avatar"
+            layout="@layout/cv_circle_image"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:layout_above="@id/lal_profile_add"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="-56dp" />
+
+        <LinearLayout
+            android:id="@+id/lal_profile_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@{BuilderBg.getSimpleDrawable(10f, BuilderBg.gc(R.color.white))}"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:gravity="start"
+                android:text="Имя"
+                android:textColor="@color/gray4" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                style="@style/TvReg.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="8dp"
+                android:text="Василий"
+                android:textColor="@color/gray7" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:text="Фамилия"
+                android:textColor="@color/gray4" />
+
+            <TextView
+                android:id="@+id/tv_user_lastname"
+                style="@style/TvReg.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="8dp"
+                android:text="Ляшенко"
+                android:textColor="@color/gray7" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:text="День рождения"
+                android:textColor="@color/gray4" />
+
+            <EditText
+                android:id="@+id/et_user_birthday"
+                style="@style/EditText.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@{BuilderBg.getStrokedEt()}"
+                android:text="17 ноября 1970" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:text="Именины"
+                android:textColor="@color/gray4" />
+
+            <EditText
+                android:id="@+id/et_user_nameday"
+                style="@style/EditText.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@{BuilderBg.getStrokedEt()}"
+                android:text="14 января" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:text="Email"
+                android:textColor="@color/gray4" />
+
+            <TextView
+                android:id="@+id/tv_user_email"
+                style="@style/TvReg.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="8dp"
+                android:text="vas2011@ya.ru"
+                android:textColor="@color/gray7" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:text="Телефон"
+                android:textColor="@color/gray4" />
+
+            <EditText
+                android:id="@+id/et_user_phone_number"
+                style="@style/EditText.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@{BuilderBg.getStrokedEt()}"
+                android:inputType="phone"
+                android:text="+7 925 406 66 70" />
+
+            <TextView
+                style="@style/TvReg.Xs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:text="Обо мне"
+                android:textColor="@color/gray4" />
+
+            <EditText
+                android:id="@+id/et_user_about_me"
+                style="@style/EditText.Multiline.XS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@{BuilderBg.getStrokedEt()}"
+                android:text="bjsbcjdbcjdbcjbcjs" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lal_profile_add"
+            android:layout_marginTop="28dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp">
+
+            <TextView
+                android:id="@+id/btn_save_profile"
+                style="@style/BlueButton"
+                android:layout_width="match_parent"
+                android:text="Сохранить" />
+        </LinearLayout>
 
     </RelativeLayout>
 </layout>

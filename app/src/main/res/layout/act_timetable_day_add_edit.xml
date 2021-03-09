@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="12dp"
         android:background="@color/gray0"
         android:orientation="vertical">
 
@@ -27,10 +33,10 @@
             android:textColor="@color/gray4" />
 
         <TextView
+            android:id="@+id/tv_holiday_title"
             style="@style/TvReg.M"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="24dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="24dp"
@@ -58,9 +64,11 @@
                 android:textColor="@color/gray4" />
 
             <TextView
+                android:id="@+id/btn_add_time"
                 style="@style/BlueRoundButton"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:textSize="15sp"
                 android:text="+" />
         </LinearLayout>
 
@@ -77,6 +85,7 @@
             android:visibility="visible">
 
             <TextView
+                android:id="@+id/tv_service_time"
                 style="@style/TvReg.S"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -86,6 +95,7 @@
                 android:textColor="@color/blue_dark" />
 
             <TextView
+                android:id="@+id/tv_service_title"
                 style="@style/TvReg.S"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -107,6 +117,7 @@
             android:visibility="visible">
 
             <TextView
+                android:id="@+id/tv_service_time1"
                 style="@style/TvReg.S"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -116,6 +127,7 @@
                 android:textColor="@color/blue_dark" />
 
             <TextView
+                android:id="@+id/tv_service_title1"
                 style="@style/TvReg.S"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -142,9 +154,11 @@
                 android:textColor="@color/gray4" />
 
             <TextView
+                android:id="@+id/btn_add_time1"
                 style="@style/BlueRoundButton"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:textSize="15sp"
                 android:text="+" />
         </LinearLayout>
 
@@ -162,6 +176,7 @@
             android:visibility="visible">
 
             <TextView
+                android:id="@+id/tv_service_text_title"
                 style="@style/TvReg.M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -170,6 +185,7 @@
                 android:text="Тропарь" />
 
             <TextView
+                android:id="@+id/tv_service_text"
                 style="@style/TvReg.Xs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -190,6 +206,7 @@
             android:visibility="visible">
 
             <TextView
+                android:id="@+id/tv_service_text_title1"
                 style="@style/TvReg.M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -198,6 +215,7 @@
                 android:text="Кондак" />
 
             <TextView
+                android:id="@+id/tv_service_text1"
                 style="@style/TvReg.Xs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -218,6 +236,7 @@
             android:visibility="visible">
 
             <TextView
+                android:id="@+id/tv_service_text_title2"
                 style="@style/TvReg.M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -230,6 +249,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_service_text2"
                     style="@style/TvReg.Xs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -252,6 +272,7 @@
             android:visibility="visible">
 
             <TextView
+                android:id="@+id/tv_service_text_title3"
                 style="@style/TvReg.M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -264,6 +285,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_service_text3"
                     style="@style/TvReg.Xs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -274,6 +296,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/btn_create"
             style="@style/BlueButton"
             android:layout_width="match_parent"
             android:layout_marginStart="24dp"

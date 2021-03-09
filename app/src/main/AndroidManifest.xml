@@ -20,7 +20,12 @@
 
         <activity android:name=".ui.act_first.ActFirst"></activity>
 
-        <activity android:name=".ui.act_register.ActRegister" >
+
+        <activity android:name=".ui.act_register.ActRegister" />
+
+
+
+        <activity android:name=".ui.act_main.ActMain">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +33,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.act_main.ActMain"></activity>
+
+
+
 
 
         <activity android:name=".ui.act_test.ActTest"></activity>
 
         <activity android:name=".ui.act_news_add_edit.ActNewsAddEdit" />
         <activity android:name=".ui.act_media_carousel.ActCarousel" />
+
         <activity android:name=".ui.act_service_text_add_edit.ActServiceTextAddEdit"></activity>
         <activity android:name=".ui.act_notice_add_edit.ActNoticeAddEdit"></activity>
         <activity android:name=".ui.act_time_add_edit.ActTimeAddEdit">

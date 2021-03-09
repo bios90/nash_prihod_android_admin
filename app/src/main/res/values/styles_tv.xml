@@ -15,10 +15,18 @@
         <item name="hintTextColor">@color/gray4</item>
     </style>
 
+    <style name="EditText.M">
+        <item name="android:textSize">@dimen/size_m</item>
+    </style>
+
     <style name="EditText.Multiline">
         <item name="android:gravity">left</item>
         <item name="android:inputType">textCapSentences|textMultiLine</item>
         <item name="android:minLines">5</item>
+    </style>
+
+    <style name="EditText.Multiline.XS">
+        <item name="android:textSize">@dimen/size_xs</item>
     </style>
 
     <style name="TvReg">
@@ -261,6 +269,7 @@
         <item name="android:textSize">@dimen/size_l</item>
         <item name="fontFamily">@font/fa_regular</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="BSButton">

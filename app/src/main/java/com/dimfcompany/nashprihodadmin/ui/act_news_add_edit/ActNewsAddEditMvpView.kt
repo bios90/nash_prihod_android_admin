@@ -7,14 +7,12 @@ import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.ObjWithMedia
 import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
-import com.dimfcompany.nashprihodadmin.base.extensions.getCheckedPosition
-import com.dimfcompany.nashprihodadmin.base.extensions.getNullableText
-import com.dimfcompany.nashprihodadmin.base.extensions.scrollRight
-import com.dimfcompany.nashprihodadmin.base.extensions.toVisibility
+import com.dimfcompany.nashprihodadmin.base.extensions.*
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ActFirstBinding
 import com.dimfcompany.nashprihodadmin.databinding.ActNewsAddEditBinding
 import com.dimfcompany.nashprihodadmin.databinding.ItemSquareImgBinding
+import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
 import com.rucode.autopass.logic.utils.images.GlideManager
 
 class ActNewsAddEditMvpView(val layoutInflater: LayoutInflater, parent: ViewGroup?)
@@ -61,6 +59,29 @@ class ActNewsAddEditMvpView(val layoutInflater: LayoutInflater, parent: ViewGrou
             })
 
         GlideManager.loadImage(bnd_image.img, obj.preview_url)
+    }
+
+    override fun bindMediaObjs(objs: ArrayList<ObjWithMedia>)
+    {
+        this.bnd_act_news_add_edit.laForMedias.removeAllViews()
+        for (obj in objs)
+        {
+            addMediaObj(obj)
+        }
+    }
+
+    override fun bindNewsToEdit(news: ModelNews)
+    {
+        bnd_act_news_add_edit.etName.setText(news.title)
+        bnd_act_news_add_edit.etText.setText(news.text)
+        bnd_act_news_add_edit.rgNewsType.setCheckedAtPos(news.type?.getPos() ?: 0)
+
+        if (news.media_objs != null)
+        {
+            this.bindMediaObjs(news.media_objs!!)
+        }
+
+        bnd_act_news_add_edit.tvCreate.text = getStringMy(R.string.save)
     }
 
     override fun scrollImagesToEnd()

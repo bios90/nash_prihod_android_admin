@@ -1,6 +1,7 @@
 package com.dimfcompany.nashprihodadmin.ui.act_main
 
 import android.os.Bundle
+import android.util.Log
 import com.dimfcompany.akcsl.base.adapters.AdapterVpUniversal
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity

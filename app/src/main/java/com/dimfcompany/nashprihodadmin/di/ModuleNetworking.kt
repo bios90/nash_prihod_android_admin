@@ -2,8 +2,10 @@ package com.dimfcompany.nashprihodadmin.di
 
 import com.dimfcompany.nashprihodadmin.base.AppClass
 import com.dimfcompany.nashprihodadmin.base.Constants
+import com.dimfcompany.nashprihodadmin.networking.MyInterceptor
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiAuth
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
+import com.dimfcompany.nashprihodadmin.networking.apis.ApiNews
 import com.grapesnberries.curllogger.CurlLoggerInterceptor
 import dagger.Module
 import dagger.Provides
@@ -43,6 +45,7 @@ class ModuleNetworking
     {
         val httpClientBuilder = OkHttpClient.Builder()
 //        httpClientBuilder.addInterceptor(log_interceptor)
+        httpClientBuilder.addInterceptor(MyInterceptor())
         httpClientBuilder.addInterceptor(curl_interceptor)
         httpClientBuilder.callTimeout(120, TimeUnit.SECONDS)
         httpClientBuilder.readTimeout(120, TimeUnit.SECONDS)
@@ -77,5 +80,12 @@ class ModuleNetworking
     fun provideApiFiles(retrofit: Retrofit): ApiFiles
     {
         return retrofit.create(ApiFiles::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideApiNews(retrofit: Retrofit): ApiNews
+    {
+        return retrofit.create(ApiNews::class.java)
     }
 }

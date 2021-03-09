@@ -3,6 +3,9 @@ package com.dimfcompany.nashprihodadmin.base
 import androidx.appcompat.app.AppCompatActivity
 import com.dimfcompany.nashprihodadmin.di.ComponentApp
 import com.dimfcompany.nashprihodadmin.di.DaggerComponentApp
+import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
+import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
+import com.dimfcompany.nashprihodadmin.logic.models.ObjWithMediaDeserializer
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -25,6 +28,7 @@ class AppClass : DaggerApplication()
         app = this
         gson = GsonBuilder()
                 .setDateFormat(DateManager.FORMAT_FOR_SERVER_LARAVEL)
+                .registerTypeAdapter(ObjWithMedia::class.java, ObjWithMediaDeserializer())
                 .create()
     }
 
