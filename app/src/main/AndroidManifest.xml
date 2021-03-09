@@ -18,15 +18,17 @@
         android:theme="@style/Theme.NashPrihodAdmin"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".ui.act_first.ActFirst"></activity>
-
-        <activity android:name=".ui.act_register.ActRegister" />
-        <activity android:name=".ui.act_main.ActMain">
+        <activity android:name=".ui.act_first.ActFirst">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.act_register.ActRegister" />
+        <activity android:name=".ui.act_main.ActMain">
+
         </activity>
 
         <activity
@@ -45,6 +47,9 @@
             android:theme="@style/Theme.Transparent">
 
         </activity>
+        <activity
+            android:name=".ui.act_filter_users.ActFilterUsers"
+            android:theme="@style/Theme.Transparent" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

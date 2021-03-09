@@ -10,5 +10,6 @@ interface LaVisitorsMvp
 
     interface Presenter
     {
+        fun clickedFilter()
     }
 }

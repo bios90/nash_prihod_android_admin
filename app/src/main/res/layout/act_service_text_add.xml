@@ -86,9 +86,8 @@
                 android:text="@string/add_service_text"
                 android:textColor="@color/white" />
 
-
-
         </LinearLayout>
 
     </RelativeLayout>
+
 </layout>

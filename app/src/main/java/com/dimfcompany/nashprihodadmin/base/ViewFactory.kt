@@ -3,6 +3,9 @@ package com.dimfcompany.nashprihodadmin.base
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.dimfcompany.nashprihodadmin.databinding.LaMediaVideoBinding
+import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsers
+import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvp
+import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
@@ -111,5 +114,10 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
     fun getActServiceTextAddMvpView(parent: ViewGroup?): ActServiceTextAddMvp.MvpView
     {
         return ActServiceTextAddMvpView(layout_inflater, parent)
+    }
+
+    fun getActFilterUsersMvpView(parent: ViewGroup?): ActFilterUsersMvp.MvpView
+    {
+        return ActFilterUsersMvpView(layout_inflater, parent)
     }
 }

@@ -12,7 +12,7 @@ object Constants
 
     object Urls
     {
-        const val test_mode = false
+        const val test_mode = true
         val URL_BASE: String
             get()
             {
@@ -52,5 +52,6 @@ object Constants
         const val MEDIA_OBJECTS_START_POS = "media_objects_start_pos"
         const val NEWS_TO_EDIT = "news_to_edit"
         const val NOTICE_TO_EDIT = "notice_to_edit"
+        const val FILTER_DATA_USER = "filter_data_user"
     }
 }
