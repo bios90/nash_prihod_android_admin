@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.extensions.getNullableText
+import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpView
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ActNoticeAddEditBinding
+import com.dimfcompany.nashprihodadmin.logic.models.ModelNotice
 
 class ActNoticeAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     : BaseMvpViewImpl<ActNoticeAddEditMvp.Presenter>(), ActNoticeAddEditMvp.MvpView
@@ -24,15 +26,26 @@ class ActNoticeAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?
     private fun setListeners()
     {
         bnd_act_notice_add_edit.tvSave.setOnClickListener(
-                {
-                    getPresenter().clickedSave()
-                })
+            {
+                getPresenter().clickedSave()
+            })
     }
 
-    override fun getEtText(): String?
+    override fun bindNotice(notice: ModelNotice)
+    {
+        bnd_act_notice_add_edit.etTitle.setText(notice.title)
+        bnd_act_notice_add_edit.etText.setText(notice.text)
+
+        bnd_act_notice_add_edit.tvSave.text = getStringMy(R.string.save)
+    }
+
+    override fun getEtTitleText(): String?
+    {
+        return bnd_act_notice_add_edit.etTitle.getNullableText()
+    }
+
+    override fun getEtTextText(): String?
     {
         return bnd_act_notice_add_edit.etText.getNullableText()
     }
-
-
 }

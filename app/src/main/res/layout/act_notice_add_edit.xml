@@ -32,6 +32,38 @@
                 android:text="@string/notice"
                 android:textColor="@color/gray7" />
 
+            <TextView
+                style="@style/TvBold.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="left"
+                android:text="@string/title"
+                android:textColor="@color/gray5" />
+
+            <EditText
+                android:id="@+id/et_title"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"
+                android:background="@{BuilderBg.getStrokedEt()}" />
+
+            <TextView
+                style="@style/TvBold.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="left"
+                android:text="@string/content"
+                android:textColor="@color/gray5" />
+
             <EditText
                 android:id="@+id/et_text"
                 style="@style/EditText.Multiline"
@@ -54,8 +86,8 @@
                 android:text="@string/create"
                 android:textColor="@color/white" />
 
-
         </LinearLayout>
 
     </RelativeLayout>
+
 </layout>

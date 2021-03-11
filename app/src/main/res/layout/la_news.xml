@@ -11,15 +11,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -27,7 +33,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp">
+                    android:layout_marginRight="16dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
 
                     <TextView
                         style="@style/TvReg.L"
@@ -37,6 +45,7 @@
                         android:text="@string/notices" />
 
                     <TextView
+                        android:id="@+id/tv_add_notice"
                         style="@style/TvReg"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
@@ -53,7 +62,12 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rec_notices"
                     android:layout_width="match_parent"
-                    android:layout_height="132dp" />
+                    android:layout_height="132dp"
+                    android:layout_marginTop="8dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="4dp" />
 
                 <TextView
                     style="@style/TvReg.L"

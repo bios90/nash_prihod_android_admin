@@ -13,15 +13,15 @@ import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
 import com.dimfcompany.nashprihodadmin.base.extensions.mainThreaded
 import com.dimfcompany.nashprihodadmin.base.extensions.runActionWithDelay
 import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
+import com.dimfcompany.nashprihodadmin.logic.models.ModelNotice
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
-import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderAlerter
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogBottom
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEdit
-import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegister
+import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
@@ -29,6 +29,7 @@ class TabNews(val act_main: ActMain) : TabPresenter
 {
     val mvp_view: LaNewsMvp.MvpView
     val ps_to_reload_news: PublishSubject<Any> = PublishSubject.create()
+    val ps_to_reload_notices: PublishSubject<Any> = PublishSubject.create()
 
     val composite_disposable = act_main.composite_disposable
     val base_networker = act_main.base_networker
@@ -43,6 +44,7 @@ class TabNews(val act_main: ActMain) : TabPresenter
         runActionWithDelay(act_main.lifecycleScope, 1000,
             {
                 ps_to_reload_news.onNext(Any())
+                ps_to_reload_notices.onNext(Any())
             })
 
     }
@@ -57,6 +59,14 @@ class TabNews(val act_main: ActMain) : TabPresenter
                     })
                 .disposeBy(composite_disposable)
 
+        BusMainEvents.ps_notice_add_or_edit
+                .mainThreaded()
+                .subscribe(
+                    {
+                        ps_to_reload_notices.onNext(Any())
+                    })
+                .disposeBy(composite_disposable)
+
         ps_to_reload_news
                 .throttleFirst(500, TimeUnit.MILLISECONDS)
                 .mainThreaded()
@@ -65,7 +75,20 @@ class TabNews(val act_main: ActMain) : TabPresenter
                         base_networker.getNews(
                             {
                                 val info = FeedDisplayInfo(it, LoadBehavior.UPDATE)
-                                mvp_view.bindItems(info)
+                                mvp_view.bindNewsItems(info)
+                            })
+                    })
+                .disposeBy(composite_disposable)
+
+        ps_to_reload_notices
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .mainThreaded()
+                .subscribe(
+                    {
+                        base_networker.getNotices(
+                            {
+                                val info = FeedDisplayInfo(it, LoadBehavior.UPDATE)
+                                mvp_view.bindNoticesItems(info)
                             })
                     })
                 .disposeBy(composite_disposable)
@@ -87,22 +110,58 @@ class TabNews(val act_main: ActMain) : TabPresenter
                     .startActivity(act_main)
         }
 
-        override fun cardClicked(item: ModelNews)
+        override fun clickedAddNotice()
         {
-            val news_id = item.id ?: return
+            BuilderIntent()
+                    .setActivityToStart(ActNoticeAddEdit::class.java)
+                    .startActivity(act_main)
+        }
+
+        override fun clickedNews(news: ModelNews)
+        {
+            val news_id = news.id ?: return
 
             BuilderDialogBottom()
-                    .setText(item.created?.formatToString())
-                    .setTitle(item.title)
+                    .setText(news.created?.formatToString())
+                    .setTitle(news.title)
                     .addBtn(BtnAction(getStringMy(R.string.watching),
                         {
-                            Log.e("PresenterImplementer", "cardClicked: Willlll startttt")
+                        }))
+                    .addBtn(BtnAction(getStringMy(R.string.editing),
+                        {
                             BuilderIntent()
                                     .addParam(Constants.Extras.NEWS_TO_EDIT, news_id)
                                     .setActivityToStart(ActNewsAddEdit::class.java)
                                     .startActivity(act_main)
                         }))
-                    .addBtn(BtnAction(getStringMy(R.string.editing), {}))
+                    .addBtn(BtnAction(getStringMy(R.string.delete),
+                        {
+
+                        }))
+                    .show(act_main.supportFragmentManager)
+        }
+
+        override fun clickedNotice(notice: ModelNotice)
+        {
+            val notice_id = notice.id ?: return
+
+            BuilderDialogBottom()
+                    .setText(notice.created?.formatToString())
+                    .setTitle(notice.title)
+                    .addBtn(BtnAction(getStringMy(R.string.watching),
+                        {
+                        }))
+                    .addBtn(BtnAction(getStringMy(R.string.editing),
+                        {
+                            BuilderIntent()
+                                    .addParam(Constants.Extras.NOTICE_TO_EDIT, notice_id)
+                                    .setActivityToStart(ActNoticeAddEdit::class.java)
+                                    .startActivity(act_main)
+                        }))
+                    .addBtn(BtnAction(getStringMy(R.string.delete),
+                        {
+
+                        }))
                     .show(act_main.supportFragmentManager)
         }
     }
