@@ -2,6 +2,8 @@ package com.dimfcompany.nashprihodadmin.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvp
+import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMainMvp
@@ -14,8 +16,8 @@ import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.profile.LaProfileMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.profile.LaProfileMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.timetable.LaTimeTableMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.timetable.LaTimeTableMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.parishioners.LaParishionersMvp
-import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.parishioners.LaParishionersMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors.LaVisitorsMvp
+import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors.LaVisitorsMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvp
 import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvp
@@ -26,6 +28,7 @@ import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvp
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_time_add_edit.ActTimeAddEditMvp
@@ -72,9 +75,9 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
         return LaTimeTableMvpView(layout_inflater, parent)
     }
 
-    fun getLaVisitorsMvpView(parent: ViewGroup?): LaParishionersMvp.MvpView
+    fun getLaVisitorsMvpView(parent: ViewGroup?): LaVisitorsMvp.MvpView
     {
-        return LaParishionersMvpView(layout_inflater, parent)
+        return LaVisitorsMvpView(layout_inflater, parent)
     }
 
     fun getLaNotesMvpView(parent: ViewGroup?): LaNotesMvp.MvpView
@@ -117,11 +120,6 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
         return ActServiceTextAddEditMvpView(layout_inflater, parent)
     }
 
-    fun getActTimeAddEditMvpView(parent: ViewGroup?): ActTimeAddEditMvp.MvpView
-    {
-        return ActTimeAddEditMvpView(layout_inflater, parent)
-    }
-
     fun getActProfileAddEditMvpView(parent: ViewGroup?): ActProfileAddEditMvp.MvpView
     {
         return ActProfileAddEditMvpView(layout_inflater, parent)
@@ -130,5 +128,15 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
     fun getActTimetableDayAddEditMvpView(parent: ViewGroup?): ActTimetableDayAddEditMvp.MvpView
     {
         return ActTimetableDayAddEditMvpView(layout_inflater, parent)
+    }
+
+    fun getActFilterUsersMvpView(parent: ViewGroup?): ActFilterUsersMvp.MvpView
+    {
+        return ActFilterUsersMvpView(layout_inflater, parent)
+    }
+
+    fun getActTimeAddEditMvpView(parent: ViewGroup?): ActTimeAddEditMvp.MvpView
+    {
+        return ActTimeAddEditMvpView(layout_inflater, parent)
     }
 }

@@ -1,8 +1,8 @@
-package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.parishioners
+package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors
 
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpView
 
-interface LaParishionersMvp
+interface LaVisitorsMvp
 {
     interface MvpView : BaseMvpView<Presenter>
     {
@@ -10,5 +10,6 @@ interface LaParishionersMvp
 
     interface Presenter
     {
+        fun clickedFilter()
     }
 }

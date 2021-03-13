@@ -84,6 +84,15 @@
     <string name="notices">Объявления</string>
     <string name="watching">Просмотр</string>
     <string name="editing">Редактирование</string>
+    <string name="filter">Фильтр</string>
+    <string name="search">Поиск</string>
+    <string name="all">Все</string>
+    <string name="actives">Активные</string>
+    <string name="waits_approve">Ожидают одобрения</string>
+    <string name="blocked">Заблокированные</string>
+    <string name="status">Статус</string>
+    <string name="apply">Применить</string>
+    <string name="register_date">Дата регистрации</string>
     <string name="about_me">Обо мне</string>
     <string name="plus">+</string>
     <string name="holiday">Праздник</string>

@@ -16,6 +16,7 @@ import com.dimfcompany.nashprihodadmin.logic.utils.BtnActionWithText
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderAlerter
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogMy
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
+import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegister
 
 class ActFirst : BaseActivity()
@@ -26,6 +27,7 @@ class ActFirst : BaseActivity()
     {
         setNavStatus()
         super.onCreate(savedInstanceState)
+        checkLogin()
         mvp_view = view_factory.getActFirstMvpView(null)
         setContentView(mvp_view.getRootView())
         mvp_view.registerPresenter(PresenterImplementer())
@@ -46,13 +48,13 @@ class ActFirst : BaseActivity()
         val is_logged = SharedPrefsManager.pref_current_user.get().value != null
         if (is_logged)
         {
-//            BuilderIntent()
-//                    .setActivityToStart(ActMain::class.java)
-//                    .addOnStartAction(
-//                        {
-//                            ps_to_finish.onNext(Optional(null))
-//                        })
-//                    .sendInVm(this@VmActFirst)
+            BuilderIntent()
+                    .setActivityToStart(ActMain::class.java)
+                    .addOnStartAction(
+                        {
+                            finish()
+                        })
+                    .startActivity(this)
         }
     }
 

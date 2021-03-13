@@ -12,7 +12,8 @@ import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.news.TabNews
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.notes.TabNotes
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.profile.TabProfile
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.timetable.TabTimeTable
-import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.parishioners.TabParishioners
+import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors.TabVisitors
+
 
 class ActMain : BaseActivity()
 {
@@ -20,7 +21,7 @@ class ActMain : BaseActivity()
 
     lateinit var tab_news: TabNews
     lateinit var tab_time_table: TabTimeTable
-    lateinit var tab_parishioners: TabParishioners
+    lateinit var tab_visitors: TabVisitors
     lateinit var tab_notes: TabNotes
     lateinit var tab_profile: TabProfile
 
@@ -50,11 +51,11 @@ class ActMain : BaseActivity()
     {
         tab_news = TabNews(this)
         tab_time_table = TabTimeTable(this)
-        tab_parishioners = TabParishioners(this)
+        tab_visitors = TabVisitors(this)
         tab_notes = TabNotes(this)
         tab_profile = TabProfile(this)
 
-        val views = arrayListOf(tab_news.getView(), tab_time_table.getView(), tab_parishioners.getView(), tab_notes.getView(), tab_profile.getView())
+        val views = arrayListOf(tab_news.getView(), tab_time_table.getView(), tab_visitors.getView(), tab_notes.getView(), tab_profile.getView())
         mvp_view.setViews(views)
     }
 

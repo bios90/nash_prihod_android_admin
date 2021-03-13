@@ -1,6 +1,7 @@
 package com.dimfcompany.nashprihodadmin.di
 
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
+import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsers
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirst
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarousel
@@ -38,7 +39,7 @@ abstract class ModuleActivityBuilders
     abstract fun contributeActCarousel(): ActCarousel
 
     @ContributesAndroidInjector(modules = [ModuleActNoticeAddEdit::class])
-    abstract fun contributeActNoticeAddEdit():ActNoticeAddEdit
+    abstract fun contributeActNoticeAddEdit(): ActNoticeAddEdit
 
     @ContributesAndroidInjector(modules = [ModuleActServiceTextAddEdit::class])
     abstract fun contributeActServiceTextAddEdit(): ActServiceTextAddEdit
@@ -51,6 +52,9 @@ abstract class ModuleActivityBuilders
 
     @ContributesAndroidInjector(modules = [ModuleActTimetableDayAddEdit::class])
     abstract fun contributeActTimetableDayAddEdit(): ActTimetableDayAddEdit
+
+    @ContributesAndroidInjector(modules = [ModuleActFilterUsers::class])
+    abstract fun contributeActFilterUsers(): ActFilterUsers
 }
 
 @Module
@@ -129,4 +133,11 @@ abstract class ModuleActTimetableDayAddEdit
 {
     @Binds
     abstract fun bindBaseActivity(act: ActTimetableDayAddEdit): BaseActivity
+}
+
+@Module
+abstract class ModuleActFilterUsers
+{
+    @Binds
+    abstract fun bindBaseActivity(act: ActFilterUsers): BaseActivity
 }

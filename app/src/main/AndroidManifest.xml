@@ -22,17 +22,21 @@
 
         <activity android:name=".ui.act_register.ActRegister" />
         <activity android:name=".ui.act_main.ActMain">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".ui.act_test.ActTest"
-            android:theme="@style/Theme.Transparent"/>
+            android:theme="@style/Theme.Transparent">
+
+        </activity>
 
         <activity android:name=".ui.act_news_add_edit.ActNewsAddEdit" />
         <activity android:name=".ui.act_media_carousel.ActCarousel" />
-
-
         <activity android:name=".ui.act_service_text_add_edit.ActServiceTextAddEdit">
 
         </activity>
@@ -41,6 +45,9 @@
             android:theme="@style/Theme.Transparent">
 
         </activity>
+        <activity
+            android:name=".ui.act_filter_users.ActFilterUsers"
+            android:theme="@style/Theme.Transparent" />
 
         <activity android:name=".ui.act_profile_add_edit.ActProfileAddEdit"/>
 

@@ -54,5 +54,6 @@ object Constants
         const val NOTICE_TO_EDIT = "notice_to_edit"
         const val MODEL_TIMETABLE_TIME = "model_timetable_time"
         const val MODEL_TIMETABLE_SERVICE_TEXT = "model_timetable_service_text"
+        const val FILTER_DATA_USER = "filter_data_user"
     }
 }
