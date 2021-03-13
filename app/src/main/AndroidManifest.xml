@@ -22,11 +22,7 @@
 
         <activity android:name=".ui.act_register.ActRegister" />
         <activity android:name=".ui.act_main.ActMain">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -37,9 +33,15 @@
 
         <activity android:name=".ui.act_news_add_edit.ActNewsAddEdit" />
         <activity android:name=".ui.act_media_carousel.ActCarousel" />
-        <activity android:name=".ui.act_service_text_add_edit.ActServiceTextAddEdit">
 
+        <activity android:name=".ui.act_service_text_add_edit.ActServiceTextAddEdit">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.act_notice_add_edit.ActNoticeAddEdit"
             android:theme="@style/Theme.Transparent">
@@ -49,10 +51,10 @@
             android:name=".ui.act_filter_users.ActFilterUsers"
             android:theme="@style/Theme.Transparent" />
 
-        <activity android:name=".ui.act_profile_add_edit.ActProfileAddEdit"/>
+        <activity android:name=".ui.act_profile_add_edit.ActProfileAddEdit" />
 
-
-        <activity android:name=".ui.act_time_add_edit.ActTimeAddEdit"
+        <activity
+            android:name=".ui.act_time_add_edit.ActTimeAddEdit"
             android:theme="@style/Theme.Transparent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,7 +63,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.act_timetable_day_add_edit.ActTimetableDayAddEdit"/>
+        <activity android:name=".ui.act_timetable_day_add_edit.ActTimetableDayAddEdit" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
