@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{BuilderBg.getSimpleDrawableRipple(4f,BuilderBg.gc(R.color.white),BuilderBg.gc(R.color.blue_trans_50))}"
+        android:elevation="12dp">
+
+        <include
+            android:id="@+id/cv_avatar"
+            layout="@layout/cv_circle_image"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TvReg.Xl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@id/cv_avatar"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:lines="1"
+            android:textColor="@color/blue"
+            tools:text="Бесявывы ототоылапт" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/TvReg.M"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@id/cv_avatar"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:lines="1"
+            android:textColor="@color/gray5"
+            tools:text="+81243423424" />
+
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/TvReg.M"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_phone"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="12dp"
+            android:layout_toRightOf="@id/cv_avatar"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:lines="1"
+            android:textColor="@color/gray5"
+            tools:text="bios90@dkfsdf.ri" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv_avatar"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tv_status_title"
+                style="@style/TvReg.L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Статус: "
+                android:textColor="@color/gray7" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                style="@style/TvReg.L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_status_title"
+                tools:text="активный"
+                tools:textColor="@color/green" />
+
+            <TextView
+                android:id="@+id/tv_birth_date"
+                style="@style/TvBold.M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="22 октября 1990"
+                android:textColor="@color/gray7" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -41,6 +41,7 @@ object Constants
         const val INSERT_OR_UPDATE_NOTICE = "upsert_notice"
         const val GET_NOTICES = "get_notices"
         const val GET_NOTICE_BY_ID = "get_notice_by_id"
+        const val GET_USERS = "get_users"
     }
 
     object Extras

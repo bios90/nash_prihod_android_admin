@@ -14,6 +14,7 @@ import com.dimfcompany.nashprihodadmin.networking.BaseNetworker
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiAuth
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiNews
+import com.dimfcompany.nashprihodadmin.networking.apis.ApiUsers
 import com.justordercompany.barista.logic.utils.BuilderPermRequest
 import com.justordercompany.barista.logic.utils.PermissionManager
 import dagger.android.support.DaggerAppCompatActivity
@@ -42,6 +43,9 @@ abstract class BaseActivity : DaggerAppCompatActivity()
 
     @Inject
     lateinit var api_news: ApiNews
+
+    @Inject
+    lateinit var api_users: ApiUsers
 
     @Inject
     lateinit var base_networker: BaseNetworker

@@ -2,6 +2,7 @@ package com.dimfcompany.nashprihodadmin.logic.models
 
 import com.dimfcompany.nashprihodadmin.base.ObjectWithDates
 import com.dimfcompany.nashprihodadmin.base.ObjectWithId
+import com.dimfcompany.nashprihodadmin.base.enums.TypeUserStatus
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
@@ -16,7 +17,10 @@ class ModelUser(
         var first_name: String? = null,
         var last_name: String? = null,
         var email: String? = null,
-        var email_verified: Boolean? = false,
+        var phone: String? = null,
+        var birthday: Date? = null,
+        var about_me: String? = null,
+        var status: TypeUserStatus? = null,
         var avatar: ModelFile? = null,
         var is_admin: Boolean? = false,
 ) : ObjectWithId, ObjectWithDates

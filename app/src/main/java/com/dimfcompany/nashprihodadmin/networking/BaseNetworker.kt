@@ -3,6 +3,8 @@ package com.dimfcompany.nashprihodadmin.networking
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.ObjWithMedia
 import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
+import com.dimfcompany.nashprihodadmin.base.enums.TypeSort
+import com.dimfcompany.nashprihodadmin.base.enums.TypeUserStatus
 import com.dimfcompany.nashprihodadmin.base.extensions.addParseCheckerForObj
 import com.dimfcompany.nashprihodadmin.base.extensions.toObjOrThrow
 import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
@@ -14,6 +16,7 @@ import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderNet
 import com.dimfcompany.nashprihodadmin.logic.utils.files.FileManager
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
+import com.dimfcompany.nashprihodadmin.networking.apis.getUsersMy
 import com.dimfcompany.nashprihodadmin.networking.apis.makeInsertOrUpdateNotice
 import okhttp3.MultipartBody
 import javax.inject.Inject
@@ -110,13 +113,13 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
         var part_avatar: MultipartBody.Part? = null
         part_avatar = avatar?.toMultiPartData("avatar", "image/jpeg")
 
-        BuilderNet<RespUser>()
+        BuilderNet<RespUserSingle>()
                 .setBaseActivity(base_act)
                 .setActionResponseBody(
                     {
                         return@setActionResponseBody base_act.api_auth.register(map_params, part_avatar)
                     })
-                .setObjClass(RespUser::class.java)
+                .setObjClass(RespUserSingle::class.java)
                 .setActionParseChecker(
                     {
                         it.user != null
@@ -154,13 +157,13 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
 
     fun makeLogin(email: String, password: String, fb_token: String?, action_success: (ModelUser) -> Unit, action_error: ((Throwable) -> Unit)? = null)
     {
-        BuilderNet<RespUser>()
+        BuilderNet<RespUserSingle>()
                 .setBaseActivity(base_act)
                 .setActionResponseBody(
                     {
                         base_act.api_auth.login(email, password, fb_token)
                     })
-                .setObjClass(RespUser::class.java)
+                .setObjClass(RespUserSingle::class.java)
                 .setActionParseChecker(
                     {
                         it.user != null
@@ -289,4 +292,23 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
                 .run()
     }
 
+    fun getUsers(search: String?, status: TypeUserStatus?, sort: TypeSort?, action_success: (ArrayList<ModelUser>) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespUsers>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_users.getUsersMy(search, status, sort)
+                    })
+                .setObjClass(RespUsers::class.java)
+                .setActionSuccess(
+                    {
+                        action_success(it.users ?: arrayListOf())
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
 }

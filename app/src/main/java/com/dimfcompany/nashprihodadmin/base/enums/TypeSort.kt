@@ -20,6 +20,16 @@ enum class TypeSort
         }
     }
 
+    fun getNameForServer(): String
+    {
+        return when (this)
+        {
+            BY_NAME -> "by_name"
+            BY_STATUS -> "status"
+            BY_REGISTER_DATE -> "register_date"
+        }
+    }
+
     fun getPosForRb(): Int
     {
         return when (this)

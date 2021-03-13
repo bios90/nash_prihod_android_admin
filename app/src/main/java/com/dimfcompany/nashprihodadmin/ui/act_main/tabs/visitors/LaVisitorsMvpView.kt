@@ -2,32 +2,63 @@ package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.dimfcompany.akcsl.base.FeedDisplayInfo
 import com.dimfcompany.nashprihodadmin.R
+import com.dimfcompany.nashprihodadmin.base.adapters.AdapterUsers
+import com.dimfcompany.nashprihodadmin.base.adapters.CustomLaManager
+import com.dimfcompany.nashprihodadmin.base.extensions.dp2pxInt
+import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
+import com.dimfcompany.nashprihodadmin.base.extensions.setDivider
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
-import com.dimfcompany.nashprihodadmin.databinding.ActMainBinding
-import com.dimfcompany.nashprihodadmin.databinding.LaNewsBinding
 import com.dimfcompany.nashprihodadmin.databinding.LaVisitorsBinding
+import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
 
 class LaVisitorsMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     : BaseMvpViewImpl<LaVisitorsMvp.Presenter>(), LaVisitorsMvp.MvpView
 {
-    val bnd_la_news: LaVisitorsBinding
+    val bnd_la_visitors: LaVisitorsBinding
+    val adapater = AdapterUsers()
 
     init
     {
-        bnd_la_news = DataBindingUtil.inflate(layoutInflater, R.layout.la_visitors, parent, false)
-        setRootView(bnd_la_news.root)
+        bnd_la_visitors = DataBindingUtil.inflate(layoutInflater, R.layout.la_visitors, parent, false)
+        setRootView(bnd_la_visitors.root)
 
+        initRecyclers()
         setListeners()
     }
 
     private fun setListeners()
     {
-        bnd_la_news.tvSearch.setOnClickListener(
+        bnd_la_visitors.tvSearch.setOnClickListener(
             {
                 getPresenter().clickedFilter()
             })
+
+        bnd_la_visitors.srlUsers.setOnRefreshListener(
+            {
+                getPresenter().swipedToRefresh()
+            })
+    }
+
+    override fun bindUsers(info: FeedDisplayInfo<ModelUser>)
+    {
+        bnd_la_visitors.srlUsers.isRefreshing = false
+        adapater.setItems(info)
+    }
+
+    private fun initRecyclers()
+    {
+        bnd_la_visitors.srlUsers.setColorSchemeColors(getColorMy(R.color.blue_dark), getColorMy(R.color.blue), getColorMy(R.color.blue_light))
+
+        bnd_la_visitors.recUsers.adapter = adapater
+        bnd_la_visitors.recUsers.layoutManager = CustomLaManager(getRootView().context)
+        bnd_la_visitors.recUsers.setDivider(getColorMy(R.color.transparent), dp2pxInt(8f))
+        adapater.listener =
+                {
+                    getPresenter().clickedUser(it)
+                }
     }
 }

@@ -37,38 +37,7 @@ class ObjWithMediaDeserializer : JsonDeserializer<ObjWithMedia>
 {
     override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): ObjWithMedia?
     {
-        Log.e("ObjWithMedia", "deserialize: trying to deserialzie $json")
         val json_object = json?.asJsonObject
         return context?.deserialize(json_object, ModelFile::class.java)
-//        val model_file = json?.asString.toObjOrNullGson(ModelFile::class.java)
-//        return model_file
     }
 }
-
-//class ModelNewsDeserializer : JsonDeserializer<ModelNews>
-//{
-//    override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): ModelNews
-//    {
-//        var news = ModelNews()
-//        try
-//        {
-//            news = AppClass.gson.fromJson(json, ModelNews::class.java)
-//            val json_medias = json?.asJsonObject?.getAsJsonArray("medias")
-//
-//            news.media_objs = arrayListOf()
-//            for (json_element in json_medias ?: arrayListOf())
-//            {
-//                val model_file: ModelFile = AppClass.gson.fromJson(json_element, ModelFile::class.java)
-//                news.media_objs?.add(model_file)
-//            }
-//        }
-//        catch (e: Exception)
-//        {
-//            Log.e("ModelNewsDeserializer", "deserialize: got ")
-//            e.printStackTrace()
-//        }
-//
-//
-//        return news
-//    }
-//}
