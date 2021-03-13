@@ -1,6 +1,8 @@
 package com.dimfcompany.nashprihodadmin.base
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.dimfcompany.nashprihodadmin.base.adapters.doubleString
 import com.dimfcompany.nashprihodadmin.di.ComponentApp
 import com.dimfcompany.nashprihodadmin.di.DaggerComponentApp
 import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
@@ -30,10 +32,16 @@ class AppClass : DaggerApplication()
                 .setDateFormat(DateManager.FORMAT_FOR_SERVER_LARAVEL)
                 .registerTypeAdapter(ObjWithMedia::class.java, ObjWithMediaDeserializer())
                 .create()
+        test()
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication>
     {
         return app_component
+    }
+    fun test()
+    {
+        val str = "sfdxfgnghm"
+        Log.e("APP", str.doubleString() )
     }
 }

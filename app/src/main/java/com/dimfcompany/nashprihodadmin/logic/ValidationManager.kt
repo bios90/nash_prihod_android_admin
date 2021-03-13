@@ -6,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
-import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
-import com.dimfcompany.nashprihodadmin.logic.models.ModelNotice
+import com.dimfcompany.nashprihodadmin.logic.models.*
 import com.dimfcompany.nashprihodadmin.logic.utils.StringManager
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderAlerter
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ValidationData(var is_valid: Boolean = true, var errors: ArrayList<String> = ArrayList())
 {
@@ -103,6 +104,19 @@ class ValidationData(var is_valid: Boolean = true, var errors: ArrayList<String>
         }
     }
 
+    fun validateTime(time: Date?, field_name: String?)
+    {
+        if (time == null)
+        {
+            is_valid = false
+            errors.add("Поле '$field_name' должно быть заполнено")
+        }else if (time !is Date)
+        {
+            is_valid = false
+            errors.add("Неверный формат ввода времени!")
+        }
+    }
+
     fun show(act: AppCompatActivity)
     {
         BuilderAlerter.getRedBuilder(this.getErrorMessage())
@@ -162,6 +176,23 @@ class ValidationManager
             data.validateNotNullString(notice.text, "Текст", 8)
             return data
         }
+
+        fun validateServiceTextAddEdit(service_text: ModelTimetableServiceText): ValidationData
+        {
+            val data = ValidationData()
+            data.validateNotNullString(service_text.title, "Название", 3)
+            data.validateNotNullString(service_text.service_text, "Текст", 8)
+            return data
+        }
+
+        fun validateTimetableTimeAddEdit(timetableTime: ModelTimetableTime): ValidationData
+        {
+            val data = ValidationData()
+            data.validateTime(timetableTime.time, "Время")
+            data.validateNotNullString(timetableTime.title, "Служба", 4)
+            return data
+        }
+
     }
 }
 

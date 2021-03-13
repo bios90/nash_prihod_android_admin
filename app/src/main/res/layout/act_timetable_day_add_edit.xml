@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray0"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timetable_title">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TvReg.S"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:gravity="start"
+                    android:text="@string/holiday"
+                    android:textColor="@color/gray4" />
+
+                <TextView
+                    android:id="@+id/tv_holiday_title"
+                    style="@style/TvReg.M"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@{BuilderBg.getSimpleDrawable(4f, BuilderBg.gc(R.color.white))}"
+                    android:elevation="12dp"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="@string/holiday_title" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TvReg.S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="@string/time"
+                        android:textColor="@color/gray4" />
+
+                    <TextView
+                        android:id="@+id/btn_add_time"
+                        style="@style/TvReg.Xl"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(10f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_trans_50), BuilderBg.gc(R.color.blue), 1f)}"
+                        android:text="@string/plus" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lal_for_time"
+                    my_divider_color="@{R.color.transparent}"
+                    my_divider_size="@{6f}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:showDividers="middle" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TvReg.S"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="start"
+                        android:text="Текст службы"
+                        android:textColor="@color/gray4" />
+
+                    <TextView
+                        android:id="@+id/btn_add_service_text"
+                        style="@style/TvReg.Xl"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(10f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_trans_50), BuilderBg.gc(R.color.blue), 1f)}"
+                        android:text="@string/plus" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lal_for_service_text"
+                    my_divider_color="@{R.color.transparent}"
+                    my_divider_size="@{6f}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:showDividers="middle" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/timetable_title"
+            style="@style/TvBold.Xxl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="start"
+            android:padding="24dp"
+            android:text="@string/timetable" />
+
+        <TextView
+            android:id="@+id/btn_save_t_table_day"
+            style="@style/TvReg.L"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@{BuilderBg.getSimpleDrawableRipple(4f, BuilderBg.gc(R.color.blue), BuilderBg.gc(R.color.blue_dark))}"
+            android:padding="10dp"
+            android:text="@string/create"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</layout>

@@ -1,11 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue_light">
+        android:layout_height="match_parent">
+
+
+        <include
+            android:id="@+id/profile_avatar"
+            layout="@layout/cv_circle_image"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:layout_above="@id/lal_for_tp"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:id="@+id/lal_for_tp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/TvReg.Xxl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                android:text="@string/user_name"
+                android:textColor="@color/blue_dark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TvReg.M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/birthday"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/gray5" />
+
+                <TextView
+                    style="@style/TvFawLight.L"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/faw_birthday"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue_dark" />
+
+                <TextView
+                    android:id="@+id/tv_birthday_date"
+                    style="@style/TvReg.M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/birthday_value"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/gray5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TvReg.M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/nameday"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/gray5" />
+
+                <TextView
+                    style="@style/TvFawLight.L"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/faw_nameday"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue_dark" />
+
+                <TextView
+                    android:id="@+id/tv_nameday_date"
+                    style="@style/TvReg.M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/nameday_date"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/gray5" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TvReg.M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/email"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/gray5" />
+
+                <TextView
+                    style="@style/TvFawLight.L"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/faw_email"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue_dark" />
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    style="@style/TvReg.M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/email_value"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/gray5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TvReg.M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/phone"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/gray5" />
+
+                <TextView
+                    style="@style/TvFawLight.L"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/faw_phone"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue_dark" />
+
+                <TextView
+                    android:id="@+id/tv_phone_number"
+                    style="@style/TvReg.M"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="@string/phone_number"
+                    android:textAlignment="viewStart" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_about_me"
+                style="@style/TvReg.S"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:minLines="5"
+                android:text="@string/tell_about_yourself" />
+
+
+            <TextView
+                android:id="@+id/tv_btn_edit"
+                style="@style/TvReg.L"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{BuilderBg.getSimpleDrawableRipple(4f, BuilderBg.gc(R.color.blue), R.color.blue_trans_50)}"
+                android:layout_marginTop="18dp"
+                android:padding="12dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/edit" />
+
+            <TextView
+                android:id="@+id/tv_btn_logout"
+                style="@style/TvReg.L"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(4f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_light), BuilderBg.gc(R.color.blue), 1f)}"
+                android:layout_marginTop="12dp"
+                android:padding="12dp"
+                android:gravity="center"
+                android:textColor="@color/blue"
+                android:text="@string/exit" />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

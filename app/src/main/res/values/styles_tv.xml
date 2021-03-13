@@ -242,8 +242,8 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    o<style name="Radio">
-        <item name="android:textSize">@dimen/size_m</item>
+    <style name="Radio">
+        <item name="android:textSize">@dimen/size_l</item>
         <item name="android:fontFamily">@font/rubik_reg</item>
     </style>
 

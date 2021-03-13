@@ -1,9 +1,9 @@
-package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.profile
+package com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit
 
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpView
 import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
 
-interface LaProfileMvp
+interface ActProfileAddEditMvp
 {
     interface MvpView : BaseMvpView<Presenter>
     {
@@ -12,7 +12,6 @@ interface LaProfileMvp
 
     interface Presenter
     {
-        fun clickedEdit()
-        fun clickedLogOut()
+        fun clickedSave()
     }
 }

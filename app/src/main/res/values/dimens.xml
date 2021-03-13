@@ -18,4 +18,7 @@
     <dimen name="size_faw_xl">19dp</dimen>
     <dimen name="size_faw_xxl">22dp</dimen>
     <dimen name="size_faw_xxxl">28dp</dimen>
+
+    <dimen name="view_width">280dp</dimen>
+    <dimen name="view_height">32dp</dimen>
 </resources>

@@ -15,6 +15,7 @@ import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
 import io.reactivex.subjects.BehaviorSubject
 import java.util.concurrent.TimeUnit
 
+
 class TabVisitors(val act_main: ActMain) : TabPresenter
 {
     val mvp_view: LaVisitorsMvp.MvpView

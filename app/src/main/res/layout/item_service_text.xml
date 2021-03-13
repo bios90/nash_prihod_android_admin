@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/ral_service_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{BuilderBg.getSimpleDrawable(4f, BuilderBg.gc(R.color.white))}"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="12dp">
+
+        <TextView
+            android:id="@+id/tv_item_service_text_title"
+            style="@style/TvReg.M"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Название"
+            android:textAlignment="viewStart" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_item_service_text_title">
+
+            <TextView
+                android:id="@+id/tv_item_service_text"
+                style="@style/TvReg.S"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+
+                android:inputType="textMultiLine"
+                android:minLines="5"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Text"
+                android:textAlignment="viewStart" />
+
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>

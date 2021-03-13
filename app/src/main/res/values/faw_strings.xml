@@ -35,6 +35,11 @@
     <string name="faw_clock" translatable="false">&#xf017;</string>
     <string name="faw_envelope_opened" translatable="false">&#xf2b6;</string>
     <string name="faw_play" translatable="false">&#xf04b;</string>
+    
+    <string name="faw_birthday" translatable="false">&#xf1fd;</string>
+    <string name="faw_nameday" translatable="false">&#xf779;</string>
+    <string name="faw_email" translatable="false">&#xf0e0;</string>
+    <string name="faw_phone" translatable="false">&#xf095;</string>
 
 
 </resources>

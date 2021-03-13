@@ -2,13 +2,10 @@ package com.dimfcompany.nashprihodadmin.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.dimfcompany.nashprihodadmin.databinding.LaMediaVideoBinding
-import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsers
 import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvp
 import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMainMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMainMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.news.LaNewsMvp
@@ -27,10 +24,17 @@ import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvp
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_service_text_add.ActServiceTextAddMvp
-import com.dimfcompany.nashprihodadmin.ui.act_service_text_add.ActServiceTextAddMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_time_add_edit.ActTimeAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_time_add_edit.ActTimeAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_timetable_day_add_edit.ActTimetableDayAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_timetable_day_add_edit.ActTimetableDayAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvp
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvp
@@ -111,13 +115,28 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
         return ActNoticeAddEditMvpView(layout_inflater, parent)
     }
 
-    fun getActServiceTextAddMvpView(parent: ViewGroup?): ActServiceTextAddMvp.MvpView
+    fun getActServiceTextAddMvpView(parent: ViewGroup?): ActServiceTextAddEditMvp.MvpView
     {
-        return ActServiceTextAddMvpView(layout_inflater, parent)
+        return ActServiceTextAddEditMvpView(layout_inflater, parent)
+    }
+
+    fun getActProfileAddEditMvpView(parent: ViewGroup?): ActProfileAddEditMvp.MvpView
+    {
+        return ActProfileAddEditMvpView(layout_inflater, parent)
+    }
+
+    fun getActTimetableDayAddEditMvpView(parent: ViewGroup?): ActTimetableDayAddEditMvp.MvpView
+    {
+        return ActTimetableDayAddEditMvpView(layout_inflater, parent)
     }
 
     fun getActFilterUsersMvpView(parent: ViewGroup?): ActFilterUsersMvp.MvpView
     {
         return ActFilterUsersMvpView(layout_inflater, parent)
+    }
+
+    fun getActTimeAddEditMvpView(parent: ViewGroup?): ActTimeAddEditMvp.MvpView
+    {
+        return ActTimeAddEditMvpView(layout_inflater, parent)
     }
 }

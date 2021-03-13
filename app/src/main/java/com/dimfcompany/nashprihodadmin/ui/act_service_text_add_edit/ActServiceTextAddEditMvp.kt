@@ -1,8 +1,8 @@
-package com.dimfcompany.nashprihodadmin.ui.act_service_text_add
+package com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit
 
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpView
 
-interface ActServiceTextAddMvp
+interface ActServiceTextAddEditMvp
 {
     interface MvpView : BaseMvpView<Presenter>
     {
