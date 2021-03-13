@@ -17,6 +17,7 @@ class DateManager
         val FORMAT_FOR_DISPLAY = getStringMy(R.string.format_for_display)
         val FORMAT_FOR_DISPLAY_FULL_MONTH = getStringMy(R.string.format_for_display)
         val FORMAT_FOR_DISPLAY_WITH_TIME = getStringMy(R.string.format_for_display_with_time)
+        val FORMAT_FOR_TIME = "HH:mm"
     }
 }
 

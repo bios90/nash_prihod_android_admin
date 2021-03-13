@@ -31,7 +31,7 @@
     <string name="loading">Загрузка</string>
     <string name="please_fill">Пожалуйста заполните поле \'%1$s\'</string>
     <string name="enter_valid_email">Введите корректный email</string>
-    <string name="congrats_register_made">Поздравляем вы зарегистрированы в приложении \'Наш приход\'. Вы сможете войти после ободрения от администратора</string>
+    <string name="congrats_register_made">Поздравляем вы зарегистрированы в приложении \'Наш приход\'. Вы сможете войти после одобрения от администратора</string>
     <string name="password_recover">Восстановление пароля</string>
     <string name="for_password_recover">Для восстановления пароля введите ваш email. На него придет письмо с инструкцией по восстановлению.</string>
     <string name="recover">Восстановить</string>
@@ -67,10 +67,10 @@
     <string name="time_title">Время</string>
     <string name="service_title">Служба</string>
     <string name="add_time">9:00</string>
-    <string name="add_service_title">Водосвятный молебен. Часы. Исповедь. Божественная Литургия</string>
+    <string name="add_service_title">Водосвятный молебен.</string>
     <string name="phone_number">+7 925 406 66 70</string>
     <string name="phone">Телефон</string>
-    <string name="about_me">Расскажите что - нибудь о себе</string>
+    <string name="tell_about_yourself">Расскажите что - нибудь о себе</string>
     <string name="edit">Редактировать</string>
     <string name="exit">Выйти</string>
     <string name="email_value">vas2011@ya.ru</string>
@@ -84,5 +84,10 @@
     <string name="notices">Объявления</string>
     <string name="watching">Просмотр</string>
     <string name="editing">Редактирование</string>
+    <string name="about_me">Обо мне</string>
+    <string name="plus">+</string>
+    <string name="holiday">Праздник</string>
+    <string name="holiday_title">Неделя 24-я по Пятидесятнице</string>
+
 
 </resources>

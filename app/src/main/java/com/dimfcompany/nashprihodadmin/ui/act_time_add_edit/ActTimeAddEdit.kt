@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
+import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
-import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
-import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEdit
+import com.dimfcompany.nashprihodadmin.logic.ValidationManager
+import com.dimfcompany.nashprihodadmin.logic.models.ModelTimetableTime
+import java.util.*
 
 class ActTimeAddEdit : BaseActivity()
 {
@@ -35,14 +37,22 @@ class ActTimeAddEdit : BaseActivity()
     {
         override fun clickedAdd()
         {
-            BuilderIntent()
-                    .setActivityToStart(ActServiceTextAddEdit::class.java)
-                    .startActivity(this@ActTimeAddEdit)
+            Log.e("ADD Time", "clickedAdd: Time", )
+            val timetable_time = ModelTimetableTime(Date(), mvp_view.getServiceTitle())
+            val data = ValidationManager.validateTimetableTimeAddEdit(timetable_time)
+            if (!data.is_valid)
+            {
+                data.show(this@ActTimeAddEdit)
+                return
+            }
+            val return_intent = Intent()
+            return_intent.putExtra(Constants.Extras.MODEL_TIMETABLE_TIME, timetable_time)
+            finishWithResultOk(return_intent)
         }
 
         override fun clickedTime()
         {
-            mvp_view
+
         }
     }
 }

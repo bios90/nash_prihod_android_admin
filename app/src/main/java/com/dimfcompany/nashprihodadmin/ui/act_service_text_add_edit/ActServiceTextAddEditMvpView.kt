@@ -6,11 +6,13 @@ import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ActServiceTextAddEditBinding
+import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg
 
 class ActServiceTextAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     : BaseMvpViewImpl<ActServiceTextAddEditMvp.Presenter>(), ActServiceTextAddEditMvp.MvpView
 {
     val bnd_act_service_text_add: ActServiceTextAddEditBinding
+
     init
     {
         bnd_act_service_text_add = DataBindingUtil.inflate(layoutInflater, R.layout.act_service_text_add_edit, parent, false)
@@ -29,11 +31,12 @@ class ActServiceTextAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewG
 
     override fun getEtTextTitle(): String?
     {
-        return bnd_act_service_text_add.etTitleServiceText.setText("Тропарь воскресный, глас 5-й").toString()
+        return bnd_act_service_text_add.etTitleServiceText.text.toString().trim()
     }
 
     override fun getEtTextContent(): String?
     {
-        return bnd_act_service_text_add.etContentServiceText.setText("Собезначальное Слово Отцу и Духови, / от Девы рождшееся на спасение наше, / воспоим, вернии, и поклонимся, / яко благоволи плотию взыти на крест, / и смерть претерпети, / и воскресити умершия / славным воскресением Своим.").toString()
+        return bnd_act_service_text_add.etContentServiceText.text.toString().trim()
     }
+
 }

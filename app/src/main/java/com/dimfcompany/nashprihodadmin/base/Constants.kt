@@ -52,5 +52,7 @@ object Constants
         const val MEDIA_OBJECTS_START_POS = "media_objects_start_pos"
         const val NEWS_TO_EDIT = "news_to_edit"
         const val NOTICE_TO_EDIT = "notice_to_edit"
+        const val MODEL_TIMETABLE_TIME = "model_timetable_time"
+        const val MODEL_TIMETABLE_SERVICE_TEXT = "model_timetable_service_text"
     }
 }

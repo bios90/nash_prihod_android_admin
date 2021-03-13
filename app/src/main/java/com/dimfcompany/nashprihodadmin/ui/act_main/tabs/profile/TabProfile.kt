@@ -11,6 +11,7 @@ class TabProfile(act_main: ActMain) : TabPresenter
     init
     {
         mvp_view = act_main.view_factory.getLaProfileMvpView(null)
+
     }
 
     override fun getView(): View

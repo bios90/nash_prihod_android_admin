@@ -2,10 +2,10 @@ package com.dimfcompany.nashprihodadmin.ui.act_time_add_edit
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.ViewParent
 import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
+import com.dimfcompany.nashprihodadmin.base.extensions.getNullableText
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ActTimeAddEditBinding
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg
@@ -38,14 +38,15 @@ class ActTimeAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
         })
     }
 
-    override fun getEtTextTime(): String?
+    override fun getServiceTime(): String?
     {
         return null
     }
 
-    override fun getEtService(): String?
+    override fun getServiceTitle(): String?
     {
-        return null
+        return bnd_act_time_add_edit.etService.getNullableText()
+
     }
 
     fun setTimeTvBackground()
@@ -60,6 +61,4 @@ class ActTimeAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
                 .get()
         bnd_act_time_add_edit.tvTime.background = bg
     }
-
-
 }

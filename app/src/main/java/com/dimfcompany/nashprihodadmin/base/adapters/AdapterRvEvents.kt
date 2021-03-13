@@ -21,7 +21,7 @@ class AdapterRvEvents : BaseRvAdapter<ModelNews, ItemEventBinding>()
     override fun onBindViewHolder(holder: BaseViewHolder<ModelNews, ItemEventBinding>, position: Int)
     {
         val item = items.get(position)
-        holder.bnd.bindNews(item)
+        holder.bnd.bindNotice(item)
         holder.bnd.lalCard.setOnClickListener(
             {
                 listener?.invoke(item)
@@ -29,7 +29,7 @@ class AdapterRvEvents : BaseRvAdapter<ModelNews, ItemEventBinding>()
     }
 }
 
-fun ItemEventBinding.bindNews(news: ModelNews)
+fun ItemEventBinding.bindNotice(news: ModelNews)
 {
     val first_media = news.media_objs?.getOrNull(0)
     if (first_media != null)

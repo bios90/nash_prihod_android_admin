@@ -1,12 +1,12 @@
-package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors
+package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.parishioners
 
 import android.view.View
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
 
-class TabVisitors(act_main: ActMain) : TabPresenter
+class TabParishioners(act_main: ActMain) : TabPresenter
 {
-    val mvp_view: LaVisitorsMvp.MvpView
+    val mvp_view: LaParishionersMvp.MvpView
 
     init
     {

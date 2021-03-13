@@ -6,8 +6,8 @@ interface ActTimeAddEditMvp
 {
     interface MvpView : BaseMvpView<Presenter>
     {
-        fun getEtTextTime(): String?
-        fun getEtService(): String?
+        fun getServiceTime(): String?
+        fun getServiceTitle(): String?
 
     }
 
