@@ -25,7 +25,9 @@ class LaProfileMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         bnd_la_profile.tvName.text = user.getFullName()
         bnd_la_profile.tvEmail.text = user.email
-//        bnd_la_profile.tvBirthdayDate =
+//        bnd_la_profile.tvBirthdayDate.text = user.birthday
+        bnd_la_profile.tvPhoneNumber.text = user.phone
+        bnd_la_profile.tvPhoneNumber.text = user.about_me
 
     }
     fun setListeners()
