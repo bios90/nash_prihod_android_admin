@@ -3,10 +3,13 @@ package com.dimfcompany.nashprihodadmin.base
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.dimfcompany.nashprihodadmin.base.adapters.doubleString
+import com.dimfcompany.nashprihodadmin.base.extensions.toJsonMy
 import com.dimfcompany.nashprihodadmin.di.ComponentApp
 import com.dimfcompany.nashprihodadmin.di.DaggerComponentApp
+import com.dimfcompany.nashprihodadmin.logic.SharedPrefsManager
 import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
 import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
+import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
 import com.dimfcompany.nashprihodadmin.logic.models.ObjWithMediaDeserializer
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.google.gson.Gson
@@ -41,7 +44,9 @@ class AppClass : DaggerApplication()
     }
     fun test()
     {
-        val str = "sfdxfgnghm"
-        Log.e("APP", str.doubleString() )
+        val user = ModelUser.getTestUser()
+        Log.e("AppClass", "test: USer email is ${user.email}")
+//        val user_str = SharedPrefsManager.pref_current_user.get().value?.toJsonMy()
+//        Log.e("AppClass", "test: user str is \n\n$user_str")
     }
 }
