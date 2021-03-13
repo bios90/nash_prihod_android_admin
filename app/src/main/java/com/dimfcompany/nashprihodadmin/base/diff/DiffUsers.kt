@@ -11,7 +11,6 @@ class DiffUsers(items_new: List<ModelUser>, items_old: List<ModelUser>) : BaseDi
         val item_new = items_new.get(newItemPosition)
         val item_old = items_old.get(oldItemPosition)
 
-        return false
         if (!areDatesEqualForDiff(item_new.updated, item_old.updated))
         {
             return false
