@@ -92,6 +92,53 @@ fun Date.minusMonths(months: Int): Date
     return date_joda.minusMonths(months).toDate()
 }
 
+fun Date.addYears(years: Int): Date
+{
+    val date_joda = DateTime(this)
+    return date_joda.plusYears(years).toDate()
+}
+
+fun Date.minusYears(years: Int): Date
+{
+    val date_joda = DateTime(this)
+    return date_joda.minusYears(years).toDate()
+}
+
+fun Date.getYearMy(): Int
+{
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    return calendar.get(Calendar.YEAR)
+}
+
+fun Date.getMonthMy(): Int
+{
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    return calendar.get(Calendar.MONTH)
+}
+
+fun Date.getDayMy(): Int
+{
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    return calendar.get(Calendar.DAY_OF_MONTH)
+}
+
+fun Date.getHourMy(): Int
+{
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    return calendar.get(Calendar.HOUR_OF_DAY)
+}
+
+fun Date.getMinuteMy(): Int
+{
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    return calendar.get(Calendar.MINUTE)
+}
+
 fun Date.setMinutesMy(minutes: Int): Date
 {
     if (minutes in (0 until 60) == false)
@@ -158,4 +205,10 @@ fun areAtSameDayHourMinuteSecond(date_1: Date, date_2: Date): Boolean
                     && (cal1.get(Calendar.SECOND) == cal2.get(Calendar.SECOND)))
 
     return same_day
+}
+
+fun isYearLeap(year: Int): Boolean
+{
+    val calendar = Calendar.getInstance().apply({ this.set(Calendar.YEAR, year) })
+    return calendar.getActualMaximum(Calendar.DAY_OF_YEAR) > 365
 }

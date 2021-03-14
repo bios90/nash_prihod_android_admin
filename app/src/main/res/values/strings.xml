@@ -58,7 +58,6 @@
     <string name="deleting">Удаление</string>
     <string name="delete_this_media_file">Удалить данный медиа файл?</string>
     <string name="notice">Объявление</string>
-    <string name="service_text">Текст службы</string>
     <string name="title">Заглавие</string>
     <string name="content">Текст</string>
     <string name="add_service_text">Добавить</string>
@@ -97,6 +96,8 @@
     <string name="plus">+</string>
     <string name="holiday">Праздник</string>
     <string name="holiday_title">Неделя 24-я по Пятидесятнице</string>
+    <string name="service_text">Текст службы</string>
+    <string name="select">Выбрать</string>
 
 
 </resources>

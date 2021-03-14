@@ -10,5 +10,6 @@ interface LaTimeTableMvp
 
     interface Presenter
     {
+        fun clickedAddTimetableDay()
     }
 }

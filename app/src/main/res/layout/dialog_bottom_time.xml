@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                style="@style/TvReg.M"
+                android:layout_width="86dp"
+                android:layout_height="match_parent"
+                android:text="@string/cancel"
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TvReg.L"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/tv_ok"
+                android:layout_toRightOf="@id/tv_cancel"
+                android:textColor="@color/gray7"
+                tools:text="Выберите дату" />
+
+            <TextView
+                android:id="@+id/tv_ok"
+                style="@style/TvReg.M"
+                android:layout_width="86dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:text="@string/select"
+                android:textColor="@color/blue" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="122dp"
+            android:layout_marginLeft="46dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="46dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.zyyoona7.wheel.WheelView
+                android:id="@+id/wheel_hours"
+                android:layout_width="90dp"
+                android:layout_height="match_parent" />
+
+            <com.zyyoona7.wheel.WheelView
+                android:id="@+id/wheel_minutes"
+                android:layout_width="90dp"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

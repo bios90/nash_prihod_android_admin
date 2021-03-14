@@ -12,7 +12,7 @@ object Constants
 
     object Urls
     {
-        const val test_mode = false
+        const val test_mode = true
         val URL_BASE: String
             get()
             {

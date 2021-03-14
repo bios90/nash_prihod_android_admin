@@ -12,12 +12,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray0"
+        android:background="@color/white"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical">
 
-
+        <TextView
+            android:id="@+id/timetable_title"
+            style="@style/TvBold.Xxl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="start"
+            android:text="@string/timetable" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -30,53 +39,55 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/TvReg.S"
+                    style="@style/TvReg.M"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
                     android:gravity="start"
                     android:text="@string/holiday"
                     android:textColor="@color/gray4" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_holiday_title"
-                    style="@style/TvReg.M"
+                    style="@style/EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="24dp"
-                    android:background="@{BuilderBg.getSimpleDrawable(4f, BuilderBg.gc(R.color.white))}"
-                    android:elevation="12dp"
-                    android:gravity="start"
-                    android:padding="8dp"
-                    android:text="@string/holiday_title" />
+                    android:layout_marginRight="16dp"
+                    android:background="@{BuilderBg.getStrokedEt()}" />
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="12dp"
-                    android:layout_marginEnd="24dp"
-                    android:orientation="horizontal">
+                    android:layout_marginRight="16dp">
 
                     <TextView
-                        style="@style/TvReg.S"
-                        android:layout_width="0dp"
+                        style="@style/TvReg.M"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_centerVertical="true"
                         android:gravity="start"
                         android:text="@string/time"
                         android:textColor="@color/gray4" />
 
                     <TextView
-                        android:id="@+id/btn_add_time"
+                        android:id="@+id/btn_add_service_time"
                         style="@style/TvReg.Xl"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(10f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_trans_50), BuilderBg.gc(R.color.blue), 1f)}"
-                        android:text="@string/plus" />
-                </LinearLayout>
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(14f, BuilderBg.gc(R.color.transparent), BuilderBg.gc(R.color.blue_trans_50), BuilderBg.gc(R.color.blue), 1f)}"
+                        android:text="@string/plus"
+                        android:textColor="@color/blue"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/lal_for_time"
@@ -93,31 +104,35 @@
                     android:showDividers="middle" />
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginTop="12dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="16dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        style="@style/TvReg.S"
-                        android:layout_width="0dp"
+                        style="@style/TvReg.M"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="start"
-                        android:text="Текст службы"
+                        android:layout_centerVertical="true"
+                        android:text="@string/service_text"
                         android:textColor="@color/gray4" />
 
                     <TextView
                         android:id="@+id/btn_add_service_text"
                         style="@style/TvReg.Xl"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(10f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_trans_50), BuilderBg.gc(R.color.blue), 1f)}"
-                        android:text="@string/plus" />
-                </LinearLayout>
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(14f, BuilderBg.gc(R.color.transparent), BuilderBg.gc(R.color.blue_trans_50), BuilderBg.gc(R.color.blue), 1f)}"
+                        android:text="+"
+                        android:textColor="@color/blue"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/lal_for_service_text"
@@ -138,24 +153,14 @@
         </ScrollView>
 
         <TextView
-            android:id="@+id/timetable_title"
-            style="@style/TvBold.Xxl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:gravity="start"
-            android:padding="24dp"
-            android:text="@string/timetable" />
-
-        <TextView
-            android:id="@+id/btn_save_t_table_day"
+            android:id="@+id/btn_save"
             style="@style/TvReg.L"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="24dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="24dp"
             android:background="@{BuilderBg.getSimpleDrawableRipple(4f, BuilderBg.gc(R.color.blue), BuilderBg.gc(R.color.blue_dark))}"
             android:padding="10dp"
