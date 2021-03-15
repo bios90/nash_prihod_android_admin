@@ -14,17 +14,10 @@ class LaTimeTableMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     : BaseMvpViewImpl<LaTimeTableMvp.Presenter>(), LaTimeTableMvp.MvpView
 {
     val bnd_la_news: LaTimetableBinding
-    val bnd_item_date: ItemDateBinding
-    val bnd_item_service_time: ItemServiceTimeBinding
-    var act_time_add: ActTimeAddEdit
 
     init
     {
-        act_time_add = ActTimeAddEdit()
         bnd_la_news = DataBindingUtil.inflate(layoutInflater, R.layout.la_timetable, parent, false)
         setRootView(bnd_la_news.root)
-        bnd_item_date = DataBindingUtil.inflate(layoutInflater, R.layout.item_date, parent, false)
-        bnd_item_service_time = DataBindingUtil.inflate(layoutInflater, R.layout.item_service_time, parent, false)
-
     }
 }

@@ -7,7 +7,8 @@ import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ActTimetableDayAddEditBinding
 import com.dimfcompany.nashprihodadmin.databinding.ItemServiceTextBinding
-import com.dimfcompany.nashprihodadmin.databinding.ItemTimetableTimeBinding
+import com.dimfcompany.nashprihodadmin.databinding.ItemServiceTimeBinding
+
 import com.dimfcompany.nashprihodadmin.logic.models.ModelTimetableServiceText
 import com.dimfcompany.nashprihodadmin.logic.models.ModelTimetableTime
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
@@ -41,10 +42,10 @@ class ActTimetableDayAddEditMvpView(val layoutInflater: LayoutInflater, parent: 
 
     override fun addTimetableTime(timetableTime: ModelTimetableTime)
     {
-        val bnd_time: ItemTimetableTimeBinding = DataBindingUtil.inflate(layoutInflater,
-                R.layout.item_timetable_time, bnd_act_timetable_day_add_edit.lalForTime,false)
-        bnd_time.tvServiceTime.text = timetableTime.time?.formatToString(DateManager.FORMAT_FOR_TIME)
-        bnd_time.tvServiceTitle.text = timetableTime.title
+        val bnd_time: ItemServiceTimeBinding = DataBindingUtil.inflate(layoutInflater,
+                R.layout.item_service_time, bnd_act_timetable_day_add_edit.lalForTime,false)
+        bnd_time.tvAddTime.text = timetableTime.time?.formatToString(DateManager.FORMAT_FOR_TIME)
+        bnd_time.tvAddServiceTitle.text = timetableTime.title
         bnd_act_timetable_day_add_edit.lalForTime.addView(bnd_time.root)
     }
 

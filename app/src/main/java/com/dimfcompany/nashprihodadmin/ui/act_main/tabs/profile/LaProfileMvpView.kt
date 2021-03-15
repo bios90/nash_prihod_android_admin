@@ -7,6 +7,9 @@ import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.LaProfileBinding
 import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
+import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
+import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
+import com.rucode.autopass.logic.utils.images.GlideManager
 
 class LaProfileMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     : BaseMvpViewImpl<LaProfileMvp.Presenter>(), LaProfileMvp.MvpView
@@ -23,11 +26,14 @@ class LaProfileMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
 
     override fun bindUser(user: ModelUser)
     {
+        GlideManager.loadImage(bnd_la_profile.profileAvatar.imgImg, user.avatar?.url)
         bnd_la_profile.tvName.text = user.getFullName()
-        bnd_la_profile.tvEmail.text = user.email
-//        bnd_la_profile.tvBirthdayDate.text = user.birthday
-        bnd_la_profile.tvPhoneNumber.text = user.phone
-        bnd_la_profile.tvPhoneNumber.text = user.about_me
+        bnd_la_profile.lalAboutUser.tvEmail.text = user.email
+        //TODO chaged later
+        bnd_la_profile.lalAboutUser.tvBirthdayDate.text = user.created?.formatToString(DateManager.FORMAT_FOR_DISPLAY_FULL_MONTH)
+        bnd_la_profile.lalAboutUser.tvNamedayDate.text = user.created?.formatToString(DateManager.FORMAT_FOR_DISPLAY_FULL_MONTH)
+        bnd_la_profile.lalAboutUser.tvPhoneNumber.text = user.phone
+        bnd_la_profile.lalAboutUser.tvAboutMe.text = user.about_me
 
     }
     fun setListeners()

@@ -22,7 +22,11 @@
 
         <activity android:name=".ui.act_register.ActRegister" />
         <activity android:name=".ui.act_main.ActMain">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -35,11 +39,7 @@
         <activity android:name=".ui.act_media_carousel.ActCarousel" />
 
         <activity android:name=".ui.act_service_text_add_edit.ActServiceTextAddEdit">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
