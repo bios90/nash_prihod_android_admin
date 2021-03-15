@@ -29,10 +29,17 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import com.dimfcompany.nashprihodadmin.base.AppClass
+import io.reactivex.Observable
+import io.reactivex.subjects.BehaviorSubject
 import kotlinx.coroutines.*
 import okhttp3.ResponseBody
 import retrofit2.Response
 import java.io.Serializable
+
+fun <T> T.sendInBs(bs:BehaviorSubject<T>)
+{
+    bs.onNext(this)
+}
 
 data class Optional<T>(val value: T?)
 

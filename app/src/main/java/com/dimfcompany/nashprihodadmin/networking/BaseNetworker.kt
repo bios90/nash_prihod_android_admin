@@ -7,15 +7,15 @@ import com.dimfcompany.nashprihodadmin.base.enums.TypeSort
 import com.dimfcompany.nashprihodadmin.base.enums.TypeUserStatus
 import com.dimfcompany.nashprihodadmin.base.extensions.addParseCheckerForObj
 import com.dimfcompany.nashprihodadmin.base.extensions.toObjOrThrow
-import com.dimfcompany.nashprihodadmin.logic.models.ModelFile
-import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
-import com.dimfcompany.nashprihodadmin.logic.models.ModelNotice
-import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
+import com.dimfcompany.nashprihodadmin.logic.models.*
 import com.dimfcompany.nashprihodadmin.logic.models.responses.*
+import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderNet
 import com.dimfcompany.nashprihodadmin.logic.utils.files.FileManager
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
+import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
+import com.dimfcompany.nashprihodadmin.networking.apis.ApiService
 import com.dimfcompany.nashprihodadmin.networking.apis.getUsersMy
 import com.dimfcompany.nashprihodadmin.networking.apis.makeInsertOrUpdateNotice
 import okhttp3.MultipartBody
@@ -60,6 +60,49 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
             }
 
             return uploaded_file_ids
+        }
+
+        suspend fun insertServiceTexts(service_texts: ArrayList<ModelServiceText>, api_service: ApiService): ArrayList<Long>
+        {
+            val service_texts_ids: ArrayList<Long> = arrayListOf()
+
+            for (text in service_texts)
+            {
+                val id = api_service
+                        .insertServiceText(text.title!!, text.text!!)
+                        .toObjOrThrow(RespServiceText::class.java)
+                        .addParseCheckerForObj(
+                            {
+                                return@addParseCheckerForObj it.service_text?.id != null
+                            })
+                        .service_text!!.id!!
+
+                service_texts_ids.add(id)
+            }
+
+            return service_texts_ids
+        }
+
+        suspend fun insertServiceTimes(service_times: ArrayList<ModelServiceTime>, api_service: ApiService): ArrayList<Long>
+        {
+            val service_times_ids: ArrayList<Long> = arrayListOf()
+
+            for (time in service_times)
+            {
+                val time_str = time.time!!.formatToString(DateManager.FORMAT_FOR_SERVER_LARAVEL)
+                val id = api_service
+                        .insertServiceTime(time_str, time.title!!)
+                        .toObjOrThrow(RespServiceTime::class.java)
+                        .addParseCheckerForObj(
+                            {
+                                return@addParseCheckerForObj it.service_time?.id != null
+                            })
+                        .service_time!!.id!!
+
+                service_times_ids.add(id)
+            }
+
+            return service_times_ids
         }
 
         suspend fun uploadImage(my_file_item: MyFileItem, api_files: ApiFiles): ModelFile

@@ -12,6 +12,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
 import android.view.animation.LinearInterpolator
+import android.widget.FrameLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -21,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.AppClass
 import com.google.android.gms.common.util.DeviceProperties.isTablet
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 fun View.setMargins(left: Int? = null, top: Int? = null, right: Int? = null, bottom: Int? = null)
 {
@@ -140,6 +143,36 @@ fun Dialog.setNavigationBarColor(color: Int)
 
         window.setBackgroundDrawable(windowBackground)
     }
+}
+
+fun Dialog.makeNotDraggable()
+{
+    this.setOnShowListener(
+        {
+            val dialog = it as BottomSheetDialog
+            val bottomSheet: FrameLayout = dialog.findViewById(R.id.design_bottom_sheet) ?: return@setOnShowListener
+//                BottomSheetBehavior.from(bottomSheet).setState(BottomSheetBehavior.STATE_EXPANDED)
+//                BottomSheetBehavior.from(bottomSheet).setSkipCollapsed(true)
+//                BottomSheetBehavior.from(bottomSheet).setHideable(true)
+
+            val behavior = BottomSheetBehavior.from(bottomSheet)
+            behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
+            behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback()
+            {
+                override fun onStateChanged(bottomSheet: View, newState: Int)
+                {
+                    if (newState == BottomSheetBehavior.STATE_DRAGGING)
+                    {
+                        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                    }
+                }
+
+                override fun onSlide(bottomSheet: View, slideOffset: Float)
+                {
+                }
+            })
+        })
 }
 
 fun isTablet(): Boolean

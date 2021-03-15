@@ -4,7 +4,7 @@ import android.view.View
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
-import com.dimfcompany.nashprihodadmin.ui.act_timetable_day_add_edit.ActTimetableDayAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEdit
 
 class TabTimeTable(val act_main: ActMain) : TabPresenter
 {
@@ -26,7 +26,7 @@ class TabTimeTable(val act_main: ActMain) : TabPresenter
         override fun clickedAddTimetableDay()
         {
             BuilderIntent()
-                    .setActivityToStart(ActTimetableDayAddEdit::class.java)
+                    .setActivityToStart(ActServiceAddEdit::class.java)
                     .startActivity(act_main)
         }
 

@@ -255,6 +255,19 @@ class BuilderBg
         }
 
         @JvmStatic
+        fun getStrokedWithBlueRipple(): Drawable
+        {
+            return BuilderBg()
+                    .isDpMode(true)
+                    .setCorners(4f)
+                    .setStrokeWidth(1f)
+                    .setStrokeColor(getColorMy(R.color.gray4))
+                    .isRipple(true)
+                    .setRippleColor(getColorMy(R.color.blue_trans_50))
+                    .get()
+        }
+
+        @JvmStatic
         fun getSquareRippleTransRed(): Drawable
         {
             return BuilderBg()

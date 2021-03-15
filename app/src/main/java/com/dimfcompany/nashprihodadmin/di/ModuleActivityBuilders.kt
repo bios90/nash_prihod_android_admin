@@ -10,9 +10,8 @@ import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegister
 import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEdit
-import com.dimfcompany.nashprihodadmin.ui.act_test.ActTest
-import com.dimfcompany.nashprihodadmin.ui.act_time_add_edit.ActTimeAddEdit
-import com.dimfcompany.nashprihodadmin.ui.act_timetable_day_add_edit.ActTimetableDayAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTimeAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEdit
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -45,13 +44,13 @@ abstract class ModuleActivityBuilders
     abstract fun contributeActServiceTextAddEdit(): ActServiceTextAddEdit
 
     @ContributesAndroidInjector(modules = [ModuleActTimeAddEdit::class])
-    abstract fun contributeActTimeAddEdit(): ActTimeAddEdit
+    abstract fun contributeActTimeAddEdit(): ActServiceTimeAddEdit
 
     @ContributesAndroidInjector(modules = [ModuleActProfileAddEdit::class])
     abstract fun contributeActProfileAddEdit(): ActProfileAddEdit
 
     @ContributesAndroidInjector(modules = [ModuleActTimetableDayAddEdit::class])
-    abstract fun contributeActTimetableDayAddEdit(): ActTimetableDayAddEdit
+    abstract fun contributeActTimetableDayAddEdit(): ActServiceAddEdit
 
     @ContributesAndroidInjector(modules = [ModuleActFilterUsers::class])
     abstract fun contributeActFilterUsers(): ActFilterUsers
@@ -118,7 +117,7 @@ abstract class ModuleActServiceTextAddEdit
 abstract class ModuleActTimeAddEdit
 {
     @Binds
-    abstract fun bindBaseActivity(act: ActTimeAddEdit): BaseActivity
+    abstract fun bindBaseActivity(act: ActServiceTimeAddEdit): BaseActivity
 }
 
 @Module
@@ -132,7 +131,7 @@ abstract class ModuleActProfileAddEdit
 abstract class ModuleActTimetableDayAddEdit
 {
     @Binds
-    abstract fun bindBaseActivity(act: ActTimetableDayAddEdit): BaseActivity
+    abstract fun bindBaseActivity(act: ActServiceAddEdit): BaseActivity
 }
 
 @Module

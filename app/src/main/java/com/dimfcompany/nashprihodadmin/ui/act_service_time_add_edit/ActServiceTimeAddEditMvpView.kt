@@ -1,4 +1,4 @@
-package com.dimfcompany.nashprihodadmin.ui.act_time_add_edit
+package com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,10 +8,13 @@ import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
 import com.dimfcompany.nashprihodadmin.base.extensions.getNullableText
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ActTimeAddEditBinding
+import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg
+import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
+import java.util.*
 
-class ActTimeAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
-    : BaseMvpViewImpl<ActTimeAddEditMvp.Presenter>(), ActTimeAddEditMvp.MvpView
+class ActServiceTimeAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
+    : BaseMvpViewImpl<ActServiceTimeAddEditMvp.Presenter>(), ActServiceTimeAddEditMvp.MvpView
 {
     val bnd_act_time_add_edit: ActTimeAddEditBinding
 
@@ -20,22 +23,32 @@ class ActTimeAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
         bnd_act_time_add_edit = DataBindingUtil.inflate(layoutInflater, R.layout.act_time_add_edit, parent, false)
         setRootView(bnd_act_time_add_edit.root)
         setListeners()
-        setTimeTvBackground()
     }
 
     private fun setListeners()
     {
-        bnd_act_time_add_edit.tvAddTime.setOnClickListener(
-                {
-                    getPresenter().clickedAdd()
-                }
+        bnd_act_time_add_edit.tvSave.setOnClickListener(
+            {
+                getPresenter().clickedAdd()
+            }
         )
 
         bnd_act_time_add_edit.tvTime.setOnClickListener(
-                {
-                    getPresenter().clickedTime()
+            {
+                getPresenter().clickedTime()
 
-        })
+            })
+    }
+
+    override fun bindTime(time: Date)
+    {
+        val text = time.formatToString(DateManager.FORMAT_FOR_TIME)
+        bnd_act_time_add_edit.tvTime.text = text
+    }
+
+    override fun bindText(text: String?)
+    {
+        bnd_act_time_add_edit.etService.setText(text)
     }
 
     override fun getServiceTime(): String?
@@ -47,18 +60,5 @@ class ActTimeAddEditMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         return bnd_act_time_add_edit.etService.getNullableText()
 
-    }
-
-    fun setTimeTvBackground()
-    {
-        val bg = BuilderBg()
-                .isDpMode(true)
-                .setCorners(4f)
-                .setStrokeWidth(1f)
-                .setStrokeColor(getColorMy(R.color.gray4))
-                .isRipple(true)
-                .setRippleColor(getColorMy(R.color.blue_trans_50))
-                .get()
-        bnd_act_time_add_edit.tvTime.background = bg
     }
 }

@@ -13,15 +13,19 @@
         android:layout_height="match_parent"
         android:background="@color/black_trans_50">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:layout_margin="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="56dp"
             android:background="@{BuilderBg.getSimpleDrawable(10f, BuilderBg.gc(R.color.white))}"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_header"
                 style="@style/TvBold.Xxxl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,51 +36,61 @@
                 android:text="@string/service_text"
                 android:textColor="@color/gray7" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/tv_save"
+                android:layout_below="@id/tv_header"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TvReg.M"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="left"
+                    android:text="@string/title"
+                    android:textColor="@color/gray5" />
+
+                <EditText
+                    android:id="@+id/et_title"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@{BuilderBg.getStrokedEt()}" />
+
+                <TextView
+                    style="@style/TvReg.M"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="left"
+                    android:text="@string/content"
+                    android:textColor="@color/gray5" />
+
+                <EditText
+                    android:id="@+id/et_text"
+                    style="@style/EditText.Multiline"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@{BuilderBg.getStrokedEt()}"
+                    android:textSize="@dimen/size_s" />
+
+            </LinearLayout>
+
             <TextView
+                android:id="@+id/tv_save"
                 style="@style/TvBold.M"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginRight="16dp"
-                android:gravity="left"
-                android:text="@string/title"
-                android:textColor="@color/gray5" />
-
-            <EditText
-                android:id="@+id/et_title_service_text"
-                style="@style/EditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="16dp"
-                android:background="@{BuilderBg.getStrokedEt()}" />
-
-            <TextView
-                style="@style/TvBold.M"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginRight="16dp"
-                android:gravity="left"
-                android:text="@string/content"
-                android:textColor="@color/gray5" />
-
-            <EditText
-                android:id="@+id/et_content_service_text"
-                style="@style/EditText.Multiline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="16dp"
-                android:background="@{BuilderBg.getStrokedEt()}" />
-
-            <TextView
-                android:id="@+id/tv_add_service_text"
-                style="@style/TvBold.Xl"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
@@ -86,7 +100,7 @@
                 android:text="@string/add_service_text"
                 android:textColor="@color/white" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 

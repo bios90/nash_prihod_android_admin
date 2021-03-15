@@ -3,10 +3,7 @@ package com.dimfcompany.nashprihodadmin.di
 import com.dimfcompany.nashprihodadmin.base.AppClass
 import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.networking.MyInterceptor
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiAuth
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiNews
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiUsers
+import com.dimfcompany.nashprihodadmin.networking.apis.*
 import com.grapesnberries.curllogger.CurlLoggerInterceptor
 import dagger.Module
 import dagger.Provides
@@ -95,5 +92,12 @@ class ModuleNetworking
     fun provideApiUser(retrofit: Retrofit): ApiUsers
     {
         return retrofit.create(ApiUsers::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideApiService(retrofit: Retrofit): ApiService
+    {
+        return retrofit.create(ApiService::class.java)
     }
 }

@@ -11,10 +11,7 @@ import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderMediaPicker
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.dimfcompany.nashprihodadmin.logic.utils.images.ImageCameraManager
 import com.dimfcompany.nashprihodadmin.networking.BaseNetworker
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiAuth
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiNews
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiUsers
+import com.dimfcompany.nashprihodadmin.networking.apis.*
 import com.justordercompany.barista.logic.utils.BuilderPermRequest
 import com.justordercompany.barista.logic.utils.PermissionManager
 import dagger.android.support.DaggerAppCompatActivity
@@ -46,6 +43,9 @@ abstract class BaseActivity : DaggerAppCompatActivity()
 
     @Inject
     lateinit var api_users: ApiUsers
+
+    @Inject
+    lateinit var api_services: ApiService
 
     @Inject
     lateinit var base_networker: BaseNetworker

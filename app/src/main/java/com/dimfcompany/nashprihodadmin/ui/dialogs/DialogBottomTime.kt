@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
+import com.dimfcompany.nashprihodadmin.base.extensions.makeNotDraggable
 import com.dimfcompany.nashprihodadmin.base.extensions.setNavigationBarColor
 import com.dimfcompany.nashprihodadmin.databinding.DialogBottomDateBinding
 import com.dimfcompany.nashprihodadmin.databinding.DialogBottomTimeBinding
@@ -88,6 +89,8 @@ class DialogBottomTime(val builder: BuilderTimeDialog) : BottomSheetDialogFragme
     private fun setupViews()
     {
         dialog?.setNavigationBarColor(getColorMy(R.color.white))
+        dialog?.makeNotDraggable()
+        dialog?.setCanceledOnTouchOutside(false)
 
         val hours = (0..23).map(
             {

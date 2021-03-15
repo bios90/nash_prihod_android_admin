@@ -4,7 +4,6 @@ import android.util.Patterns
 import android.webkit.URLUtil
 import androidx.appcompat.app.AppCompatActivity
 import com.dimfcompany.nashprihodadmin.R
-import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
 import com.dimfcompany.nashprihodadmin.logic.models.*
 import com.dimfcompany.nashprihodadmin.logic.utils.StringManager
@@ -177,19 +176,19 @@ class ValidationManager
             return data
         }
 
-        fun validateServiceTextAddEdit(service_text: ModelTimetableServiceText): ValidationData
+        fun validateServiceTextAddEdit(service_text: ModelServiceText): ValidationData
         {
             val data = ValidationData()
             data.validateNotNullString(service_text.title, "Название", 3)
-            data.validateNotNullString(service_text.service_text, "Текст", 8)
+            data.validateNotNullString(service_text.text, "Текст", 8)
             return data
         }
 
-        fun validateTimetableTimeAddEdit(timetableTime: ModelTimetableTime): ValidationData
+        fun validateTimetableTimeAddEdit(service_time: ModelServiceTime): ValidationData
         {
             val data = ValidationData()
-            data.validateTime(timetableTime.time, "Время")
-            data.validateNotNullString(timetableTime.title, "Служба", 4)
+            data.validateTime(service_time.time, "Время")
+            data.validateNotNullString(service_time.title, "Служба", 4)
             return data
         }
 

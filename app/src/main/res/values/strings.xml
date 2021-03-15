@@ -98,6 +98,8 @@
     <string name="holiday_title">Неделя 24-я по Пятидесятнице</string>
     <string name="service_text">Текст службы</string>
     <string name="select">Выбрать</string>
+    <string name="select_time">Выберите время</string>
+    <string name="date">Дата</string>
 
 
 </resources>

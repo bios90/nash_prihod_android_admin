@@ -8,7 +8,7 @@ import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
 import com.dimfcompany.nashprihodadmin.logic.ValidationManager
-import com.dimfcompany.nashprihodadmin.logic.models.ModelTimetableServiceText
+import com.dimfcompany.nashprihodadmin.logic.models.ModelServiceText
 
 class ActServiceTextAddEdit : BaseActivity()
 {
@@ -20,6 +20,8 @@ class ActServiceTextAddEdit : BaseActivity()
         mvp_view = view_factory.getActServiceTextAddMvpView(null)
         setContentView(mvp_view.getRootView())
         mvp_view.registerPresenter(PresenterImplementer())
+
+        checkExtra()
     }
 
     fun setNavStatus()
@@ -32,13 +34,20 @@ class ActServiceTextAddEdit : BaseActivity()
         is_light_nav_bar = false
     }
 
+    private fun checkExtra()
+    {
+        val service_text = intent.getSerializableExtra(Constants.Extras.MODEL_SERVICE_TEXT) as? ModelServiceText
+        if (service_text != null)
+        {
+            mvp_view.bindServiceText(service_text)
+        }
+    }
 
     inner class PresenterImplementer : ActServiceTextAddEditMvp.Presenter
     {
         override fun clickedAdd()
         {
-            Log.e("ADD Text", "clickedAdd: TEXT")
-            val timetable_service_text = ModelTimetableServiceText(mvp_view.getEtTextTitle(), mvp_view.getEtTextContent())
+            val timetable_service_text = ModelServiceText(null, mvp_view.getEtTextTitle(), mvp_view.getEtTextContent())
             val data = ValidationManager.validateServiceTextAddEdit(timetable_service_text)
             if (!data.is_valid)
             {
@@ -47,9 +56,8 @@ class ActServiceTextAddEdit : BaseActivity()
             }
 
             val return_intent = Intent()
-            return_intent.putExtra(Constants.Extras.MODEL_TIMETABLE_SERVICE_TEXT, timetable_service_text)
+            return_intent.putExtra(Constants.Extras.MODEL_SERVICE_TEXT, timetable_service_text)
             finishWithResultOk(return_intent)
         }
-
     }
 }

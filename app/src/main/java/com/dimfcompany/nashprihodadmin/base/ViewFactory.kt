@@ -28,13 +28,12 @@ import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvp
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegisterMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEditMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_time_add_edit.ActTimeAddEditMvp
-import com.dimfcompany.nashprihodadmin.ui.act_time_add_edit.ActTimeAddEditMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_timetable_day_add_edit.ActTimetableDayAddEditMvp
-import com.dimfcompany.nashprihodadmin.ui.act_timetable_day_add_edit.ActTimetableDayAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTimeAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTimeAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvp
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvp
@@ -125,9 +124,9 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
         return ActProfileAddEditMvpView(layout_inflater, parent)
     }
 
-    fun getActTimetableDayAddEditMvpView(parent: ViewGroup?): ActTimetableDayAddEditMvp.MvpView
+    fun getActTimetableDayAddEditMvpView(parent: ViewGroup?): ActServiceAddEditMvp.MvpView
     {
-        return ActTimetableDayAddEditMvpView(layout_inflater, parent)
+        return ActServiceAddEditMvpView(layout_inflater, parent)
     }
 
     fun getActFilterUsersMvpView(parent: ViewGroup?): ActFilterUsersMvp.MvpView
@@ -135,8 +134,8 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
         return ActFilterUsersMvpView(layout_inflater, parent)
     }
 
-    fun getActTimeAddEditMvpView(parent: ViewGroup?): ActTimeAddEditMvp.MvpView
+    fun getActTimeAddEditMvpView(parent: ViewGroup?): ActServiceTimeAddEditMvp.MvpView
     {
-        return ActTimeAddEditMvpView(layout_inflater, parent)
+        return ActServiceTimeAddEditMvpView(layout_inflater, parent)
     }
 }

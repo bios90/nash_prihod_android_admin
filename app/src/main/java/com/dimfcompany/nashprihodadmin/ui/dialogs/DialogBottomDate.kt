@@ -1,10 +1,12 @@
 package com.dimfcompany.nashprihodadmin.ui.dialogs
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.extensions.*
@@ -12,6 +14,8 @@ import com.dimfcompany.nashprihodadmin.databinding.DialogBottomDateBinding
 import com.dimfcompany.nashprihodadmin.logic.utils.*
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDateDialog
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.zyyoona7.wheel.WheelView
 import io.reactivex.disposables.CompositeDisposable
@@ -56,6 +60,8 @@ class DialogBottomDate(val builder: BuilderDateDialog) : BottomSheetDialogFragme
     fun setupViews()
     {
         dialog?.setNavigationBarColor(getColorMy(R.color.white))
+        dialog?.makeNotDraggable()
+        dialog?.setCanceledOnTouchOutside(false)
 
         val bg_left = BuilderBg()
                 .setBgColor(getColorMy(R.color.white))
