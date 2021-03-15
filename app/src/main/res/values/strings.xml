@@ -97,6 +97,9 @@
     <string name="plus">+</string>
     <string name="holiday">Праздник</string>
     <string name="holiday_title">Неделя 24-я по Пятидесятнице</string>
+    <string name="block">Заблокировать</string>
+    <string name="unblock">Разблокировать</string>
+    <string name="approve">Одобрить</string>
 
 
 </resources>

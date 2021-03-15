@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_user_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:elevation="12dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_user_note_date"
+                style="@style/TvReg.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:text="ДД ММ ГГГГ - ЧЧ:MM"/>
+            <TextView
+                android:id="@+id/tv_user_note_type"
+                style="@style/TvBold.Xl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/red"
+                android:text="Тип записки"/>
+            <TextView
+                style="@style/TvReg.S"
+                android:id="@+id/tv_user_note_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:text="Введите имена христиан, крещеных в Православной Церкви"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

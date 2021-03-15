@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp">
+
+        <include
+            android:id="@+id/profile_avatar"
+            layout="@layout/cv_circle_image"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:layout_above="@id/lal_for_user"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:id="@+id/lal_for_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                style="@style/TvReg.Xxl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                android:text="@string/user_name"
+                android:textColor="@color/blue_dark" />
+
+            <TextView
+                style="@style/TvReg.L"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:text="Активный"
+                android:textColor="@color/green"/>
+
+            <include
+                android:id="@+id/lal_about_user"
+                layout="@layout/item_about_user"/>
+
+            <TextView
+                android:id="@+id/tv_btn_block"
+                style="@style/TvReg.L"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(4f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_light), BuilderBg.gc(R.color.red), 1f)}"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="@string/block"
+                android:visibility="visible"
+                android:textColor="@color/red" />
+            <TextView
+                android:id="@+id/tv_btn_unblock"
+                style="@style/TvReg.L"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(4f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_light), BuilderBg.gc(R.color.green), 1f)}"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="@string/unblock"
+                android:visibility="visible"
+                android:textColor="@color/green" />
+            <TextView
+                android:id="@+id/tv_btn_approve"
+                style="@style/TvReg.L"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(4f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_light), BuilderBg.gc(R.color.blue), 1f)}"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="@string/approve"
+                android:visibility="visible"
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:id="@+id/tv_user_notes"
+                style="@style/TvReg.L"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/gray5"
+                android:textAlignment="viewStart"
+                android:text="@string/notes"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_user_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>
