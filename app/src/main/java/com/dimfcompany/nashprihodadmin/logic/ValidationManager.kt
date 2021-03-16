@@ -109,7 +109,8 @@ class ValidationData(var is_valid: Boolean = true, var errors: ArrayList<String>
         {
             is_valid = false
             errors.add("Поле '$field_name' должно быть заполнено")
-        }else if (time !is Date)
+        }
+        else if (time !is Date)
         {
             is_valid = false
             errors.add("Неверный формат ввода времени!")
@@ -184,11 +185,25 @@ class ValidationManager
             return data
         }
 
-        fun validateTimetableTimeAddEdit(service_time: ModelServiceTime): ValidationData
+        fun validateServiceTimeAddEdit(service_time: ModelServiceTime): ValidationData
         {
             val data = ValidationData()
             data.validateTime(service_time.time, "Время")
-            data.validateNotNullString(service_time.title, "Служба", 4)
+            data.validateNotNullString(service_time.text, "Служба", 4)
+            return data
+        }
+
+        fun validateServiceAddEdit(title: String?, date: Date?, times: ArrayList<*>?): ValidationData
+        {
+            val data = ValidationData()
+            data.validateNotNullString(title, "Праздник", 4)
+            data.validateTime(date, "Дата службы")
+            if (times.isNullOrEmpty())
+            {
+                data.errors.add("Необходимо добавить время службы")
+                data.is_valid = false
+            }
+
             return data
         }
 

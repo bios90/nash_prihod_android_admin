@@ -96,7 +96,7 @@ class DialogBottomSheetRounded(val builder: BuilderDialogBottom) : BottomSheetDi
 
                 val bg = BuilderBg()
                         .setBgColor(getColorMy(R.color.transparent))
-                        .setRippleColor(getColorMy(R.color.red_trans_50))
+                        .setRippleColor(getColorMy(R.color.blue_trans_50))
                         .isRipple(true)
                         .isDpMode(true)
 

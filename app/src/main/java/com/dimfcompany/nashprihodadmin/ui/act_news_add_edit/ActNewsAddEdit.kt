@@ -70,11 +70,6 @@ class ActNewsAddEdit : BaseActivity()
             })
     }
 
-    private fun getIdToEditExtra(): Long?
-    {
-        return intent.getLongExtraMy(Constants.Extras.NEWS_TO_EDIT)
-    }
-
     inner class PresenterImplementer : ActNewsAddEditMvp.Presenter
     {
         override fun clickedRemoveMediaObject(obj: ObjWithMedia)
@@ -155,6 +150,11 @@ class ActNewsAddEdit : BaseActivity()
                         action_result(news_from_server)
                     })
                 .run()
+    }
+
+    private fun getIdToEditExtra(): Long?
+    {
+        return intent.getLongExtraMy(Constants.Extras.NEWS_TO_EDIT)
     }
 
     private fun checkForExtra()

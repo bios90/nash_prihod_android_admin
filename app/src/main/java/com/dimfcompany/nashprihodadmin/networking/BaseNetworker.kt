@@ -91,7 +91,7 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
             {
                 val time_str = time.time!!.formatToString(DateManager.FORMAT_FOR_SERVER_LARAVEL)
                 val id = api_service
-                        .insertServiceTime(time_str, time.title!!)
+                        .insertServiceTime(time_str, time.text!!)
                         .toObjOrThrow(RespServiceTime::class.java)
                         .addParseCheckerForObj(
                             {
@@ -347,6 +347,50 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
                 .setActionSuccess(
                     {
                         action_success(it.users ?: arrayListOf())
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun getServices(action_success: (ArrayList<ModelService>) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespServices>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_services.getServices()
+                    })
+                .setObjClass(RespServices::class.java)
+                .setActionSuccess(
+                    {
+                        action_success(it.services ?: arrayListOf())
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun getServiceById(service_id: Long, action_success: (ModelService) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespServiceSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_services.getServiceById(service_id)
+                    })
+                .setObjClass(RespServiceSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        it.service?.id != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.service!!)
                     })
                 .setActionError(
                     {

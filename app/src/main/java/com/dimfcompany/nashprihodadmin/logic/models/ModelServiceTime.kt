@@ -7,5 +7,5 @@ import java.util.*
 data class ModelServiceTime(
         override var id: Long? = null,
         var time: Date?,
-        var title: String?
+        var text: String?
 ) : Serializable, ObjectWithId

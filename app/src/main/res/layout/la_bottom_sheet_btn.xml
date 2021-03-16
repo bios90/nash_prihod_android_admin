@@ -2,7 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
-        android:id="@+id/lar_categories"
         android:layout_width="match_parent"
         android:layout_height="44dp">
 
@@ -27,7 +26,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="16dp"
             android:clickable="false"
-            android:textColor="@color/red" />
+            android:textColor="@color/blue" />
 
     </RelativeLayout>
 

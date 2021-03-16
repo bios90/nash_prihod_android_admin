@@ -19,6 +19,7 @@ import android.widget.TextView
 import androidx.core.view.children
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.AppClass
 import com.google.android.gms.common.util.DeviceProperties.isTablet
@@ -240,3 +241,9 @@ fun RecyclerView.setDivider(color: Int, size: Int, orientation: Int = DividerIte
     itemDecorator.setDrawable(drw)
     this.addItemDecoration(itemDecorator)
 }
+
+fun SwipeRefreshLayout.applyMyStyle()
+{
+    this.setColorSchemeColors(getColorMy(R.color.blue_dark), getColorMy(R.color.blue), getColorMy(R.color.blue_light))
+}
+

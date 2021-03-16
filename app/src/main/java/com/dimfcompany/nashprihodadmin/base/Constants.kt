@@ -44,6 +44,9 @@ object Constants
         const val GET_USERS = "get_users"
         const val INSERT_SERVICE_TIME = "insert_service_time"
         const val INSERT_SERVICE_TEXT = "insert_service_text"
+        const val INSERT_SERVICE = "insert_service"
+        const val GET_SERVICES = "get_services"
+        const val GET_SERVICE_BY_ID = "get_service_by_id"
     }
 
     object Extras
@@ -55,6 +58,7 @@ object Constants
         const val MEDIA_OBJECTS_START_POS = "media_objects_start_pos"
         const val NEWS_TO_EDIT = "news_to_edit"
         const val NOTICE_TO_EDIT = "notice_to_edit"
+        const val SERVICE_TO_EDIT = "notice_to_edit"
         const val MODEL_SERVICE_TIME = "model_service_time"
         const val MODEL_SERVICE_TEXT = "model_service_text"
         const val FILTER_DATA_USER = "filter_data_user"

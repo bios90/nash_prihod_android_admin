@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="12dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_date"
+                style="@style/TvBold.M"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="12dp"
+                android:textColor="@color/blue"
+                tools:text="22 ноября 2020 Вс" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TvReg.Xl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="12dp"
+                android:textColor="@color/gray7"
+                tools:text="Неделя 24 по Пятидесятнице, Свет. Нектария Эгинского" />
+
+            <LinearLayout
+                android:id="@+id/lal_for_times"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/la_time_1"
+                    layout="@layout/item_service_time_no_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp" />
+
+                <include
+                    android:id="@+id/la_time_2"
+                    layout="@layout/item_service_time_no_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp" />
+
+                <include
+                    android:id="@+id/la_time_3"
+                    layout="@layout/item_service_time_no_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp" />
+
+                <include
+                    android:id="@+id/la_time_4"
+                    layout="@layout/item_service_time_no_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp" />
+
+                <include
+                    android:id="@+id/la_time_5"
+                    layout="@layout/item_service_time_no_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="26dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_author"
+                style="@style/TvReg.M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="12dp"
+                android:textColor="@color/blue"
+                tools:text="Отец Валерий" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

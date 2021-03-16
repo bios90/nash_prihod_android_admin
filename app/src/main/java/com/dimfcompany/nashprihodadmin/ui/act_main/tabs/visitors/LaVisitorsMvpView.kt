@@ -8,6 +8,7 @@ import com.dimfcompany.akcsl.base.FeedDisplayInfo
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.adapters.AdapterUsers
 import com.dimfcompany.nashprihodadmin.base.adapters.CustomLaManager
+import com.dimfcompany.nashprihodadmin.base.extensions.applyMyStyle
 import com.dimfcompany.nashprihodadmin.base.extensions.dp2pxInt
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
 import com.dimfcompany.nashprihodadmin.base.extensions.setDivider
@@ -51,7 +52,7 @@ class LaVisitorsMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
 
     private fun initRecyclers()
     {
-        bnd_la_visitors.srlUsers.setColorSchemeColors(getColorMy(R.color.blue_dark), getColorMy(R.color.blue), getColorMy(R.color.blue_light))
+        bnd_la_visitors.srlUsers.applyMyStyle()
 
         bnd_la_visitors.recUsers.adapter = adapater
         bnd_la_visitors.recUsers.layoutManager = CustomLaManager(getRootView().context)

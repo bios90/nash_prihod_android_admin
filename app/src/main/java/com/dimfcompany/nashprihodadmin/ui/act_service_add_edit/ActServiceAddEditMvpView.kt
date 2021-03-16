@@ -6,10 +6,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
+import com.dimfcompany.nashprihodadmin.base.extensions.getNullableText
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ActTimetableDayAddEditBinding
 import com.dimfcompany.nashprihodadmin.databinding.ItemServiceTextBinding
-import com.dimfcompany.nashprihodadmin.databinding.ItemTimetableTimeBinding
+import com.dimfcompany.nashprihodadmin.databinding.ItemServiceTimeBinding
 import com.dimfcompany.nashprihodadmin.logic.models.ModelServiceText
 import com.dimfcompany.nashprihodadmin.logic.models.ModelServiceTime
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
@@ -51,16 +52,31 @@ class ActServiceAddEditMvpView(val layoutInflater: LayoutInflater, parent: ViewG
             })
     }
 
+    override fun getEtTitleText(): String?
+    {
+        return bnd_act_timetable_day_add_edit.etTitle.getNullableText()
+    }
+
     override fun bindServiceDate(date: Date)
     {
         bnd_act_timetable_day_add_edit.tvDate.text = date.formatToString(DateManager.FORMAT_FOR_DISPLAY_FULL_MONTH)
     }
 
+    override fun bindServiceText(text: String?)
+    {
+        bnd_act_timetable_day_add_edit.etTitle.setText(text)
+    }
+
+    override fun bindBtnSaveText(text: String?)
+    {
+        bnd_act_timetable_day_add_edit.tvSave.text = text
+    }
+
     override fun addServiceTime(service_time: ModelServiceTime)
     {
-        val bnd_time: ItemTimetableTimeBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_timetable_time, bnd_act_timetable_day_add_edit.lalForTime, false)
+        val bnd_time: ItemServiceTimeBinding = DataBindingUtil.inflate(layoutInflater, R.layout.item_service_time, bnd_act_timetable_day_add_edit.lalForTime, false)
         bnd_time.tvTime.text = service_time.time?.formatToString(DateManager.FORMAT_FOR_TIME)
-        bnd_time.tvTitle.text = service_time.title
+        bnd_time.tvTitle.text = service_time.text
         bnd_act_timetable_day_add_edit.lalForTime.addView(bnd_time.root)
 
         bnd_time.root.setOnClickListener(
@@ -75,7 +91,7 @@ class ActServiceAddEditMvpView(val layoutInflater: LayoutInflater, parent: ViewG
         val tv_time = lal.getChildAt(0) as TextView
         val tv_text = lal.getChildAt(1) as TextView
         tv_time.text = service_time.time?.formatToString(DateManager.FORMAT_FOR_TIME)
-        tv_text.text = service_time.title
+        tv_text.text = service_time.text
 
         lal.setOnClickListener(
             {

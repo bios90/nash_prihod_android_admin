@@ -60,7 +60,7 @@ class ActServiceTimeAddEdit : BaseActivity()
                 .mainThreaded()
                 .subscribe(
                     {
-                        mvp_view.bindText(it.title)
+                        mvp_view.bindText(it.text)
                         it.time?.let(
                             {
                                 bs_time.onNext(it)
@@ -85,7 +85,7 @@ class ActServiceTimeAddEdit : BaseActivity()
             val date = bs_time.value ?: Date()
             val timetable_time = ModelServiceTime(null, date, mvp_view.getServiceTitle())
 
-            val data = ValidationManager.validateTimetableTimeAddEdit(timetable_time)
+            val data = ValidationManager.validateServiceTimeAddEdit(timetable_time)
             if (!data.is_valid)
             {
                 data.show(this@ActServiceTimeAddEdit)

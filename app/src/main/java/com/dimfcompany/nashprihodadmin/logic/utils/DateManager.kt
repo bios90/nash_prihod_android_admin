@@ -1,5 +1,6 @@
 package com.dimfcompany.nashprihodadmin.logic.utils
 
+import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
 import org.joda.time.DateTime
@@ -203,6 +204,28 @@ fun areAtSameDayHourMinuteSecond(date_1: Date, date_2: Date): Boolean
                     && (cal1.get(Calendar.HOUR_OF_DAY) == cal2.get(Calendar.HOUR_OF_DAY))
                     && (cal1.get(Calendar.MINUTE) == cal2.get(Calendar.MINUTE))
                     && (cal1.get(Calendar.SECOND) == cal2.get(Calendar.SECOND)))
+
+    return same_day
+}
+
+fun Date.isToday(with_year: Boolean = true): Boolean
+{
+    val cal1 = Calendar.getInstance()
+    val cal2 = Calendar.getInstance()
+
+    cal1.time = this
+    cal2.time = Date()
+
+    val same_day: Boolean
+    if (with_year)
+    {
+        same_day = (cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
+                && (cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)))
+    }
+    else
+    {
+        same_day = (cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR))
+    }
 
     return same_day
 }

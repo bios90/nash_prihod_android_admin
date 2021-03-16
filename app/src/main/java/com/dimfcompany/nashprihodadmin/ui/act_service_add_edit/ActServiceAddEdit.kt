@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
+import com.dimfcompany.nashprihodadmin.base.BusMainEvents
 import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.base.extensions.*
+import com.dimfcompany.nashprihodadmin.logic.ValidationManager
+import com.dimfcompany.nashprihodadmin.logic.models.ModelService
 import com.dimfcompany.nashprihodadmin.logic.models.ModelServiceText
 import com.dimfcompany.nashprihodadmin.logic.models.ModelServiceTime
 import com.dimfcompany.nashprihodadmin.logic.models.responses.RespNewsSingle
+import com.dimfcompany.nashprihodadmin.logic.models.responses.RespServiceSingle
+import com.dimfcompany.nashprihodadmin.logic.models.responses.RespServiceTime
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.dimfcompany.nashprihodadmin.logic.utils.addDays
@@ -28,6 +33,7 @@ class ActServiceAddEdit : BaseActivity()
     val bs_times: BehaviorSubject<ArrayList<ModelServiceTime>> = BehaviorSubject.createDefault(arrayListOf())
     val bs_texts: BehaviorSubject<ArrayList<ModelServiceText>> = BehaviorSubject.createDefault(arrayListOf())
     val bs_date: BehaviorSubject<Date> = BehaviorSubject.createDefault(Date().addDays(1))
+    val bs_service_to_edit: BehaviorSubject<ModelService> = BehaviorSubject.create()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -38,6 +44,7 @@ class ActServiceAddEdit : BaseActivity()
         mvp_view.registerPresenter(PresenterImplementer())
 
         setEvents()
+        checkExtra()
     }
 
     fun setNavStatus()
@@ -57,6 +64,31 @@ class ActServiceAddEdit : BaseActivity()
                 .subscribe(
                     {
                         mvp_view.bindServiceDate(it)
+                    })
+                .disposeBy(composite_disposable)
+
+        bs_service_to_edit
+                .mainThreaded()
+                .subscribe(
+                    {
+                        it.date?.let(
+                            {
+                                bs_date.onNext(it)
+                            })
+
+                        mvp_view.bindServiceText(it.title)
+
+                        it.service_times?.forEach(
+                            {
+                                handleTimeAddEdit(it, null)
+                            })
+
+                        it.service_texts?.forEach(
+                            {
+                                handleTextAddEdit(it, null)
+                            })
+
+                        mvp_view.bindBtnSaveText(getStringMy(R.string.save))
                     })
                 .disposeBy(composite_disposable)
     }
@@ -195,6 +227,18 @@ class ActServiceAddEdit : BaseActivity()
 
         override fun clickedSave()
         {
+            val service_id_to_edit = bs_service_to_edit.value?.id
+            val title = mvp_view.getEtTitleText()
+            val date = bs_date.value
+            val times = bs_times.value
+
+            val data = ValidationManager.validateServiceAddEdit(title, date, times)
+            if (!data.is_valid)
+            {
+                data.show(this@ActServiceAddEdit)
+                return
+            }
+
             BuilderNet<Any>()
                     .setBaseActivity(this@ActServiceAddEdit)
                     .setActionMultiRequests(
@@ -202,17 +246,38 @@ class ActServiceAddEdit : BaseActivity()
                             val times_ids = BaseNetworker.insertServiceTimes(bs_times.value ?: arrayListOf(), api_services)
                             val text_ids = BaseNetworker.insertServiceTexts(bs_texts.value ?: arrayListOf(), api_services)
 
-                            times_ids.forEach(
-                                {
-                                    Log.e("PresenterImplementer", "*** Inserted time id $it")
-                                })
+                            val service_times_ids = times_ids.joinToString("-")
+                            val service_texts_ids = text_ids.joinToString("-")
 
-                            text_ids.forEach(
-                                {
-                                    Log.e("PresenterImplementer", "*** Inserted text id $it")
-                                })
+                            val service = api_services.uspertService(
+                                service_id_to_edit,
+                                title!!,
+                                date!!.formatToString(DateManager.FORMAT_FOR_SERVER_LARAVEL),
+                                service_times_ids,
+                                service_texts_ids)
+                                    .toObjOrThrow(RespServiceSingle::class.java)
+                                    .addParseCheckerForObj(
+                                        {
+                                            return@addParseCheckerForObj it.service?.id != null
+                                        })
+                                    .service
+
+                            BusMainEvents.ps_service_add_or_edit.onNext(service!!.id!!)
+                            finish()
                         })
                     .run()
+        }
+    }
+
+    private fun checkExtra()
+    {
+        val service_id = intent.getLongExtraMy(Constants.Extras.SERVICE_TO_EDIT)
+        if (service_id != null)
+        {
+            base_networker.getServiceById(service_id,
+                {
+                    bs_service_to_edit.onNext(it)
+                })
         }
     }
 }

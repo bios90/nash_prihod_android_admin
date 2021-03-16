@@ -51,7 +51,7 @@
                     android:textColor="@color/gray4" />
 
                 <EditText
-                    android:id="@+id/tv_holiday_title"
+                    android:id="@+id/et_title"
                     style="@style/EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

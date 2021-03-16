@@ -9,7 +9,10 @@ interface ActServiceAddEditMvp
 {
     interface MvpView : BaseMvpView<Presenter>
     {
+        fun getEtTitleText(): String?
         fun bindServiceDate(date: Date)
+        fun bindServiceText(text: String?)
+        fun bindBtnSaveText(text: String?)
 
         fun addServiceTime(service_time: ModelServiceTime)
         fun updateServiceTime(service_time: ModelServiceTime, pos: Int)
