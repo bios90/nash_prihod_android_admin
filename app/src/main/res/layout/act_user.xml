@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,14 +14,6 @@
         android:layout_height="match_parent"
         android:layout_marginTop="24dp">
 
-        <include
-            android:id="@+id/profile_avatar"
-            layout="@layout/cv_circle_image"
-            android:layout_width="112dp"
-            android:layout_height="112dp"
-            android:layout_above="@id/lal_for_user"
-            android:layout_centerHorizontal="true" />
-
         <LinearLayout
             android:id="@+id/lal_for_user"
             android:layout_width="match_parent"
@@ -29,25 +22,6 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_user_name"
-                style="@style/TvReg.Xxl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="18dp"
-                android:text="@string/user_name"
-                android:textColor="@color/blue_dark" />
-
-            <TextView
-                style="@style/TvReg.L"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="4dp"
-                android:text="Активный"
-                android:textColor="@color/green"/>
 
             <include
                 android:id="@+id/lal_about_user"

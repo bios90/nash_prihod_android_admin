@@ -20,6 +20,7 @@ class ModelUser(
         var email: String? = null,
         var phone: String? = null,
         var birthday: Date? = null,
+        var name_day: Date? = null,
         var about_me: String? = null,
         var status: TypeUserStatus? = null,
         var avatar: ModelFile? = null,

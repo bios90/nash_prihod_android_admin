@@ -11,6 +11,7 @@ import com.dimfcompany.nashprihodadmin.base.extensions.*
 import com.dimfcompany.nashprihodadmin.logic.models.ModelService
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogBottom
+import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogMy
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
@@ -95,7 +96,19 @@ class TabTimeTable(val act_main: ActMain) : TabPresenter
                         }))
                     .addBtn(BtnAction(getStringMy(R.string.delete),
                         {
-
+                            BuilderDialogMy()
+                                    .setViewId(R.layout.la_dialog_simple)
+                                    .setTitle(getStringMy(R.string.deleting))
+                                    .setText("Удалить событие расписания '${service.title}'?")
+                                    .setBtnOk(BtnAction(getStringMy(R.string.delete),
+                                        {
+                                            base_networker.deleteService(service_id,
+                                                {
+                                                    ps_to_reload_services.onNext(Optional(null))
+                                                })
+                                        }))
+                                    .setBtnCancel(BtnAction.getDefaultCancel())
+                                    .build(act_main)
                         }))
                     .show(act_main.supportFragmentManager)
         }

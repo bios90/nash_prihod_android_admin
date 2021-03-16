@@ -398,4 +398,48 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
                     })
                 .run()
     }
+
+    fun deleteService(service_id: Long, action_success: () -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<BaseResponse>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_services.deleteService(service_id)
+                    })
+                .setObjClass(BaseResponse::class.java)
+                .setActionSuccess(
+                    {
+                        action_success()
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun getUserById(user_id: Long, action_success: (ModelUser) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespUserSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_users.getUserById(user_id)
+                    })
+                .setObjClass(RespUserSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        return@setActionParseChecker it.user?.id != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.user!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
 }

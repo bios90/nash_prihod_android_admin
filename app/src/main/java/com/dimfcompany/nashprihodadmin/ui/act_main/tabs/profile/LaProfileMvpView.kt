@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
+import com.dimfcompany.nashprihodadmin.base.extensions.toVisibility
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
+import com.dimfcompany.nashprihodadmin.databinding.ItemAboutUserBinding
 import com.dimfcompany.nashprihodadmin.databinding.LaProfileBinding
 import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
@@ -20,31 +22,43 @@ class LaProfileMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         bnd_la_profile = DataBindingUtil.inflate(layoutInflater, R.layout.la_profile, parent, false)
         setRootView(bnd_la_profile.root)
-//        bnd_la_profile.tvAboutMe.setText("")
-
     }
 
     override fun bindUser(user: ModelUser)
     {
-        GlideManager.loadImage(bnd_la_profile.profileAvatar.imgImg, user.avatar?.url)
-        bnd_la_profile.tvName.text = user.getFullName()
-        bnd_la_profile.lalAboutUser.tvEmail.text = user.email
-        //TODO chaged later
-        bnd_la_profile.lalAboutUser.tvBirthdayDate.text = user.created?.formatToString(DateManager.FORMAT_FOR_DISPLAY_FULL_MONTH)
-        bnd_la_profile.lalAboutUser.tvNamedayDate.text = user.created?.formatToString(DateManager.FORMAT_FOR_DISPLAY_FULL_MONTH)
-        bnd_la_profile.lalAboutUser.tvPhoneNumber.text = user.phone
-        bnd_la_profile.lalAboutUser.tvAboutMe.text = user.about_me
-
+        bnd_la_profile.lalAboutUser.bindUser(user)
     }
+
     fun setListeners()
     {
         bnd_la_profile.tvBtnEdit.setOnClickListener(
-                {
-                    getPresenter().clickedEdit()
-                })
+            {
+                getPresenter().clickedEdit()
+            })
         bnd_la_profile.tvBtnLogout.setOnClickListener(
-                {
-                    getPresenter().clickedLogOut()
-                })
+            {
+                getPresenter().clickedLogOut()
+            })
     }
+}
+
+fun ItemAboutUserBinding.bindUser(user: ModelUser)
+{
+    GlideManager.loadImage(this.cvAvatar.imgImg, user.avatar?.url)
+
+    this.tvName.text = user.getFullName()
+    this.tvEmail.text = user.email
+    this.tvStatus.text = user.status?.getNameForDisplay()
+
+    this.tvBirthdayDate.text = user.birthday?.formatToString(DateManager.FORMAT_DATE_WITHOUT_YEAR)
+    this.lalBirthday.visibility = (user.birthday != null).toVisibility()
+
+    this.tvNamedayDate.text = user.name_day?.formatToString(DateManager.FORMAT_DATE_WITHOUT_YEAR)
+    this.lalNameday.visibility = (user.name_day != null).toVisibility()
+
+    this.tvPhoneNumber.text = user.phone
+    this.lalPhone.visibility = (user.phone != null).toVisibility()
+
+    this.tvAboutMe.text = user.about_me
+    this.tvAboutMe.visibility = (user.about_me != null).toVisibility()
 }

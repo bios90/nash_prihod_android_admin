@@ -42,11 +42,13 @@ object Constants
         const val GET_NOTICES = "get_notices"
         const val GET_NOTICE_BY_ID = "get_notice_by_id"
         const val GET_USERS = "get_users"
+        const val GET_USER_BY_ID = "get_user_by_id"
         const val INSERT_SERVICE_TIME = "insert_service_time"
         const val INSERT_SERVICE_TEXT = "insert_service_text"
         const val INSERT_SERVICE = "insert_service"
         const val GET_SERVICES = "get_services"
         const val GET_SERVICE_BY_ID = "get_service_by_id"
+        const val DELETE_SERVICE = "delete_service"
     }
 
     object Extras

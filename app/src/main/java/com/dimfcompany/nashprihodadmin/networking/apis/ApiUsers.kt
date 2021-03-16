@@ -16,6 +16,11 @@ interface ApiUsers
             @Query("status") status: String?,
             @Query("sort") sort: String?,
     ): Response<ResponseBody>
+
+    @GET(Constants.Urls.GET_USER_BY_ID)
+    suspend fun getUserById(
+            @Query("user_id") user_id: Long
+    ): Response<ResponseBody>
 }
 
 suspend fun ApiUsers.getUsersMy(search: String?, status: TypeUserStatus?, sort: TypeSort?): Response<ResponseBody>

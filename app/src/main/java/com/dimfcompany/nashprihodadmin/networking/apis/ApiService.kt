@@ -36,4 +36,8 @@ interface ApiService
 
     @GET(Constants.Urls.GET_SERVICE_BY_ID)
     suspend fun getServiceById(@Query("service_id") service_id: Long): Response<ResponseBody>
+
+    @FormUrlEncoded
+    @POST(Constants.Urls.DELETE_SERVICE)
+    suspend fun deleteService(@Field("service_id") service_id: Long): Response<ResponseBody>
 }

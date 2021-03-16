@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimfcompany.akcsl.base.FeedDisplayInfo
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.adapters.AdapterRvServices
+import com.dimfcompany.nashprihodadmin.base.adapters.CustomLaManager
 import com.dimfcompany.nashprihodadmin.base.extensions.applyMyStyle
 import com.dimfcompany.nashprihodadmin.base.extensions.dp2pxInt
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
@@ -59,7 +60,7 @@ class LaTimeTableMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         bnd_la_news.srlServices.applyMyStyle()
 
-        bnd_la_news.recServices.layoutManager = LinearLayoutManager(getRootView().context)
+        bnd_la_news.recServices.layoutManager = CustomLaManager(getRootView().context)
         bnd_la_news.recServices.adapter = adapter
         bnd_la_news.recServices.setDivider(getColorMy(R.color.transparent), dp2pxInt(8f))
     }

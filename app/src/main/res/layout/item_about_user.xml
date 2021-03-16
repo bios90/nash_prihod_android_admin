@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -16,7 +17,36 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <include
+            android:id="@+id/cv_avatar"
+            layout="@layout/cv_circle_image"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TvReg.Xxl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:text="@string/user_name"
+            android:textColor="@color/blue_dark" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/TvReg.L"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/green"
+            android:visibility="gone"
+            tools:text="Активный" />
+
         <LinearLayout
+            android:id="@+id/lal_birthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -26,18 +56,20 @@
                 style="@style/TvReg.M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="right"
                 android:text="@string/birthday"
-                android:textAlignment="viewEnd"
                 android:textColor="@color/gray5" />
 
             <TextView
-                style="@style/TvFawLight.L"
+                style="@style/TvFawReg.L"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/faw_birthday"
-                android:textAlignment="center"
                 android:textColor="@color/blue_dark" />
 
             <TextView
@@ -45,13 +77,15 @@
                 style="@style/TvReg.M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="@string/birthday_value"
-                android:textAlignment="viewStart"
-                android:textColor="@color/gray5" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="left"
+                android:textColor="@color/gray5"
+                tools:text="@string/birthday_value" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lal_nameday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -61,18 +95,20 @@
                 style="@style/TvReg.M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="right"
                 android:text="@string/nameday"
-                android:textAlignment="viewEnd"
                 android:textColor="@color/gray5" />
 
             <TextView
-                style="@style/TvFawLight.L"
+                style="@style/TvFawReg.L"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/faw_nameday"
-                android:textAlignment="center"
                 android:textColor="@color/blue_dark" />
 
             <TextView
@@ -80,10 +116,11 @@
                 style="@style/TvReg.M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="@string/nameday_date"
-                android:textAlignment="viewStart"
-                android:textColor="@color/gray5" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="left"
+                android:textColor="@color/gray5"
+                tools:text="@string/nameday_date" />
 
         </LinearLayout>
 
@@ -97,18 +134,20 @@
                 style="@style/TvReg.M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="right"
                 android:text="@string/email"
-                android:textAlignment="viewEnd"
                 android:textColor="@color/gray5" />
 
             <TextView
-                style="@style/TvFawLight.L"
+                style="@style/TvFawReg.L"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/faw_email"
-                android:textAlignment="center"
                 android:textColor="@color/blue_dark" />
 
             <TextView
@@ -116,13 +155,15 @@
                 style="@style/TvReg.M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="@string/email_value"
-                android:textAlignment="viewStart"
-                android:textColor="@color/gray5" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="left"
+                android:textColor="@color/gray5"
+                tools:text="@string/email_value" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lal_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -132,18 +173,20 @@
                 style="@style/TvReg.M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="right"
                 android:text="@string/phone"
-                android:textAlignment="viewEnd"
                 android:textColor="@color/gray5" />
 
             <TextView
-                style="@style/TvFawLight.L"
+                style="@style/TvFawReg.L"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/faw_phone"
-                android:textAlignment="center"
                 android:textColor="@color/blue_dark" />
 
             <TextView
@@ -151,9 +194,11 @@
                 style="@style/TvReg.M"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="@string/phone_number"
-                android:textAlignment="viewStart" />
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:gravity="left"
+                android:textColor="@color/gray5"
+                tools:text="@string/phone_number" />
 
         </LinearLayout>
 
@@ -162,9 +207,12 @@
             style="@style/TvReg.S"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center_horizontal|top"
             android:minLines="5"
-            android:text="@string/tell_about_yourself" />
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
 
     </LinearLayout>
 

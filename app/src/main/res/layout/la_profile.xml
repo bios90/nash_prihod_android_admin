@@ -12,15 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <include
-            android:id="@+id/profile_avatar"
-            layout="@layout/cv_circle_image"
-            android:layout_width="112dp"
-            android:layout_height="112dp"
-            android:layout_above="@id/lal_for_tp"
-            android:layout_centerHorizontal="true" />
-
         <LinearLayout
             android:id="@+id/lal_for_tp"
             android:layout_width="match_parent"
@@ -30,24 +21,13 @@
             android:layout_marginRight="40dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_name"
-                style="@style/TvReg.Xxl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="18dp"
-                android:text="@string/user_name"
-                android:textColor="@color/blue_dark" />
-
             <include
                 android:id="@+id/lal_about_user"
-                layout="@layout/item_about_user"/>
-
+                layout="@layout/item_about_user" />
 
             <TextView
                 android:id="@+id/tv_btn_edit"
-                style="@style/TvReg.L"
+                style="@style/TvBold.M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -59,11 +39,11 @@
 
             <TextView
                 android:id="@+id/tv_btn_logout"
-                style="@style/TvReg.L"
+                style="@style/TvBold.M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(4f, BuilderBg.gc(R.color.white), BuilderBg.gc(R.color.blue_light), BuilderBg.gc(R.color.blue), 1f)}"
+                android:background="@{BuilderBg.getSimpleDrawableStrokedRipple(4f, BuilderBg.gc(R.color.transparent), BuilderBg.gc(R.color.blue_light), BuilderBg.gc(R.color.blue), 2f)}"
                 android:gravity="center"
                 android:padding="12dp"
                 android:text="@string/exit"

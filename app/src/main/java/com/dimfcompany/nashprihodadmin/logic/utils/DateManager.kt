@@ -16,7 +16,8 @@ class DateManager
         val FORMAT_FOR_PHOTO_FILE = getStringMy(R.string.format_for_file)
         val FORMAT_FOR_SERVER_LARAVEL = getStringMy(R.string.format_for_server_laravel)
         val FORMAT_FOR_DISPLAY = getStringMy(R.string.format_for_display)
-        val FORMAT_FOR_DISPLAY_FULL_MONTH = getStringMy(R.string.format_for_display)
+        val FORMAT_FOR_DISPLAY_FULL_MONTH = getStringMy(R.string.format_for_display_full_month)
+        val FORMAT_DATE_WITHOUT_YEAR = getStringMy(R.string.format_without_year)
         val FORMAT_FOR_DISPLAY_WITH_TIME = getStringMy(R.string.format_for_display_with_time)
         val FORMAT_FOR_TIME = "HH:mm"
     }

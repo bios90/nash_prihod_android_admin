@@ -3,6 +3,7 @@
     <string name="format_for_file" translatable="false">yyyy-MM-dd-HH-mm-ss-SSS</string>
     <string name="format_for_display" translatable="false">dd MMM yyyy</string>
     <string name="format_for_display_full_month" translatable="false">dd MMMM yyyy</string>
+    <string name="format_without_year" translatable="false">d MMMM</string>
     <string name="format_for_display_with_time" translatable="false">dd MMM yyyy - HH:mm</string>
     <string name="format_for_server_laravel" translatable="false">yyyy-MM-dd HH:mm:ss</string>
 </resources>
