@@ -10,6 +10,7 @@ interface LaMediaVideoMvp
     {
         fun bindVideo(uri: String)
         fun togglePlayPause(play: Boolean)
+        fun toggleBottomNavbarPadding(have_padding: Boolean)
     }
 
     interface Presenter

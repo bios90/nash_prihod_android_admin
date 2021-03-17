@@ -1,7 +1,6 @@
 package com.dimfcompany.nashprihodadmin.ui.act_news_add_edit
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.*
@@ -154,7 +153,7 @@ class ActNewsAddEdit : BaseActivity()
 
     private fun getIdToEditExtra(): Long?
     {
-        return intent.getLongExtraMy(Constants.Extras.NEWS_TO_EDIT)
+        return intent.getLongExtraMy(Constants.Extras.NEWS_ID)
     }
 
     private fun checkForExtra()

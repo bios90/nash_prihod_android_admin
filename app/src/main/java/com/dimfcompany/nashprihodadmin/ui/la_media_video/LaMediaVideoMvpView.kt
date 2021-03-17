@@ -24,8 +24,6 @@ class LaMediaVideoMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         bnd_media_video = DataBindingUtil.inflate(layoutInflater, R.layout.la_media_video, parent, false)
         setRootView(bnd_media_video.root)
-
-        setBottomPadding()
     }
 
     override fun bindVideo(uri: String)
@@ -36,15 +34,16 @@ class LaMediaVideoMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
 
     override fun togglePlayPause(play: Boolean)
     {
-        if(player.playWhenReady != play)
+        if (player.playWhenReady != play)
         {
             player.playWhenReady = play
         }
     }
 
-    private fun setBottomPadding()
+    override fun toggleBottomNavbarPadding(have_padding: Boolean)
     {
+        val height = if (have_padding) getNavbarHeight() else 0
         val view_fake_navbar: View = bnd_media_video.playerView.findViewById(R.id.view_fake_navbar)
-        view_fake_navbar.setHeight(getNavbarHeight())
+        view_fake_navbar.setHeight(height)
     }
 }

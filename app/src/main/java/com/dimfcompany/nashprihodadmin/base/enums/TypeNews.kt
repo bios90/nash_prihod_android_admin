@@ -1,8 +1,10 @@
 package com.dimfcompany.nashprihodadmin.base.enums
 
+import android.graphics.drawable.Drawable
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
 import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
+import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg
 import com.google.gson.annotations.SerializedName
 
 enum class TypeNews
@@ -44,13 +46,21 @@ enum class TypeNews
         }
     }
 
-    fun getColorForBubble(): Int
+
+    fun getBgBubble(): Drawable
     {
-        return when (this)
-        {
-            NEWS -> getColorMy(R.color.blue_type_news)
-            PREACHING -> getColorMy(R.color.green_type_preaching)
-            EVENT -> getColorMy(R.color.yellow_type_event)
-        }
+        val bg = BuilderBg.getSimpleDrawable(999f, getColorForBubble())
+        return bg
+    }
+}
+
+fun TypeNews?.getColorForBubble(): Int
+{
+    return when (this)
+    {
+        TypeNews.NEWS -> getColorMy(R.color.blue_type_news)
+        TypeNews.PREACHING -> getColorMy(R.color.green_type_preaching)
+        TypeNews.EVENT -> getColorMy(R.color.yellow_type_event)
+        else -> return getColorMy(R.color.gray4)
     }
 }

@@ -1,6 +1,5 @@
 package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.news
 
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.dimfcompany.akcsl.base.FeedDisplayInfo
@@ -21,6 +20,7 @@ import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_news_show.ActNewsShow
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
@@ -126,11 +126,15 @@ class TabNews(val act_main: ActMain) : TabPresenter
                     .setTitle(news.title)
                     .addBtn(BtnAction(getStringMy(R.string.watching),
                         {
+                            BuilderIntent()
+                                    .setActivityToStart(ActNewsShow::class.java)
+                                    .addParam(Constants.Extras.NEWS_ID, news_id)
+                                    .startActivity(act_main)
                         }))
                     .addBtn(BtnAction(getStringMy(R.string.editing),
                         {
                             BuilderIntent()
-                                    .addParam(Constants.Extras.NEWS_TO_EDIT, news_id)
+                                    .addParam(Constants.Extras.NEWS_ID, news_id)
                                     .setActivityToStart(ActNewsAddEdit::class.java)
                                     .startActivity(act_main)
                         }))
@@ -150,6 +154,7 @@ class TabNews(val act_main: ActMain) : TabPresenter
                     .setTitle(notice.title)
                     .addBtn(BtnAction(getStringMy(R.string.watching),
                         {
+
                         }))
                     .addBtn(BtnAction(getStringMy(R.string.editing),
                         {

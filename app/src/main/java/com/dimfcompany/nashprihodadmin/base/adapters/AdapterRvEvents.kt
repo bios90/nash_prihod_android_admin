@@ -44,8 +44,7 @@ fun ItemEventBinding.bindNotice(news: ModelNews)
     }
 
     this.tvType.text = news.type?.getNameForDisplay()
-    val bg = BuilderBg.getSimpleDrawable(999f, news.type?.getColorForBubble() ?: getColorMy(R.color.gray4))
-    this.tvType.background = bg
+    this.tvType.background = news.type?.getBgBubble()
 
     this.tvTitle.text = news.title
     this.tvText.text = news.text

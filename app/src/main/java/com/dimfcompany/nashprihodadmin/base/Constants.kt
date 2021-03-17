@@ -58,7 +58,7 @@ object Constants
         const val MY_PUSH = "my_push"
         const val MEDIA_OBJECTS = "media_objects"
         const val MEDIA_OBJECTS_START_POS = "media_objects_start_pos"
-        const val NEWS_TO_EDIT = "news_to_edit"
+        const val NEWS_ID = "news_to_edit"
         const val NOTICE_TO_EDIT = "notice_to_edit"
         const val SERVICE_TO_EDIT = "notice_to_edit"
         const val MODEL_SERVICE_TIME = "model_service_time"

@@ -81,12 +81,11 @@ class ActCarousel : BaseActivity()
                     {
                         for (obj in it)
                         {
-                            Log.e("ActCarousel", "setEvents: obj type is ${obj.type}")
                             if (obj.type == TypeMedia.VIDEO)
                             {
                                 val mvp_video = view_factory.getMediaVideoMvpView(null)
-                                Log.e("ActCarousel", "setEvents: video url is ${(obj.toJsonMy())}")
                                 mvp_video.bindVideo((obj as ObjWithVideo).video_url!!)
+                                mvp_video.toggleBottomNavbarPadding(true)
                                 mvp_views_of_media_objs.add(mvp_video)
                             }
                             else if (obj.type == TypeMedia.IMAGE)

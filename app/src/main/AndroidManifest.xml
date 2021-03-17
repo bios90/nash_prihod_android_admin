@@ -61,6 +61,7 @@
         <activity
             android:name=".ui.act_service_add_edit.ActServiceAddEdit"
             android:theme="@style/Theme.Transparent" />
+        <activity android:name=".ui.act_news_show.ActNewsShow" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

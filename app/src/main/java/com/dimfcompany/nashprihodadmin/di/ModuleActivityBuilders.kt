@@ -6,6 +6,7 @@ import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirst
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarousel
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_news_show.ActNewsShow
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegister
@@ -54,6 +55,9 @@ abstract class ModuleActivityBuilders
 
     @ContributesAndroidInjector(modules = [ModuleActFilterUsers::class])
     abstract fun contributeActFilterUsers(): ActFilterUsers
+
+    @ContributesAndroidInjector(modules = [ModuleActNewsShow::class])
+    abstract fun contributeActNewsShow(): ActNewsShow
 }
 
 @Module
@@ -139,4 +143,11 @@ abstract class ModuleActFilterUsers
 {
     @Binds
     abstract fun bindBaseActivity(act: ActFilterUsers): BaseActivity
+}
+
+@Module
+abstract class ModuleActNewsShow
+{
+    @Binds
+    abstract fun bindBaseActivity(act: ActNewsShow): BaseActivity
 }
