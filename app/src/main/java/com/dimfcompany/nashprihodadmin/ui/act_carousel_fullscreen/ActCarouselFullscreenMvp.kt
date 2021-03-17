@@ -1,19 +1,18 @@
-package com.dimfcompany.nashprihodadmin.ui.act_news_show
+package com.dimfcompany.nashprihodadmin.ui.act_carousel_fullscreen
 
-import android.view.View
-import android.view.ViewGroup
+import com.dimfcompany.nashprihodadmin.base.ObjWithMedia
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpView
 import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
 
-interface ActNewsShowMvp
+interface ActCarouselFullscreenMvp
 {
     interface MvpView : BaseMvpView<Presenter>
     {
-        fun bindNews(news: ModelNews)
-        fun getViewForCarousel(): ViewGroup
+
     }
 
     interface Presenter
     {
+
     }
 }

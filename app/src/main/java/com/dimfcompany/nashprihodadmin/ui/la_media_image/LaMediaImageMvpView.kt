@@ -29,7 +29,7 @@ class LaMediaImageMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
         GlideManager.loadImage(bnd_media_image.imgSimple, uri)
     }
 
-    override fun toggleMode(is_touchable: Boolean)
+    override fun toggleModeZoomMode(is_touchable: Boolean)
     {
         bnd_media_image.imgTouch.visibility = is_touchable.toVisibility()
         bnd_media_image.imgSimple.visibility = (!is_touchable).toVisibility()

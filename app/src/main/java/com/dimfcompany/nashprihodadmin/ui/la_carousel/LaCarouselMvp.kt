@@ -1,10 +1,9 @@
-package com.dimfcompany.nashprihodadmin.ui.act_media_carousel
+package com.dimfcompany.nashprihodadmin.ui.la_carousel
 
 import android.view.View
-import com.dimfcompany.nashprihodadmin.base.enums.TypeTab
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpView
 
-interface ActCarouselMvp
+interface LaCarouselMvp
 {
     interface MvpView : BaseMvpView<Presenter>
     {
@@ -12,10 +11,13 @@ interface ActCarouselMvp
         fun setPosText(text: String)
         fun togglePosTextVisibility(is_visible: Boolean)
         fun scrollToPos(pos: Int)
+        fun toggleBackgroundColor(color: Int)
+        fun toggleFullscreenBtn(is_visible: Boolean)
     }
 
     interface Presenter
     {
+        fun clickedFullScreen()
         fun tabChangedTo(pos: Int)
     }
 }

@@ -35,7 +35,7 @@
         </activity>
 
         <activity android:name=".ui.act_news_add_edit.ActNewsAddEdit" />
-        <activity android:name=".ui.act_media_carousel.ActCarousel" />
+        <activity android:name=".ui.act_carousel_fullscreen.ActCarouselFullScreen" />
 
         <activity android:name=".ui.act_service_text_add_edit.ActServiceTextAddEdit">
 

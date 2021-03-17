@@ -16,24 +16,16 @@ class ActNewsShowMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     : BaseMvpViewImpl<ActNewsShowMvp.Presenter>(), ActNewsShowMvp.MvpView
 {
     val bnd_news_show: ActNewsShowBinding
-    private val adapter_vp = AdapterVpUniversal()
 
     init
     {
         bnd_news_show = DataBindingUtil.inflate(layoutInflater, R.layout.act_news_show, parent, false)
         setRootView(bnd_news_show.root)
-
-        setViewPager()
     }
 
-    private fun setViewPager()
+    override fun getViewForCarousel(): ViewGroup
     {
-        bnd_news_show.vp.adapter = adapter_vp
-    }
-
-    override fun bindViews(views: ArrayList<View>)
-    {
-        adapter_vp.setViews(views)
+        return bnd_news_show.larForCarousel
     }
 
     override fun bindNews(news: ModelNews)

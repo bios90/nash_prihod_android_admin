@@ -2,6 +2,8 @@ package com.dimfcompany.nashprihodadmin.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.dimfcompany.nashprihodadmin.ui.act_carousel_fullscreen.ActCarouselFullscreenMvp
+import com.dimfcompany.nashprihodadmin.ui.act_carousel_fullscreen.ActCarouselFullscreenMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvp
 import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
@@ -18,8 +20,8 @@ import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.timetable.LaTimeTableMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.timetable.LaTimeTableMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors.LaVisitorsMvp
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors.LaVisitorsMvpView
-import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvp
-import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarouselMvpView
+import com.dimfcompany.nashprihodadmin.ui.la_carousel.LaCarouselMvp
+import com.dimfcompany.nashprihodadmin.ui.la_carousel.LaCarouselMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_news_show.ActNewsShowMvp
@@ -96,9 +98,14 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
         return ActNewsAddEditMvpView(layout_inflater, parent)
     }
 
-    fun getActCarouselMvpView(parent: ViewGroup?): ActCarouselMvp.MvpView
+    fun getActCarouselFullscreenMvpView(parent: ViewGroup?): ActCarouselFullscreenMvp.MvpView
     {
-        return ActCarouselMvpView(layout_inflater, parent)
+        return ActCarouselFullscreenMvpView(layout_inflater, parent)
+    }
+
+    fun getActCarouselMvpView(parent: ViewGroup?): LaCarouselMvp.MvpView
+    {
+        return LaCarouselMvpView(layout_inflater, parent)
     }
 
     fun getMediaVideoMvpView(parent: ViewGroup?): LaMediaVideoMvp.MvpView

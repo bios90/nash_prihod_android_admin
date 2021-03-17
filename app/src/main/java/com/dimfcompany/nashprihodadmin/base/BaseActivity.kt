@@ -4,14 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.extensions.*
-import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
 import com.dimfcompany.nashprihodadmin.logic.utils.MessagesManager
-import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogBottom
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderMediaPicker
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.dimfcompany.nashprihodadmin.logic.utils.images.ImageCameraManager
 import com.dimfcompany.nashprihodadmin.networking.BaseNetworker
 import com.dimfcompany.nashprihodadmin.networking.apis.*
+import com.dimfcompany.nashprihodadmin.ui.la_carousel.CarouselHelper
 import com.justordercompany.barista.logic.utils.BuilderPermRequest
 import com.justordercompany.barista.logic.utils.PermissionManager
 import dagger.android.support.DaggerAppCompatActivity
@@ -49,6 +48,9 @@ abstract class BaseActivity : DaggerAppCompatActivity()
 
     @Inject
     lateinit var base_networker: BaseNetworker
+
+    @Inject
+    lateinit var carousel_helper: CarouselHelper
 
 
     val composite_disposable = CompositeDisposable()

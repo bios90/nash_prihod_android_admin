@@ -46,4 +46,14 @@ class LaMediaVideoMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
         val view_fake_navbar: View = bnd_media_video.playerView.findViewById(R.id.view_fake_navbar)
         view_fake_navbar.setHeight(height)
     }
+
+    override fun getPlayTime(): Long
+    {
+        return player.currentPosition
+    }
+
+    override fun seekToTime(time: Long)
+    {
+        player.seekTo(time)
+    }
 }

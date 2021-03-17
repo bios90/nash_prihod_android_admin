@@ -1,7 +1,6 @@
 package com.dimfcompany.nashprihodadmin.ui.act_news_show
 
 import android.os.Bundle
-import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.Constants
@@ -17,7 +16,6 @@ class ActNewsShow : BaseActivity()
 {
     lateinit var mvp_view: ActNewsShowMvp.MvpView
     val bs_news: BehaviorSubject<ModelNews> = BehaviorSubject.create()
-    val mvp_views_of_media_objs: ArrayList<BaseMvpView<*>> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -27,8 +25,8 @@ class ActNewsShow : BaseActivity()
         setContentView(mvp_view.getRootView())
         mvp_view.registerPresenter(PresenterImplementer())
 
-        loadNews()
         setEvents()
+        loadNews()
     }
 
     fun setNavStatus()
@@ -56,30 +54,13 @@ class ActNewsShow : BaseActivity()
     private fun bindMediaViews()
     {
         val medias = bs_news.value?.media_objs ?: return
-        for (obj in medias)
-        {
-            if (obj.type == TypeMedia.VIDEO)
-            {
-                val mvp_video = view_factory.getMediaVideoMvpView(null)
-                mvp_video.bindVideo((obj as ObjWithVideo).video_url!!)
-                mvp_views_of_media_objs.add(mvp_video)
-            }
-            else if (obj.type == TypeMedia.IMAGE)
-            {
-                val mvp_image = view_factory.getMediaImageMvpView(null)
-                mvp_image.toggleMode(false)
-                mvp_image.bindImage((obj as ObjWithImageUrl).image_url)
-                mvp_views_of_media_objs.add(mvp_image)
-            }
-        }
 
-        val views = mvp_views_of_media_objs.map(
-            {
-                it.getRootView()
-            })
-                .toCollection(ArrayList())
+        carousel_helper.bs_show_full_screen_btn.onNext(true)
+        carousel_helper.bs_image_zoom_enabled.onNext(false)
+        carousel_helper.bs_video_bottom_padding_enabled.onNext(false)
+        carousel_helper.bs_carousel_bg_color.onNext(getColorMy(R.color.white))
 
-        mvp_view.bindViews(views)
+        carousel_helper.initToView(mvp_view.getViewForCarousel(), medias)
     }
 
     private fun loadNews()

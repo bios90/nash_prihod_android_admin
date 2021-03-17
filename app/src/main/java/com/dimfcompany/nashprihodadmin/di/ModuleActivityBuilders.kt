@@ -4,7 +4,7 @@ import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsers
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirst
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
-import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarousel
+import com.dimfcompany.nashprihodadmin.ui.act_carousel_fullscreen.ActCarouselFullScreen
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_news_show.ActNewsShow
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
@@ -36,7 +36,7 @@ abstract class ModuleActivityBuilders
     abstract fun contributeActNewsAddEdit(): ActNewsAddEdit
 
     @ContributesAndroidInjector(modules = [ModuleActCarousel::class])
-    abstract fun contributeActCarousel(): ActCarousel
+    abstract fun contributeActCarousel(): ActCarouselFullScreen
 
     @ContributesAndroidInjector(modules = [ModuleActNoticeAddEdit::class])
     abstract fun contributeActNoticeAddEdit(): ActNoticeAddEdit
@@ -100,7 +100,7 @@ abstract class ModuleActNewsAddEdit
 abstract class ModuleActCarousel
 {
     @Binds
-    abstract fun bindBaseActivity(act: ActCarousel): BaseActivity
+    abstract fun bindBaseActivity(act: ActCarouselFullScreen): BaseActivity
 }
 
 @Module

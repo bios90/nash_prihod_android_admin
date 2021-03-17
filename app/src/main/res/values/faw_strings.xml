@@ -40,6 +40,7 @@
     <string name="faw_nameday" translatable="false">&#xf779;</string>
     <string name="faw_email" translatable="false">&#xf0e0;</string>
     <string name="faw_phone" translatable="false">&#xf095;</string>
+    <string name="faw_full_screen" translatable="false">&#xf065;</string>
 
 
 </resources>

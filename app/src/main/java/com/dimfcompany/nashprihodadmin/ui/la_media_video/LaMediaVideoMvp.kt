@@ -11,6 +11,8 @@ interface LaMediaVideoMvp
         fun bindVideo(uri: String)
         fun togglePlayPause(play: Boolean)
         fun toggleBottomNavbarPadding(have_padding: Boolean)
+        fun getPlayTime(): Long
+        fun seekToTime(time:Long)
     }
 
     interface Presenter

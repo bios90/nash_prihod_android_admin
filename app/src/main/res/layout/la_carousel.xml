@@ -11,10 +11,10 @@
 
 
     <RelativeLayout
+        android:id="@+id/lar_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black">
-
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp"
@@ -27,10 +27,23 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
             android:background="@{BuilderBg.getSimpleDrawable(20f,BuilderBg.gc(R.color.black_trans_50))}"
             android:minWidth="84dp"
             android:textColor="@color/white"
             tools:text="2 из 10" />
+
+        <TextView
+            android:id="@+id/tv_full_screen"
+            style="@style/TvFawReg.L"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@{BuilderBg.getSimpleDrawableRipple(20f,BuilderBg.gc(R.color.black_trans_50),BuilderBg.gc(R.color.white_trans_50))}"
+            android:text="@string/faw_full_screen"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

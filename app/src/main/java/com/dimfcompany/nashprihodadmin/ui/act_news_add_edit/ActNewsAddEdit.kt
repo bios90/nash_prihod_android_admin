@@ -15,7 +15,7 @@ import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderNet
 import com.dimfcompany.nashprihodadmin.networking.BaseNetworker
 import com.dimfcompany.nashprihodadmin.networking.apis.makeInsertOrUpdateNews
-import com.dimfcompany.nashprihodadmin.ui.act_media_carousel.ActCarousel
+import com.dimfcompany.nashprihodadmin.ui.act_carousel_fullscreen.ActCarouselFullScreen
 import io.reactivex.subjects.BehaviorSubject
 
 class ActNewsAddEdit : BaseActivity()
@@ -103,9 +103,11 @@ class ActNewsAddEdit : BaseActivity()
         override fun clickedMediaObj(obj: ObjWithMedia)
         {
             val objs_wrapper = MediaItemsWrapper(medias)
+            val start_pos = carousel_helper.bs_current_media_tab_pos.value ?: 0
             BuilderIntent()
-                    .setActivityToStart(ActCarousel::class.java)
+                    .setActivityToStart(ActCarouselFullScreen::class.java)
                     .addParam(Constants.Extras.MEDIA_OBJECTS, objs_wrapper)
+                    .addParam(Constants.Extras.MEDIA_OBJECTS_START_POS, start_pos)
                     .startActivity(this@ActNewsAddEdit)
         }
 
