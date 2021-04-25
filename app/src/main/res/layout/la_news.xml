@@ -29,6 +29,7 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/lar_top_notice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
@@ -67,9 +68,11 @@
                     android:clipChildren="false"
                     android:clipToPadding="false"
                     android:paddingLeft="16dp"
-                    android:paddingRight="4dp" />
+                    android:paddingRight="4dp"
+                    android:visibility="gone" />
 
                 <TextView
+                    android:id="@+id/tv_title_news"
                     style="@style/TvReg.L"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,6 +84,7 @@
                     android:id="@+id/rec_news"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:clipChildren="false"
                     android:clipToPadding="false"
                     android:overScrollMode="never"

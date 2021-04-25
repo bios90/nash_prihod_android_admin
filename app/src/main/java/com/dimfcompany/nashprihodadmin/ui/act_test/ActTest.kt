@@ -1,6 +1,7 @@
 package com.dimfcompany.nashprihodadmin.ui.act_test
 
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -8,18 +9,21 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
+import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.base.TestJava
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
 import com.dimfcompany.nashprihodadmin.base.extensions.runActionWithDelay
 import com.dimfcompany.nashprihodadmin.databinding.ActTestBinding
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDateDialog
+import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderTimeDialog
 import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.dimfcompany.nashprihodadmin.logic.utils.isYearLeap
@@ -36,15 +40,21 @@ class ActTest : AppCompatActivity()
         super.onCreate(savedInstanceState)
         bnd_act_test = DataBindingUtil.setContentView(this, R.layout.act_test)
 
-//        wheelPickerTest3()
-//        runActionWithDelay(lifecycleScope, 3000,
-//            {
-//                wheelPickerTest4()
-//            })
 
-//        wheelPickerTest5()
 
-        showTimeDialog()
+        runActionWithDelay(lifecycleScope, 2000,
+            {
+                BuilderIntent()
+                        .setActivityToStart(ActTest2::class.java)
+                        .addParam(Constants.Extras.NEWS_ID, 1234)
+                        .addTransition(bnd_act_test.img, "test")
+                        .addTransition(bnd_act_test.tv, "test2")
+                        .startActivity(this)
+
+//                val intent = Intent(this, ActTest2::class.java)
+//                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, bnd_act_test.img, "test")
+//                startActivity(intent, options.toBundle())
+            })
     }
 
     fun showDateDialog()

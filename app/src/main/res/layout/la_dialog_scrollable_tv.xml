@@ -70,10 +70,10 @@
                 android:layout_height="32dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="16dp"
-                android:background="@{BuilderBg.getSquareRippleTransRed()}"
+                android:background="@{BuilderBg.getSquareRippleTransBlue()}"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/blue"
                 tools:text="Ok" />
 
             <TextView
@@ -86,7 +86,7 @@
                 android:background="@{BuilderBg.getSquareRippleTransBlue()}"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/blue"
                 tools:text="Cancel" />
 
             <TextView
@@ -97,7 +97,7 @@
                 android:background="@{BuilderBg.getSquareRippleTransBlue()}"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:textColor="@color/red"
+                android:textColor="@color/blue"
                 tools:text="Left" />
 
         </RelativeLayout>

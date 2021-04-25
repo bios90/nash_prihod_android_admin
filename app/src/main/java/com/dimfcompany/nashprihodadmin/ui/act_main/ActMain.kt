@@ -62,6 +62,7 @@ class ActMain : BaseActivity()
     private fun setEvents()
     {
         BusMainEvents.bs_current_tab
+                .distinctUntilChanged()
                 .mainThreaded()
                 .subscribe(
                     {

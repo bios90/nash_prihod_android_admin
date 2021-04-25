@@ -41,6 +41,7 @@ object Constants
         const val INSERT_OR_UPDATE_NOTICE = "upsert_notice"
         const val GET_NOTICES = "get_notices"
         const val GET_NOTICE_BY_ID = "get_notice_by_id"
+        const val DELETE_NOTICE = "delete_notice"
         const val GET_USERS = "get_users"
         const val GET_USER_BY_ID = "get_user_by_id"
         const val INSERT_SERVICE_TIME = "insert_service_time"
@@ -49,6 +50,12 @@ object Constants
         const val GET_SERVICES = "get_services"
         const val GET_SERVICE_BY_ID = "get_service_by_id"
         const val DELETE_SERVICE = "delete_service"
+        const val INSERT_NOTE = "insert_note"
+        const val GET_NOTES = "get_notes"
+        const val GET_NOTE_BY_ID = "get_note_by_id"
+        const val CHANGE_NOTE_STATUS = "change_note_status"
+        const val EDIT_USER = "edit_user"
+        const val SET_USER_STATUS = "set_user_status"
     }
 
     object Extras
@@ -65,5 +72,15 @@ object Constants
         const val MODEL_SERVICE_TIME = "model_service_time"
         const val MODEL_SERVICE_TEXT = "model_service_text"
         const val FILTER_DATA_USER = "filter_data_user"
+        const val FILTER_DATA_NOTES = "filter_data_notes"
+        const val DONATION_SUM = "donation_sum"
+        const val DONATION_ID = "donation_id"
+        const val NOTE_ID = "note_id"
+        const val USER_ID = "user_id"
+    }
+
+    object TransitionNames
+    {
+        const val IMAGE_TO_CAROUSEL_TRANSITION = "image_to_carousel_transition"
     }
 }

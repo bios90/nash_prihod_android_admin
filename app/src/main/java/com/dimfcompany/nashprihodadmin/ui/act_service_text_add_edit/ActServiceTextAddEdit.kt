@@ -2,7 +2,6 @@ package com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.Constants
@@ -51,7 +50,7 @@ class ActServiceTextAddEdit : BaseActivity()
             val data = ValidationManager.validateServiceTextAddEdit(timetable_service_text)
             if (!data.is_valid)
             {
-                data.show(this@ActServiceTextAddEdit)
+                data.showErrors(this@ActServiceTextAddEdit)
                 return
             }
 

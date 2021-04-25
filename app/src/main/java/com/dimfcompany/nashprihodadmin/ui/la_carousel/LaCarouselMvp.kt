@@ -13,6 +13,7 @@ interface LaCarouselMvp
         fun scrollToPos(pos: Int)
         fun toggleBackgroundColor(color: Int)
         fun toggleFullscreenBtn(is_visible: Boolean)
+        fun getCurrentPos():Int
     }
 
     interface Presenter

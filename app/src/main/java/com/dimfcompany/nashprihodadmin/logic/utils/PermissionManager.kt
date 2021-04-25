@@ -1,4 +1,4 @@
-package com.justordercompany.barista.logic.utils
+package com.dimfcompany.nashprihodadmin.logic.utils
 
 import android.Manifest
 import android.util.Log
@@ -101,5 +101,4 @@ class BuilderPermRequest()
                     })
                 .disposeBy(base_activity.composite_disposable)
     }
-
 }

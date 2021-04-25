@@ -247,3 +247,14 @@ fun SwipeRefreshLayout.applyMyStyle()
     this.setColorSchemeColors(getColorMy(R.color.blue_dark), getColorMy(R.color.blue), getColorMy(R.color.blue_light))
 }
 
+fun String.removeRepeatingSpaces(): String
+{
+    return this.replace("\\s+".toRegex(), " ")
+}
+
+fun String.replaceRepeatingsWithSingle(char_to_replace: Char): String
+{
+    return this.replace("$char_to_replace+".toRegex(), char_to_replace.toString())
+}
+
+

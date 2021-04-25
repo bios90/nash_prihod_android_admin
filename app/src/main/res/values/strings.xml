@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">NashPrihodAdmin</string>
+    <string name="app_name">Наш приход</string>
+    <string name="notify_chanel_nash_prihod">Уведомления о событиях в приложении</string>
     <string name="your_email">Ваш email</string>
     <string name="password">Пароль</string>
     <string name="forgot_password_question">Забыли пароль?</string>
@@ -103,6 +104,21 @@
     <string name="block">Заблокировать</string>
     <string name="unblock">Разблокировать</string>
     <string name="approve">Одобрить</string>
-
+    <string name="for_health">О здравии</string>
+    <string name="for_peace">Об упокоении</string>
+    <string name="put">Подать</string>
+    <string name="donation">Пожертвование</string>
+    <string name="readed">Прочитано</string>
+    <string name="letter_from_nash_prihod_app">Письмо из приложения Наш приход</string>
+    <string name="make_active">Одобрить</string>
+    <string name="waits_for_reading">Ожидает прочтения</string>
+    <string name="is_reading">Читается</string>
+    <string name="reads">Читает</string>
+    <string name="have_readed">Прочитана</string>
+    <string name="readed_by">Прочитал</string>
+    <string name="exiting">Выход</string>
+    <string name="exit_your_accaunt">Выйти из аккаунта?</string>
+    <string name="close">Закрыть</string>
+    <string name="delete_this_notice">Удалить данное объявление?</string>
 
 </resources>

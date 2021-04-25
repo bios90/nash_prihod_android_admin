@@ -17,7 +17,7 @@ abstract class BaseRvAdapter<M : ObjectWithId, VB : ViewDataBinding> : RecyclerV
     var items: ArrayList<M> = arrayListOf()
     var action_on_create: ((VB) -> Unit)? = null
 
-    var listener:((M)->Unit)? = null
+    var listener: ((M) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<M, VB>
     {
@@ -55,7 +55,7 @@ abstract class BaseRvAdapter<M : ObjectWithId, VB : ViewDataBinding> : RecyclerV
             {
                 throw RuntimeException("**** Error if not full update need DiffUtil ****")
             }
-            val diff_callback = diff_class!!.getDeclaredConstructor(List::class.java, List::class.java).newInstance(items, rec_info.items)
+            val diff_callback = diff_class!!.getDeclaredConstructor(List::class.java, List::class.java).newInstance(rec_info.items, items)
             val diff_result = DiffUtil.calculateDiff(diff_callback)
             diff_result.dispatchUpdatesTo(this)
             this.items = ArrayList(rec_info.items)

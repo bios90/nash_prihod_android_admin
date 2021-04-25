@@ -2,19 +2,24 @@ package com.dimfcompany.nashprihodadmin.base
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.extensions.*
+import com.dimfcompany.nashprihodadmin.logic.utils.BuilderPermRequest
 import com.dimfcompany.nashprihodadmin.logic.utils.MessagesManager
+import com.dimfcompany.nashprihodadmin.logic.utils.PermissionManager
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderMediaPicker
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.dimfcompany.nashprihodadmin.logic.utils.images.ImageCameraManager
 import com.dimfcompany.nashprihodadmin.networking.BaseNetworker
 import com.dimfcompany.nashprihodadmin.networking.apis.*
 import com.dimfcompany.nashprihodadmin.ui.la_carousel.CarouselHelper
-import com.justordercompany.barista.logic.utils.BuilderPermRequest
-import com.justordercompany.barista.logic.utils.PermissionManager
 import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
+import java.lang.Exception
 import javax.inject.Inject
 
 abstract class BaseActivity : DaggerAppCompatActivity()
@@ -47,6 +52,9 @@ abstract class BaseActivity : DaggerAppCompatActivity()
     lateinit var api_services: ApiService
 
     @Inject
+    lateinit var api_notes: ApiNotes
+
+    @Inject
     lateinit var base_networker: BaseNetworker
 
     @Inject
@@ -62,6 +70,12 @@ abstract class BaseActivity : DaggerAppCompatActivity()
     var is_full_screen: Boolean = false
     var is_below_nav_bar: Boolean = false
 
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        makePortrait()
+    }
+
 
     fun applyStatusNavColors()
     {
@@ -74,6 +88,43 @@ abstract class BaseActivity : DaggerAppCompatActivity()
         this.window?.setNavBarColor(color_nav_bar)
         this.window?.setStatusLightDark(is_light_status_bar)
         this.window?.setNavBarLightDark(is_light_nav_bar)
+    }
+
+
+    protected fun makePortrait()
+    {
+        try
+        {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+        catch (e: Exception)
+        {
+
+        }
+    }
+
+    protected fun makeLandscape()
+    {
+        try
+        {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+        catch (e: Exception)
+        {
+
+        }
+    }
+
+    protected fun makeOrintationChangable()
+    {
+        try
+        {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
+        }
+        catch (e: Exception)
+        {
+
+        }
     }
 
     override fun onResume()
@@ -206,5 +257,10 @@ abstract class BaseActivity : DaggerAppCompatActivity()
         }
         finish()
     }
+}
 
+fun AppCompatActivity.isVisibleNow(): Boolean
+{
+    val is_visible = this.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)
+    return is_visible
 }

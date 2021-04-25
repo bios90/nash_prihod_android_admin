@@ -15,6 +15,7 @@ import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
 import com.dimfcompany.nashprihodadmin.logic.models.ModelNotice
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogBottom
+import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogMy
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
@@ -100,6 +101,42 @@ class TabNews(val act_main: ActMain) : TabPresenter
         return mvp_view.getRootView()
     }
 
+    private fun showNotice(notice_id: Long)
+    {
+        base_networker.getNoticeById(notice_id,
+            {
+                BuilderDialogMy()
+                        .setViewId(R.layout.la_dialog_scrollable_tv)
+                        .setTitle(it.title ?: "")
+                        .setText(it.text ?: "")
+                        .setBtnOk(BtnAction(getStringMy(R.string.close), {}))
+                        .build(act_main)
+            },
+            {
+                ps_to_reload_notices.onNext(Any())
+            })
+    }
+
+    private fun clickedDeleteNotice(notice_id: Long)
+    {
+        BuilderDialogMy()
+                .setViewId(R.layout.la_dialog_simple)
+                .setTitle(getStringMy(R.string.deleting))
+                .setText(getStringMy(R.string.delete_this_notice))
+                .setBtnOk(BtnAction(getStringMy(R.string.delete),
+                    {
+                        base_networker.deleteNotice(notice_id,
+                            {
+                                ps_to_reload_notices.onNext(Any())
+                            },
+                            {
+                                ps_to_reload_notices.onNext(Any())
+                            })
+                    }))
+                .setBtnCancel(BtnAction.getDefaultCancel())
+                .build(act_main)
+    }
+
 
     inner class PresenterImplementer() : LaNewsMvp.Presenter
     {
@@ -154,7 +191,7 @@ class TabNews(val act_main: ActMain) : TabPresenter
                     .setTitle(notice.title)
                     .addBtn(BtnAction(getStringMy(R.string.watching),
                         {
-
+                            showNotice(notice_id)
                         }))
                     .addBtn(BtnAction(getStringMy(R.string.editing),
                         {
@@ -165,7 +202,7 @@ class TabNews(val act_main: ActMain) : TabPresenter
                         }))
                     .addBtn(BtnAction(getStringMy(R.string.delete),
                         {
-
+                            clickedDeleteNotice(notice_id)
                         }))
                     .show(act_main.supportFragmentManager)
         }

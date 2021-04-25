@@ -117,7 +117,7 @@ class ValidationData(var is_valid: Boolean = true, var errors: ArrayList<String>
         }
     }
 
-    fun show(act: AppCompatActivity)
+    fun showErrors(act: AppCompatActivity)
     {
         BuilderAlerter.getRedBuilder(this.getErrorMessage())
                 .show(act)
@@ -204,6 +204,27 @@ class ValidationManager
                 data.is_valid = false
             }
 
+            return data
+        }
+
+        fun validateNoteAdd(names: ArrayList<*>?): ValidationData
+        {
+            val data = ValidationData()
+            if (names.isNullOrEmpty())
+            {
+                data.is_valid = false
+                data.errors.add("Необходимо добавить минимум одно имя")
+            }
+
+            return data
+        }
+
+        fun validateUserEdit(first_name: String?, last_name: String?, email: String?): ValidationData
+        {
+            val data = ValidationData()
+            data.validateNotNullString(first_name, "Имя", 2)
+            data.validateNotNullString(last_name, "Фамилия", 2)
+            data.validateEmail(email)
             return data
         }
 

@@ -103,4 +103,9 @@ class LaCarouselMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         bnd_act_carousel.larRoot.setBackgroundColor(color)
     }
+
+    override fun getCurrentPos(): Int
+    {
+        return bnd_act_carousel.vp.currentItem
+    }
 }

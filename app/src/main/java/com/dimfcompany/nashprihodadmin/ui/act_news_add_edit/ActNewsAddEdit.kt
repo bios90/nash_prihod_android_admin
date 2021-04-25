@@ -122,7 +122,7 @@ class ActNewsAddEdit : BaseActivity()
             val data = ValidationManager.validateNewsAddEdit(news)
             if (!data.is_valid)
             {
-                data.show(this@ActNewsAddEdit)
+                data.showErrors(this@ActNewsAddEdit)
                 return
             }
 

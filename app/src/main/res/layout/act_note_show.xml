@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_trans_50">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="16dp"
+            android:background="@{BuilderBg.getSimpleDrawable(10f, BuilderBg.gc(R.color.white))}"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/lar_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    android:id="@+id/tv_for_health_type"
+                    style="@style/TvBold.Xl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    tools:text="О Здравии" />
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    style="@style/TvReg.M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    tools:text="Ожидает прочтения" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lar_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lar_top"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="16dp"
+                android:background="@{BuilderBg.getSimpleDrawableRipple(0f,BuilderBg.gc(R.color.transparent),BuilderBg.gc(R.color.blue_trans_50))}"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <include
+                    android:id="@+id/cv_avatar"
+                    layout="@layout/cv_circle_image"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_toRightOf="@id/cv_avatar"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        style="@style/TvReg.L"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:lines="1"
+                        android:textColor="@color/blue"
+                        tools:text="Бесядовский Филипп" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        style="@style/TvReg.S"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:lines="1"
+                        android:textColor="@color/gray7"
+                        tools:text="23 декабря 2020 - 9:32" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/lar_donation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lar_author"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    style="@style/TvReg.M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Пожертвование:" />
+
+                <TextView
+                    android:id="@+id/tv_donation"
+                    style="@style/TvBold.M"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/green"
+                    tools:text="100 р." />
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lar_donation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_names"
+                        style="@style/TvReg.M"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:padding="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_readed"
+                        style="@style/TvBold.L"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="16dp"
+                        android:background="@{BuilderBg.getSimpleDrawableRipple(4f,BuilderBg.gc(R.color.blue),BuilderBg.gc(R.color.blue_dark))}"
+                        android:elevation="12dp"
+                        android:text="@string/readed"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

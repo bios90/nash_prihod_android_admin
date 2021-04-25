@@ -2,13 +2,19 @@ package com.dimfcompany.nashprihodadmin.logic.utils.builders
 
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.IntentCompat
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.dimfcompany.nashprihodadmin.base.enums.TypeActivityAnim
 import com.dimfcompany.nashprihodadmin.base.extensions.myPutExtra
+import com.github.florent37.inlineactivityresult.kotlin.coroutines.startForResult
 import com.github.florent37.inlineactivityresult.kotlin.startForResult
+import com.github.florent37.inlineactivityresult.request.Request
+import com.github.florent37.inlineactivityresult.request.RequestFabric
 import java.lang.RuntimeException
 
 class BuilderIntent()
@@ -26,6 +32,7 @@ class BuilderIntent()
     private var on_start_action: (() -> Unit)? = null
     private var type_anim: TypeActivityAnim? = null
     private var slider: TypeSlider? = null
+    private var transition_pairs: HashMap<View, String> = hashMapOf()
 
     fun setActivityToStart(act_class: Class<out AppCompatActivity>): BuilderIntent
     {
@@ -82,6 +89,12 @@ class BuilderIntent()
         return this
     }
 
+    fun addTransition(view: View, name: String): BuilderIntent
+    {
+        this.transition_pairs.put(view, name)
+        return this
+    }
+
     fun startActivity(activity_from: AppCompatActivity)
     {
         if (class_to_start == null)
@@ -104,16 +117,23 @@ class BuilderIntent()
             {
                 intent.flags = it
             })
-//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//        flags.forEach(
-//            { flag ->
-//
-//                intent.addFlags(flag)
-//            })
+
+        var transition_options: Bundle? = null
+        if (!transition_pairs.isNullOrEmpty())
+        {
+            val pairs = transition_pairs.map(
+                {
+                    return@map androidx.core.util.Pair(it.key, it.value)
+                })
+                    .toTypedArray()
+            transition_options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity_from, *pairs).toBundle()
+        }
+
 
         if (ok_lambda != null || cancel_lambda != null)
         {
-            activity_from.startForResult(intent)
+            val request = RequestFabric.create(intent, transition_options)
+            activity_from.startForResult(request)
             { result ->
 
                 ok_lambda?.invoke(result.data)
@@ -122,10 +142,11 @@ class BuilderIntent()
 
                     cancel_lambda?.invoke(result.data)
                 })
+
         }
         else
         {
-            activity_from.startActivity(intent)
+            activity_from.startActivity(intent, transition_options)
         }
 
         slider?.let(

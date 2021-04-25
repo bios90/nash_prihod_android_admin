@@ -4,10 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.dimfcompany.nashprihodadmin.R
+import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
+import com.dimfcompany.nashprihodadmin.base.extensions.makeCallIntent
+import com.dimfcompany.nashprihodadmin.base.extensions.makeEmailIntent
 import com.dimfcompany.nashprihodadmin.base.extensions.toVisibility
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.ItemAboutUserBinding
 import com.dimfcompany.nashprihodadmin.databinding.LaProfileBinding
+import com.dimfcompany.nashprihodadmin.logic.SharedPrefsManager
 import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
@@ -22,6 +26,8 @@ class LaProfileMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     {
         bnd_la_profile = DataBindingUtil.inflate(layoutInflater, R.layout.la_profile, parent, false)
         setRootView(bnd_la_profile.root)
+
+        setListeners()
     }
 
     override fun bindUser(user: ModelUser)
@@ -35,6 +41,7 @@ class LaProfileMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
             {
                 getPresenter().clickedEdit()
             })
+
         bnd_la_profile.tvBtnLogout.setOnClickListener(
             {
                 getPresenter().clickedLogOut()
@@ -44,7 +51,7 @@ class LaProfileMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
 
 fun ItemAboutUserBinding.bindUser(user: ModelUser)
 {
-    GlideManager.loadImage(this.cvAvatar.imgImg, user.avatar?.url)
+    GlideManager.loadImage(this.cvAvatar.imgImg, user.avatar?.url,show_failed_images = false)
 
     this.tvName.text = user.getFullName()
     this.tvEmail.text = user.email
@@ -61,4 +68,20 @@ fun ItemAboutUserBinding.bindUser(user: ModelUser)
 
     this.tvAboutMe.text = user.about_me
     this.tvAboutMe.visibility = (user.about_me != null).toVisibility()
+
+
+    if (user.id != SharedPrefsManager.pref_current_user.get().value?.id)
+    {
+        this.lalPhone.setOnClickListener(
+            {
+                val phone = user.phone ?: return@setOnClickListener
+                makeCallIntent(phone)
+            })
+
+        this.lalEmail.setOnClickListener(
+            {
+                val email = user.email ?: return@setOnClickListener
+                makeEmailIntent(email, null, getStringMy(R.string.letter_from_nash_prihod_app))
+            })
+    }
 }

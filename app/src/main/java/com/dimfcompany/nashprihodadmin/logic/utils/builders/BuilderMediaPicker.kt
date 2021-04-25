@@ -10,10 +10,10 @@ import com.dimfcompany.nashprihodadmin.base.extensions.disposeBy
 import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
 import com.dimfcompany.nashprihodadmin.base.extensions.runActionWithDelay
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
+import com.dimfcompany.nashprihodadmin.logic.utils.PermissionManager
 import com.dimfcompany.nashprihodadmin.logic.utils.files.FileManager
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.github.florent37.inlineactivityresult.kotlin.startForResult
-import com.justordercompany.barista.logic.utils.PermissionManager
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

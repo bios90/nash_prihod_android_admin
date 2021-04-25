@@ -53,6 +53,22 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/img_bg" />
+
+        <TextView
+            android:id="@+id/tv"
+            style="@style/TvFawReg.Xxl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="22dp"
+            android:text="Hell world!!!"
+            android:textColor="@color/gray6" />
+
     </RelativeLayout>
 
 </layout>

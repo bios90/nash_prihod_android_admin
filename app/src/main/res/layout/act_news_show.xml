@@ -33,10 +33,7 @@
                 <RelativeLayout
                     android:id="@+id/lar_for_carousel"
                     android:layout_width="match_parent"
-                    android:layout_height="340dp">
-
-
-                </RelativeLayout>
+                    android:layout_height="340dp"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"

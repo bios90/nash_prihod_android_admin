@@ -125,9 +125,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lal_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:background="@{BuilderBg.getSimpleDrawableRipple(0f,BuilderBg.gc(R.color.transparent),BuilderBg.gc(R.color.blue_trans_50))}"
             android:orientation="horizontal">
 
             <TextView
@@ -167,6 +169,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:background="@{BuilderBg.getSimpleDrawableRipple(0f,BuilderBg.gc(R.color.transparent),BuilderBg.gc(R.color.blue_trans_50))}"
             android:orientation="horizontal">
 
             <TextView

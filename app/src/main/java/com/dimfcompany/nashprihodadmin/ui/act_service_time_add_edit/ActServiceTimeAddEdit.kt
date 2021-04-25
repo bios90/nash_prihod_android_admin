@@ -88,7 +88,7 @@ class ActServiceTimeAddEdit : BaseActivity()
             val data = ValidationManager.validateServiceTimeAddEdit(timetable_time)
             if (!data.is_valid)
             {
-                data.show(this@ActServiceTimeAddEdit)
+                data.showErrors(this@ActServiceTimeAddEdit)
                 return
             }
 

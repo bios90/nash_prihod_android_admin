@@ -10,7 +10,7 @@ import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.rucode.autopass.logic.utils.images.GlideManager
 
-class AdapterUsers : BaseRvAdapter<ModelUser, ItemUserBinding>()
+class AdapterRvUsers : BaseRvAdapter<ModelUser, ItemUserBinding>()
 {
     override val layout_id: Int = R.layout.item_user
     override val diff_class: Class<out BaseDiff<ModelUser>> = DiffUsers::class.java
@@ -29,7 +29,7 @@ class AdapterUsers : BaseRvAdapter<ModelUser, ItemUserBinding>()
 
 fun ItemUserBinding.bindUser(user: ModelUser)
 {
-    GlideManager.loadImage(this.cvAvatar.imgImg, user.avatar?.url)
+    GlideManager.loadImage(this.cvAvatar.imgImg, user.avatar?.url,show_failed_images = false)
 
     this.tvName.text = user.getFullName()
     this.tvEmail.text = user.email ?: " "

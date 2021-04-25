@@ -13,6 +13,7 @@ import com.dimfcompany.nashprihodadmin.base.adapters.BaseRvListener
 import com.dimfcompany.nashprihodadmin.base.extensions.dp2pxInt
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
 import com.dimfcompany.nashprihodadmin.base.extensions.setDivider
+import com.dimfcompany.nashprihodadmin.base.extensions.toVisibility
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpViewImpl
 import com.dimfcompany.nashprihodadmin.databinding.LaNewsBinding
 import com.dimfcompany.nashprihodadmin.logic.models.ModelNews
@@ -42,6 +43,9 @@ class LaNewsMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     override fun bindNoticesItems(info: FeedDisplayInfo<ModelNotice>)
     {
         adapter_rv_notices.setItems(info)
+
+        val need_to_show_top_view = (info.items.size > 0).toVisibility()
+        bnd_la_news.recNotices.visibility = need_to_show_top_view
     }
 
     private fun setListeners()

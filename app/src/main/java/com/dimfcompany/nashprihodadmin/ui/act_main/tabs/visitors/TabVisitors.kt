@@ -1,17 +1,21 @@
 package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors
 
+import android.util.Log
 import android.view.View
 import com.dimfcompany.akcsl.base.FeedDisplayInfo
 import com.dimfcompany.akcsl.base.LoadBehavior
+import com.dimfcompany.nashprihodadmin.base.BusMainEvents
 import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.base.extensions.disposeBy
 import com.dimfcompany.nashprihodadmin.base.extensions.mainThreaded
+import com.dimfcompany.nashprihodadmin.base.getPosOfObject
 import com.dimfcompany.nashprihodadmin.logic.models.FilterDataUsers
 import com.dimfcompany.nashprihodadmin.logic.models.ModelUser
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsers
 import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
+import com.dimfcompany.nashprihodadmin.ui.act_user_show.ActUserShow
 import io.reactivex.subjects.BehaviorSubject
 import java.util.concurrent.TimeUnit
 
@@ -35,6 +39,28 @@ class TabVisitors(val act_main: ActMain) : TabPresenter
 
     private fun setEvents()
     {
+        BusMainEvents.ps_user_updated
+                .mainThreaded()
+                .subscribe(
+                    {
+                        val current_user = bs_users.value ?: return@subscribe
+                        if (current_user.getPosOfObject(it) != null)
+                        {
+                            reloadUsers()
+                        }
+                    })
+                .disposeBy(composite_disposable)
+
+        BusMainEvents.bs_push_clicked
+                .mainThreaded()
+                .subscribe(
+                    {
+                        val user_id = it.new_user_id ?: return@subscribe
+                        toUserShowActivity(user_id)
+                        reloadUsers()
+                    })
+                .disposeBy(composite_disposable)
+
         bs_filter_data
                 .mainThreaded()
                 .subscribe(
@@ -65,6 +91,14 @@ class TabVisitors(val act_main: ActMain) : TabPresenter
             })
     }
 
+    private fun toUserShowActivity(user_id: Long)
+    {
+        BuilderIntent()
+                .setActivityToStart(ActUserShow::class.java)
+                .addParam(Constants.Extras.USER_ID, user_id)
+                .startActivity(act_main)
+    }
+
     inner class PresenterImplementer() : LaVisitorsMvp.Presenter
     {
         override fun clickedFilter()
@@ -85,7 +119,8 @@ class TabVisitors(val act_main: ActMain) : TabPresenter
 
         override fun clickedUser(user: ModelUser)
         {
-
+            val user_id = user.id ?: return
+            toUserShowActivity(user_id)
         }
 
         override fun swipedToRefresh()

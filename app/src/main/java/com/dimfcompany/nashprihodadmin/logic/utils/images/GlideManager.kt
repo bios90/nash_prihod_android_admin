@@ -12,6 +12,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.AppClass
@@ -35,7 +36,9 @@ class GlideManager
             return circularProgressDrawable
         }
 
-        fun loadImage(imageView: ImageView, url: String?, img_width: Int? = null, img_height: Int? = null, show_failed_images: Boolean = true)
+        fun loadImage(imageView: ImageView, url: String?, img_width: Int? = null, img_height: Int? = null, show_failed_images: Boolean = true,
+                      action_success: (() -> Unit)? = null,
+                      action_error: (() -> Unit)? = null)
         {
             var builder = Glide.with(imageView)
                     .load(url)
@@ -61,11 +64,14 @@ class GlideManager
                         }
                     }
 
+                    action_error?.invoke()
+
                     return true
                 }
 
                 override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean
                 {
+                    action_success?.invoke()
                     return false
                 }
             })
@@ -75,6 +81,7 @@ class GlideManager
                 builder = builder.override(img_width, img_height)
             }
 
+//            builder = builder.apply(RequestOptions().dontTransform())
             builder.into(imageView)
         }
     }

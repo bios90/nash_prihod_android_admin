@@ -1,7 +1,6 @@
 package com.dimfcompany.nashprihodadmin.ui.act_service_add_edit
 
 import android.os.Bundle
-import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.BusMainEvents
@@ -11,16 +10,13 @@ import com.dimfcompany.nashprihodadmin.logic.ValidationManager
 import com.dimfcompany.nashprihodadmin.logic.models.ModelService
 import com.dimfcompany.nashprihodadmin.logic.models.ModelServiceText
 import com.dimfcompany.nashprihodadmin.logic.models.ModelServiceTime
-import com.dimfcompany.nashprihodadmin.logic.models.responses.RespNewsSingle
 import com.dimfcompany.nashprihodadmin.logic.models.responses.RespServiceSingle
-import com.dimfcompany.nashprihodadmin.logic.models.responses.RespServiceTime
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
 import com.dimfcompany.nashprihodadmin.logic.utils.DateManager
 import com.dimfcompany.nashprihodadmin.logic.utils.addDays
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.*
 import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
 import com.dimfcompany.nashprihodadmin.networking.BaseNetworker
-import com.dimfcompany.nashprihodadmin.networking.apis.makeInsertOrUpdateNews
 import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTimeAddEdit
 import io.reactivex.subjects.BehaviorSubject
@@ -235,7 +231,7 @@ class ActServiceAddEdit : BaseActivity()
             val data = ValidationManager.validateServiceAddEdit(title, date, times)
             if (!data.is_valid)
             {
-                data.show(this@ActServiceAddEdit)
+                data.showErrors(this@ActServiceAddEdit)
                 return
             }
 

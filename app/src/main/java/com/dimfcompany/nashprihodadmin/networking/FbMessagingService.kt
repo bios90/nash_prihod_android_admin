@@ -3,8 +3,10 @@ package com.dimfcompany.nashprihodadmin.networking
 import android.util.Log
 import com.dimfcompany.nashprihodadmin.base.extensions.asOptional
 import com.dimfcompany.nashprihodadmin.logic.SharedPrefsManager
+import com.dimfcompany.nashprihodadmin.logic.utils.NotificationManager
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
 
 class FbMessagingService : FirebaseMessagingService()
 {
@@ -16,11 +18,18 @@ class FbMessagingService : FirebaseMessagingService()
         subscribeToTopic()
     }
 
+    override fun onMessageReceived(p0: RemoteMessage)
+    {
+        super.onMessageReceived(p0)
+        NotificationManager.notify(p0)
+    }
+
     private fun subscribeToTopic()
     {
-        FirebaseMessaging.getInstance().subscribeToTopic("ak_news_admins")
+        FirebaseMessaging.getInstance().subscribeToTopic("nash_prihod_admins")
                 .addOnSuccessListener(
                     {
+                        Log.e("FbMessagingService", "subscribeToTopic: Success register on topic")
                     })
     }
 }

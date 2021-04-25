@@ -39,6 +39,10 @@ interface ApiNews
 
     @GET(Constants.Urls.GET_NOTICE_BY_ID)
     suspend fun getNoticeById(@Query("notice_id") news_id: Long): Response<ResponseBody>
+
+    @FormUrlEncoded
+    @POST(Constants.Urls.DELETE_NOTICE)
+    suspend fun deleteNotice(@Field("notice_id") news_id: Long): Response<ResponseBody>
 }
 
 suspend fun ApiNews.makeInsertOrUpdateNews(news: ModelNews, media_ids: ArrayList<Long>?): Response<ResponseBody>

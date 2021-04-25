@@ -92,3 +92,8 @@ interface ViewWithOverlay
         view_overlay?.animateFadeIn(duration, visibility)
     }
 }
+
+interface ViewWithTransition
+{
+    var ready_for_transition_action: ((View) -> Unit)?
+}

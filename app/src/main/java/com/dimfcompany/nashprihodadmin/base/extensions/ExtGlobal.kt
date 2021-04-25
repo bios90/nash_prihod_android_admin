@@ -26,17 +26,21 @@ import android.widget.HorizontalScrollView
 import android.widget.ScrollView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.ColorUtils
 import com.dimfcompany.nashprihodadmin.base.AppClass
-import io.reactivex.Observable
+import com.google.firebase.messaging.RemoteMessage
 import io.reactivex.subjects.BehaviorSubject
 import kotlinx.coroutines.*
 import okhttp3.ResponseBody
 import retrofit2.Response
 import java.io.Serializable
+import kotlin.reflect.KClass
+import kotlin.reflect.typeOf
 
-fun <T> T.sendInBs(bs:BehaviorSubject<T>)
+
+fun <T> T.sendInBs(bs: BehaviorSubject<T>)
 {
     bs.onNext(this)
 }
@@ -76,6 +80,7 @@ fun runRepeatingAction(scope: CoroutineScope = GlobalScope, interval: Int, actio
         for (i in 0..max_repeat)
         {
             action(i)
+            delay(interval.toLong())
         }
     })
 }
@@ -261,10 +266,34 @@ fun openAppSettings()
     intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
     intent.addCategory(Intent.CATEGORY_DEFAULT)
     intent.data = Uri.parse("package:" + AppClass.app.packageName)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
-    intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+    intent.applyShareFlags()
     AppClass.app.startActivity(intent)
+}
+
+fun makeCallIntent(phone: String)
+{
+    val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
+    intent.applyShareFlags()
+    AppClass.app.startActivity(intent)
+}
+
+fun makeEmailIntent(whom: String?, text: String?, subj: String?)
+{
+    val intent = Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+        "mailto", whom, null))
+    intent.putExtra(Intent.EXTRA_SUBJECT, subj)
+    intent.putExtra(Intent.EXTRA_TEXT, text);
+
+    val chooser = Intent.createChooser(intent, "Отправить email")
+    chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    try
+    {
+        AppClass.app.startActivity(chooser)
+    }
+    catch (e: java.lang.Exception)
+    {
+        e.printStackTrace()
+    }
 }
 
 
@@ -457,12 +486,13 @@ fun View.setWidth(widthToSet: Int)
 //EditText
 fun EditText.getNullableText(): String?
 {
-    if (TextUtils.isEmpty(this.text.toString().trim()))
+    val formatted = this.text.toString().trim()
+    if (TextUtils.isEmpty(formatted))
     {
         return null
     }
 
-    return this.text.toString().trim()
+    return formatted
 }
 
 //Alert Dialog
@@ -481,3 +511,57 @@ fun ScrollView.scrollBottom()
     smoothScrollTo(0, this.bottom)
 }
 
+fun Boolean.toInt(): Int
+{
+    return if (this) 1 else 0
+}
+
+fun RemoteMessage.getInt(key: String): Int?
+{
+    val data = this.getData() as Map<String, String>
+    return data.get(key)?.toIntOrNull()
+}
+
+fun RemoteMessage.getLong(key: String): Long?
+{
+    val data = this.getData() as Map<String, String>
+    return data.get(key)?.toLongOrNull()
+}
+
+fun RemoteMessage.getString(key: String): String?
+{
+    val data = this.getData() as Map<String, String>
+    return data.get(key)
+}
+
+
+inline fun <reified T : kotlin.Enum<T>> initEnumFromString(str: String): T?
+{
+    try
+    {
+        val type = java.lang.Enum.valueOf(T::class.java, str)
+        return type
+    }
+    catch (e: Exception)
+    {
+        try
+        {
+            val type = java.lang.Enum.valueOf(T::class.java, str.toLowerCase())
+            return type
+        }
+        catch (e: Exception)
+        {
+            try
+            {
+                val type = java.lang.Enum.valueOf(T::class.java, str.toUpperCase())
+                return type
+            }
+            catch (e: Exception)
+            {
+
+            }
+        }
+    }
+
+    return null
+}

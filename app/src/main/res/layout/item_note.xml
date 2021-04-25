@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -10,42 +10,118 @@
         <import type="com.dimfcompany.nashprihodadmin.R" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_user_note"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="4dp"
-        android:elevation="12dp">
-        <LinearLayout
+        android:background="@{BuilderBg.getSimpleDrawableRipple(4f,BuilderBg.gc(R.color.white),BuilderBg.gc(R.color.blue_trans_50))}"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp">
 
             <TextView
-                android:id="@+id/tv_user_note_date"
+                android:id="@+id/tv_for_health_type"
+                style="@style/TvBold.Xl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                tools:text="О Здравии" />
+
+            <TextView
+                android:id="@+id/tv_status"
                 style="@style/TvReg.M"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:text="ДД ММ ГГГГ - ЧЧ:MM"/>
-            <TextView
-                android:id="@+id/tv_user_note_type"
-                style="@style/TvBold.Xl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textAlignment="viewStart"
-                android:textColor="@color/red"
-                android:text="Тип записки"/>
-            <TextView
-                style="@style/TvReg.S"
-                android:id="@+id/tv_user_note_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:text="Введите имена христиан, крещеных в Православной Церкви"/>
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_for_health_type"
+                android:gravity="right"
+                tools:text="Ожидает прочтения" />
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_names"
+            style="@style/TvReg.S"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:maxLines="4"
+            tools:text="Евгения,  Анатолия, Симеона, Андрея, Марии, Марии, Валентины, Елены, Ивана, Анатолия, иерея Валерия, Дмитрия, Ксении, Софии, Надежды, Раи, Максима, Анны, Евгения,  Анатолия, Симеона, Андрея, Марии, Марии, Валентины, Елены, Ивана, Анатолия, иерея Валерия, Дмитрия, Ксении, Софии, Надежды, Раи, Максима, Анны  " />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <include
+                android:id="@+id/cv_avatar"
+                layout="@layout/cv_circle_image"
+                android:layout_width="58dp"
+                android:layout_height="58dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_toLeftOf="@id/tv_donation"
+                android:layout_toRightOf="@id/cv_avatar"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    style="@style/TvReg.L"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="1"
+                    android:textColor="@color/blue"
+                    tools:text="Бесядовский Филипп" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    style="@style/TvReg.S"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:lines="1"
+                    android:textColor="@color/gray7"
+                    tools:text="23 декабря 2020 - 9:32" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/tv_donation"
+                style="@style/TvBold.S"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/green"
+                tools:text="100 р." />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 
 </layout>

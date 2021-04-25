@@ -63,7 +63,7 @@ class ActNoticeAddEdit : BaseActivity()
             val data = ValidationManager.validateNoticeAddEdit(notice)
             if (!data.is_valid)
             {
-                data.show(this@ActNoticeAddEdit)
+                data.showErrors(this@ActNoticeAddEdit)
                 return
             }
 

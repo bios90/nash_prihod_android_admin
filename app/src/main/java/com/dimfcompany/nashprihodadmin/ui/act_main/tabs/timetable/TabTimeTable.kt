@@ -54,6 +54,7 @@ class TabTimeTable(val act_main: ActMain) : TabPresenter
                 .mainThreaded()
                 .subscribe(
                     {
+                        Log.e("TabTimeTable", "setEvents: clicked to realod servicesss ")
                         base_networker.getServices(
                             {
                                 mvp_view.bindServices(FeedDisplayInfo(it, LoadBehavior.UPDATE))

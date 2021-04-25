@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{BuilderBg.getSimpleDrawableRipple(4f,BuilderBg.gc(R.color.white),BuilderBg.gc(R.color.blue_trans_50))}"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="12dp"
+        android:orientation="vertical"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/tv_date"
+            style="@style/TvBold.S"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="16dp"
+            android:gravity="left"
+            tools:text="22 fdt 2020"
+            android:textColor="@color/gray5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="16dp">
+
+            <TextView
+                android:id="@+id/tv_for_health_type"
+                style="@style/TvBold.Xl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                tools:text="О Здравии" />
+
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/TvBold.M"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/green"
+                tools:text="100 р." />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_names"
+            style="@style/TvReg.S"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:maxLines="4"
+            tools:text="Евгения,  Анатолия, Симеона, Андрея, Марии, Марии, Валентины, Елены, Ивана, Анатолия, иерея Валерия, Дмитрия, Ксении, Софии, Надежды, Раи, Максима, Анны, Евгения,  Анатолия, Симеона, Андрея, Марии, Марии, Валентины, Елены, Ивана, Анатолия, иерея Валерия, Дмитрия, Ксении, Софии, Надежды, Раи, Максима, Анны  " />
+
+    </LinearLayout>
+
+</layout>

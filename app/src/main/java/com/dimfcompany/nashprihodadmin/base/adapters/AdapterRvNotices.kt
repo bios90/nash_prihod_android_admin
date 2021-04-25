@@ -29,8 +29,3 @@ fun ItemNoticeBinding.bindNotice(notice: ModelNotice)
     this.tvText.text = notice.text
     this.tvDate.text = notice.updated?.formatToString()
 }
-
-fun String.doubleString(): String
-{
-    return this + this
-}

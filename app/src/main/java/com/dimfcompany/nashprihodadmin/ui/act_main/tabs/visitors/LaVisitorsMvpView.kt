@@ -3,10 +3,9 @@ package com.dimfcompany.nashprihodadmin.ui.act_main.tabs.visitors
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.dimfcompany.akcsl.base.FeedDisplayInfo
 import com.dimfcompany.nashprihodadmin.R
-import com.dimfcompany.nashprihodadmin.base.adapters.AdapterUsers
+import com.dimfcompany.nashprihodadmin.base.adapters.AdapterRvUsers
 import com.dimfcompany.nashprihodadmin.base.adapters.CustomLaManager
 import com.dimfcompany.nashprihodadmin.base.extensions.applyMyStyle
 import com.dimfcompany.nashprihodadmin.base.extensions.dp2pxInt
@@ -20,7 +19,7 @@ class LaVisitorsMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
     : BaseMvpViewImpl<LaVisitorsMvp.Presenter>(), LaVisitorsMvp.MvpView
 {
     val bnd_la_visitors: LaVisitorsBinding
-    val adapater = AdapterUsers()
+    val adapater = AdapterRvUsers()
 
     init
     {

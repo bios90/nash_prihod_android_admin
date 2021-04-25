@@ -100,4 +100,11 @@ class ModuleNetworking
     {
         return retrofit.create(ApiService::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideApiNotes(retrofit: Retrofit): ApiNotes
+    {
+        return retrofit.create(ApiNotes::class.java)
+    }
 }

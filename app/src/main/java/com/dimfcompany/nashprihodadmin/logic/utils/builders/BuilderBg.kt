@@ -329,7 +329,8 @@ class BuilderBg
                 corner_left_top: Float = 0f,
                 corner_right_top: Float = 0f,
                 corner_right_bottom: Float = 0f,
-                corner_left_bottom: Float = 0f
+                corner_left_bottom: Float = 0f,
+                stroke_width: Float = 1f
         ): StateListDrawable
         {
             val drw_selected: () -> Drawable = (
@@ -348,7 +349,7 @@ class BuilderBg
                                 .isDpMode(true)
                                 .setBgColor(color_selected.applyTransparency(50))
                                 .setRippleColor(color_selected.applyTransparency(50))
-                                .setStrokeWidth(1f)
+                                .setStrokeWidth(stroke_width)
                                 .setStrokeColor(color_stroke)
                                 .setCornerRadiuses(corner_left_top, corner_right_top, corner_right_bottom, corner_left_bottom)
                                 .get()
@@ -359,7 +360,7 @@ class BuilderBg
                         BuilderBg()
                                 .isDpMode(true)
                                 .setBgColor(color_empty)
-                                .setStrokeWidth(1f)
+                                .setStrokeWidth(stroke_width)
                                 .setStrokeColor(color_stroke)
                                 .setRippleColor(color_selected.darken())
                                 .setCornerRadiuses(corner_left_top, corner_right_top, corner_right_bottom, corner_left_bottom)

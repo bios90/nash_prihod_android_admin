@@ -1,18 +1,13 @@
 package com.dimfcompany.nashprihodadmin.ui.act_register
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.base.extensions.*
 import com.dimfcompany.nashprihodadmin.logic.ValidationManager
-import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
-import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderDialogBottom
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
-import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
 import io.reactivex.subjects.BehaviorSubject
 
 class ActRegister : BaseActivity()
@@ -78,7 +73,7 @@ class ActRegister : BaseActivity()
             val data = ValidationManager.validateRegister(first_name, last_name, email, password_1, password_2)
             if (!data.is_valid)
             {
-                data.show(this@ActRegister)
+                data.showErrors(this@ActRegister)
                 return
             }
 

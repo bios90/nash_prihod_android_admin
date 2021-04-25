@@ -3,6 +3,7 @@ package com.dimfcompany.nashprihodadmin.networking
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.ObjWithMedia
 import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
+import com.dimfcompany.nashprihodadmin.base.enums.TypeNoteStatus
 import com.dimfcompany.nashprihodadmin.base.enums.TypeSort
 import com.dimfcompany.nashprihodadmin.base.enums.TypeUserStatus
 import com.dimfcompany.nashprihodadmin.base.extensions.addParseCheckerForObj
@@ -14,10 +15,7 @@ import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderNet
 import com.dimfcompany.nashprihodadmin.logic.utils.files.FileManager
 import com.dimfcompany.nashprihodadmin.logic.utils.files.MyFileItem
 import com.dimfcompany.nashprihodadmin.logic.utils.formatToString
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiFiles
-import com.dimfcompany.nashprihodadmin.networking.apis.ApiService
-import com.dimfcompany.nashprihodadmin.networking.apis.getUsersMy
-import com.dimfcompany.nashprihodadmin.networking.apis.makeInsertOrUpdateNotice
+import com.dimfcompany.nashprihodadmin.networking.apis.*
 import okhttp3.MultipartBody
 import javax.inject.Inject
 
@@ -335,6 +333,26 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
                 .run()
     }
 
+    fun deleteNotice(notice_id: Long, action_success: () -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<BaseResponse>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_news.deleteNotice(notice_id)
+                    })
+                .setObjClass(BaseResponse::class.java)
+                .setActionSuccess(
+                    {
+                        action_success()
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
     fun getUsers(search: String?, status: TypeUserStatus?, sort: TypeSort?, action_success: (ArrayList<ModelUser>) -> Unit, action_error: ((Throwable) -> Unit)? = null)
     {
         BuilderNet<RespUsers>()
@@ -426,6 +444,126 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
                 .setActionResponseBody(
                     {
                         base_act.api_users.getUserById(user_id)
+                    })
+                .setObjClass(RespUserSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        return@setActionParseChecker it.user?.id != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.user!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun insertNote(note: ModelNote, action_success: (ModelNote) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNoteSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_notes.insertNoteMy(note)
+                    })
+                .setObjClass(RespNoteSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        return@setActionParseChecker it.note?.id != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.note!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun getNotes(status: TypeNoteStatus?, user_id: Long?, search: String?, action_success: (ArrayList<ModelNote>) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNotes>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_notes.getNotes(status?.getNameForServer(), user_id, search)
+                    })
+                .setObjClass(RespNotes::class.java)
+                .setActionParseChecker(
+                    {
+                        return@setActionParseChecker it.notes != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.notes!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun getNoteById(note_id: Long, action_success: (ModelNote) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNoteSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_notes.getNoteById(note_id)
+                    })
+                .setObjClass(RespNoteSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        return@setActionParseChecker it.note?.id != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.note!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun changeNoteStatus(note_id: Long, status: TypeNoteStatus, reader_id: Long, action_success: (ModelNote) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespNoteSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_notes.changeNoteStatus(note_id, status.getNameForServer(), reader_id)
+                    })
+                .setObjClass(RespNoteSingle::class.java)
+                .setActionParseChecker(
+                    {
+                        return@setActionParseChecker it.note?.id != null
+                    })
+                .setActionSuccess(
+                    {
+                        action_success(it.note!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+    fun changeUserStatus(user_id: Long, status: TypeUserStatus, action_success: (ModelUser) -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<RespUserSingle>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_users.setUserStatus(user_id, status.getNameForServer())
                     })
                 .setObjClass(RespUserSingle::class.java)
                 .setActionParseChecker(

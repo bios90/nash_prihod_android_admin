@@ -17,7 +17,6 @@ class ActCarouselFullscreenMvpView(layoutInflater: LayoutInflater, parent: ViewG
     {
         bnd_carouselFullscreen = DataBindingUtil.inflate(layoutInflater, R.layout.act_carousel_fullscreen, parent, false)
         setRootView(bnd_carouselFullscreen.root)
-
     }
 
 }

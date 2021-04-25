@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingTop="44dp">
+
+                <include
+                    android:id="@+id/lal_about_user"
+                    layout="@layout/item_about_user" />
+
+                <LinearLayout
+                    my_divider_size="@{8f}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="26dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginRight="26dp"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/tv_edit"
+                        style="@style/TvBold.M"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@{BuilderBg.getSimpleEmptyRipple(4f,BuilderBg.gc(R.color.blue),2f)}"
+                        android:text="@string/edit"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/tv_block"
+                        style="@style/TvBold.M"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@{BuilderBg.getSimpleEmptyRipple(4f,BuilderBg.gc(R.color.red),2f)}"
+                        android:text="@string/block"
+                        android:textColor="@color/red" />
+
+                    <TextView
+                        android:id="@+id/tv_unblock"
+                        style="@style/TvBold.M"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@{BuilderBg.getSimpleEmptyRipple(4f,BuilderBg.gc(R.color.green),2f)}"
+                        android:text="@string/unblock"
+                        android:textColor="@color/green" />
+
+                    <TextView
+                        android:id="@+id/tv_make_active"
+                        style="@style/TvBold.M"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@{BuilderBg.getSimpleEmptyRipple(4f,BuilderBg.gc(R.color.green),2f)}"
+                        android:text="@string/make_active"
+                        android:textColor="@color/green" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TvReg.L"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/notes"
+                    android:textColor="@color/gray8" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rec_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <View
+            android:id="@+id/view_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+
+    </RelativeLayout>
+
+</layout>

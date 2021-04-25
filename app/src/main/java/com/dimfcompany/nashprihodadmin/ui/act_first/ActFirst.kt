@@ -1,14 +1,12 @@
 package com.dimfcompany.nashprihodadmin.ui.act_first
 
 import android.os.Bundle
-import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.Constants
 import com.dimfcompany.nashprihodadmin.base.extensions.asOptional
 import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
 import com.dimfcompany.nashprihodadmin.base.extensions.getStringMy
-import com.dimfcompany.nashprihodadmin.base.extensions.toJsonMy
 import com.dimfcompany.nashprihodadmin.logic.SharedPrefsManager
 import com.dimfcompany.nashprihodadmin.logic.ValidationManager
 import com.dimfcompany.nashprihodadmin.logic.utils.BtnAction
@@ -69,7 +67,7 @@ class ActFirst : BaseActivity()
             val data = ValidationManager.validateLogin(email, password)
             if (!data.is_valid)
             {
-                data.show(this@ActFirst)
+                data.showErrors(this@ActFirst)
                 return
             }
 

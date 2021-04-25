@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderBg" />
+
+        <import type="com.dimfcompany.nashprihodadmin.R" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black_trans_50">
+
+        <RelativeLayout
+            android:id="@+id/lar_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp">
+
+            <include
+                android:id="@+id/cv_avatar"
+                layout="@layout/cv_circle_image"
+                android:layout_width="112dp"
+                android:layout_height="112dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="40dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="56dp"
+                android:background="@{BuilderBg.getSimpleDrawable(10f, BuilderBg.gc(R.color.white))}">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/tv_save"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TvReg.M"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="64dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="left"
+                            android:text="@string/name"
+                            android:textColor="@color/gray4" />
+
+                        <EditText
+                            android:id="@+id/et_name"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@{BuilderBg.getStrokedEt()}" />
+
+                        <TextView
+                            style="@style/TvReg.M"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="left"
+                            android:text="@string/last_name"
+                            android:textColor="@color/gray4" />
+
+                        <EditText
+                            android:id="@+id/et_last_name"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@{BuilderBg.getStrokedEt()}" />
+
+                        <TextView
+                            style="@style/TvReg.M"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="left"
+                            android:text="@string/birthday"
+                            android:textColor="@color/gray4" />
+
+                        <TextView
+                            android:id="@+id/tv_birthday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@{BuilderBg.getStrokedEt()}"
+                            android:gravity="center"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/gray7" />
+
+                        <TextView
+                            style="@style/TvReg.M"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="left"
+                            android:text="@string/nameday"
+                            android:textColor="@color/gray4" />
+
+                        <TextView
+                            android:id="@+id/tv_nameday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@{BuilderBg.getStrokedEt()}"
+                            android:gravity="center"
+                            android:paddingLeft="8dp"
+                            android:paddingTop="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/gray7" />
+
+                        <TextView
+                            style="@style/TvReg.M"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="left"
+                            android:text="@string/email"
+                            android:textColor="@color/gray4" />
+
+                        <EditText
+                            android:id="@+id/et_email"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@{BuilderBg.getStrokedEt()}"
+                            android:inputType="textEmailAddress" />
+
+                        <TextView
+                            style="@style/TvReg.M"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="left"
+                            android:text="@string/phone"
+                            android:textColor="@color/gray4" />
+
+                        <EditText
+                            android:id="@+id/et_phone"
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@{BuilderBg.getStrokedEt()}"
+                            android:inputType="textEmailAddress" />
+
+                        <TextView
+                            style="@style/TvReg.M"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="left"
+                            android:text="@string/about_me"
+                            android:textColor="@color/gray4" />
+
+                        <EditText
+                            android:id="@+id/et_user_about_me"
+                            style="@style/EditText.Multiline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="16dp"
+                            android:background="@{BuilderBg.getStrokedEt()}"
+                            android:textSize="@dimen/size_s" />
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+                <TextView
+                    android:id="@+id/tv_save"
+                    style="@style/TvBold.L"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="16dp"
+                    android:background="@{BuilderBg.getSimpleDrawableRipple(4f,BuilderBg.gc(R.color.blue),BuilderBg.gc(R.color.blue_dark))}"
+                    android:elevation="12dp"
+                    android:text="@string/save"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

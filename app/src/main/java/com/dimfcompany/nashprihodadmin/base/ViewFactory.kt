@@ -4,6 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.dimfcompany.nashprihodadmin.ui.act_carousel_fullscreen.ActCarouselFullscreenMvp
 import com.dimfcompany.nashprihodadmin.ui.act_carousel_fullscreen.ActCarouselFullscreenMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_filter_notes.ActFilterNotes
+import com.dimfcompany.nashprihodadmin.ui.act_filter_notes.ActFilterNotesMvp
+import com.dimfcompany.nashprihodadmin.ui.act_filter_notes.ActFilterNotesMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvp
 import com.dimfcompany.nashprihodadmin.ui.act_filter_users.ActFilterUsersMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_first.ActFirstMvp
@@ -26,6 +29,11 @@ import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_news_show.ActNewsShowMvp
 import com.dimfcompany.nashprihodadmin.ui.act_news_show.ActNewsShowMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_note_add.ActNoteAddMvp
+import com.dimfcompany.nashprihodadmin.ui.act_note_add.ActNoteAddMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_note_show.ActNoteShow
+import com.dimfcompany.nashprihodadmin.ui.act_note_show.ActNoteShowMvp
+import com.dimfcompany.nashprihodadmin.ui.act_note_show.ActNoteShowMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_profile_add_edit.ActProfileAddEditMvp
@@ -38,6 +46,10 @@ import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTi
 import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTimeAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_user_edit.ActUserEditMvp
+import com.dimfcompany.nashprihodadmin.ui.act_user_edit.ActUserEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_user_show.ActUserShowMvp
+import com.dimfcompany.nashprihodadmin.ui.act_user_show.ActUserShowMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvp
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvp
@@ -123,6 +135,11 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
         return ActNoticeAddEditMvpView(layout_inflater, parent)
     }
 
+    fun getActNoteAddMvpView(parent: ViewGroup?): ActNoteAddMvp.MvpView
+    {
+        return ActNoteAddMvpView(layout_inflater, parent)
+    }
+
     fun getActServiceTextAddMvpView(parent: ViewGroup?): ActServiceTextAddEditMvp.MvpView
     {
         return ActServiceTextAddEditMvpView(layout_inflater, parent)
@@ -151,5 +168,25 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
     fun getActNewsShowMvpView(parent: ViewGroup?): ActNewsShowMvp.MvpView
     {
         return ActNewsShowMvpView(layout_inflater, parent)
+    }
+
+    fun getActNoteShowMvpView(parent: ViewGroup?): ActNoteShowMvp.MvpView
+    {
+        return ActNoteShowMvpView(layout_inflater, parent)
+    }
+
+    fun getActUserEditMvpView(parent: ViewGroup?): ActUserEditMvp.MvpView
+    {
+        return ActUserEditMvpView(layout_inflater, parent)
+    }
+
+    fun getActUserShowMvpView(parent: ViewGroup?): ActUserShowMvp.MvpView
+    {
+        return ActUserShowMvpView(layout_inflater, parent)
+    }
+
+    fun getActFilterNotesMvpView(parent: ViewGroup?): ActFilterNotesMvp.MvpView
+    {
+        return ActFilterNotesMvpView(layout_inflater, parent)
     }
 }

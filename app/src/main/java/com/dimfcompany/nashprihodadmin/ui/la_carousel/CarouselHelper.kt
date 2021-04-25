@@ -1,7 +1,10 @@
 package com.dimfcompany.nashprihodadmin.ui.la_carousel
 
+import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -9,14 +12,12 @@ import androidx.lifecycle.lifecycleScope
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.*
 import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
-import com.dimfcompany.nashprihodadmin.base.extensions.disposeBy
-import com.dimfcompany.nashprihodadmin.base.extensions.getColorMy
-import com.dimfcompany.nashprihodadmin.base.extensions.mainThreaded
-import com.dimfcompany.nashprihodadmin.base.extensions.runActionWithDelay
+import com.dimfcompany.nashprihodadmin.base.extensions.*
 import com.dimfcompany.nashprihodadmin.base.mvpview.BaseMvpView
 import com.dimfcompany.nashprihodadmin.logic.utils.builders.BuilderIntent
 import com.dimfcompany.nashprihodadmin.ui.act_carousel_fullscreen.ActCarouselFullScreen
 import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvp
+import com.dimfcompany.nashprihodadmin.ui.la_media_image.LaMediaImageMvpView
 import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvp
 import com.dimfcompany.nashprihodadmin.ui.la_media_video.LaMediaVideoMvpView
 import io.reactivex.subjects.BehaviorSubject
@@ -27,14 +28,15 @@ import javax.inject.Inject
 
 class CarouselHelper @Inject constructor(val base_activity: BaseActivity)
 {
+    var parent: ViewGroup? = null
     var mvp_view_carousel: LaCarouselMvp.MvpView? = null
-    val bs_media_items: BehaviorSubject<ArrayList<ObjWithMedia>> = BehaviorSubject.create()
     val bs_current_media_tab_pos: BehaviorSubject<Int> = BehaviorSubject.createDefault(0)
     val ps_to_show_hide_pos_text: PublishSubject<Any> = PublishSubject.create()
     val bs_image_zoom_enabled: BehaviorSubject<Boolean> = BehaviorSubject.createDefault(true)
     val bs_video_bottom_padding_enabled: BehaviorSubject<Boolean> = BehaviorSubject.createDefault(true)
     val bs_carousel_bg_color: BehaviorSubject<Int> = BehaviorSubject.createDefault(getColorMy(R.color.black))
     val bs_show_full_screen_btn: BehaviorSubject<Boolean> = BehaviorSubject.createDefault(false)
+    var items: ArrayList<ObjWithMedia> = arrayListOf()
 
     val mvp_views_of_media_objs: ArrayList<BaseMvpView<*>> = arrayListOf()
     var start_pos: Int = 0
@@ -45,6 +47,8 @@ class CarouselHelper @Inject constructor(val base_activity: BaseActivity)
         setEvents()
 
         this.start_pos = start_pos
+        this.parent = parent
+
         mvp_view_carousel = base_activity.view_factory.getActCarouselMvpView(parent)
         mvp_view_carousel!!.toggleBackgroundColor(bs_carousel_bg_color.value!!)
         parent.addView(mvp_view_carousel!!.getRootView())
@@ -56,7 +60,35 @@ class CarouselHelper @Inject constructor(val base_activity: BaseActivity)
 
     fun bindObjects(items: ArrayList<ObjWithMedia>)
     {
-        bs_media_items.onNext(items)
+        this.items = items
+        for (obj in items)
+        {
+            if (obj.type == TypeMedia.VIDEO)
+            {
+                val mvp_video = base_activity.view_factory.getMediaVideoMvpView(null)
+                mvp_video.bindVideo((obj as ObjWithVideo).video_url!!)
+                mvp_video.toggleBottomNavbarPadding(bs_video_bottom_padding_enabled.value!!)
+                mvp_views_of_media_objs.add(mvp_video)
+            }
+            else if (obj.type == TypeMedia.IMAGE)
+            {
+                val mvp_image = base_activity.view_factory.getMediaImageMvpView(null)
+                mvp_image.toggleModeZoomMode(bs_image_zoom_enabled.value!!)
+                mvp_image.bindImage((obj as ObjWithImageUrl).image_url)
+                mvp_views_of_media_objs.add(mvp_image)
+            }
+        }
+
+        val views = mvp_views_of_media_objs.map(
+            {
+                it.getRootView()
+            })
+                .toCollection(ArrayList())
+
+        mvp_view_carousel?.bindViews(views)
+
+        bs_current_media_tab_pos.onNext(start_pos)
+        mvp_view_carousel?.scrollToPos(start_pos)
     }
 
     private fun setEvents()
@@ -81,7 +113,7 @@ class CarouselHelper @Inject constructor(val base_activity: BaseActivity)
                 .mainThreaded()
                 .subscribe(
                     {
-                        for (mvp_view in bs_media_items.value ?: arrayListOf())
+                        for (mvp_view in items)
                         {
                             if (mvp_view is LaMediaVideoMvp.MvpView)
                             {
@@ -95,7 +127,7 @@ class CarouselHelper @Inject constructor(val base_activity: BaseActivity)
                 .mainThreaded()
                 .subscribe(
                     {
-                        for (mvp_view in bs_media_items.value ?: arrayListOf())
+                        for (mvp_view in items)
                         {
                             if (mvp_view is LaMediaImageMvp.MvpView)
                             {
@@ -142,41 +174,6 @@ class CarouselHelper @Inject constructor(val base_activity: BaseActivity)
                         ps_to_show_hide_pos_text.onNext(Any())
                     })
                 .disposeBy(base_activity.composite_disposable)
-
-        bs_media_items
-                .mainThreaded()
-                .subscribe(
-                    {
-                        for (obj in it)
-                        {
-                            if (obj.type == TypeMedia.VIDEO)
-                            {
-                                val mvp_video = base_activity.view_factory.getMediaVideoMvpView(null)
-                                mvp_video.bindVideo((obj as ObjWithVideo).video_url!!)
-                                mvp_video.toggleBottomNavbarPadding(bs_video_bottom_padding_enabled.value!!)
-                                mvp_views_of_media_objs.add(mvp_video)
-                            }
-                            else if (obj.type == TypeMedia.IMAGE)
-                            {
-                                val mvp_image = base_activity.view_factory.getMediaImageMvpView(null)
-                                mvp_image.bindImage((obj as ObjWithImageUrl).image_url)
-                                mvp_image.toggleModeZoomMode(bs_image_zoom_enabled.value!!)
-                                mvp_views_of_media_objs.add(mvp_image)
-                            }
-                        }
-
-                        val views = mvp_views_of_media_objs.map(
-                            {
-                                it.getRootView()
-                            })
-                                .toCollection(ArrayList())
-
-                        mvp_view_carousel?.bindViews(views)
-
-                        bs_current_media_tab_pos.onNext(start_pos)
-                        mvp_view_carousel?.scrollToPos(start_pos)
-                    })
-                .disposeBy(base_activity.composite_disposable)
     }
 
     fun seekVideoToPos(pos: Int, time: Long)
@@ -199,15 +196,20 @@ class CarouselHelper @Inject constructor(val base_activity: BaseActivity)
 
         override fun clickedFullScreen()
         {
-            val medias = bs_media_items.value ?: return
-            val objs_wrapper = MediaItemsWrapper(medias)
+            val objs_wrapper = MediaItemsWrapper(items)
             val start_pos = bs_current_media_tab_pos.value ?: 0
 
             var video_pos: Long? = null
             val mvp_view = mvp_views_of_media_objs.get(start_pos)
+            var view_for_transition: View = mvp_view.getRootView()
             if (mvp_view is LaMediaVideoMvp.MvpView)
             {
                 video_pos = mvp_view.getPlayTime()
+                view_for_transition = (mvp_view as LaMediaVideoMvpView).bnd_media_video.playerView
+            }
+            else if (mvp_view is LaMediaImageMvpView)
+            {
+                view_for_transition = mvp_view.bnd_media_image.imgSimple
             }
 
             BuilderIntent()
@@ -215,6 +217,15 @@ class CarouselHelper @Inject constructor(val base_activity: BaseActivity)
                     .addParam(Constants.Extras.MEDIA_OBJECTS, objs_wrapper)
                     .addParam(Constants.Extras.MEDIA_OBJECTS_START_POS, start_pos)
                     .addParam(Constants.Extras.MEDIA_VIDEO_TIME, video_pos)
+                    .addTransition(view_for_transition, Constants.TransitionNames.IMAGE_TO_CAROUSEL_TRANSITION)
+                    .setOkAction(
+                        {
+                            val time_to_seek = it?.getLongExtraMy(Constants.Extras.MEDIA_VIDEO_TIME)
+                            if (time_to_seek != null && mvp_view is LaMediaVideoMvp.MvpView)
+                            {
+                                mvp_view.seekToTime(time_to_seek)
+                            }
+                        })
                     .startActivity(base_activity)
         }
     }

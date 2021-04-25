@@ -18,10 +18,7 @@
         android:theme="@style/Theme.NashPrihodAdmin"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".ui.act_first.ActFirst"></activity>
-
-        <activity android:name=".ui.act_register.ActRegister" />
-        <activity android:name=".ui.act_main.ActMain">
+        <activity android:name=".ui.act_first.ActFirst">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,13 +26,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.act_test.ActTest">
+        <activity android:name=".ui.act_register.ActRegister" />
+        <activity android:name=".ui.act_main.ActMain">
 
+        </activity>
+
+        <activity android:name=".ui.act_test.ActTest">
 
         </activity>
 
         <activity android:name=".ui.act_news_add_edit.ActNewsAddEdit" />
-        <activity android:name=".ui.act_carousel_fullscreen.ActCarouselFullScreen" />
+        <activity
+            android:name=".ui.act_carousel_fullscreen.ActCarouselFullScreen"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
 
         <activity android:name=".ui.act_service_text_add_edit.ActServiceTextAddEdit">
 
@@ -62,6 +65,22 @@
             android:name=".ui.act_service_add_edit.ActServiceAddEdit"
             android:theme="@style/Theme.Transparent" />
         <activity android:name=".ui.act_news_show.ActNewsShow" />
+        <activity android:name=".ui.act_test.ActTest2" />
+        <activity
+            android:name=".ui.act_note_add.ActNoteAdd"
+            android:theme="@style/Theme.Transparent" />
+        <activity android:name=".ui.ActPayment" />
+        <activity
+            android:name=".ui.act_note_show.ActNoteShow"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name=".ui.act_user_edit.ActUserEdit"
+            android:theme="@style/Theme.Transparent" />
+        <activity android:name=".ui.act_user_show.ActUserShow" />
+        <activity
+            android:name=".ui.act_filter_notes.ActFilterNotes"
+            android:theme="@style/Theme.Transparent" />
+        <activity android:name=".ui.ActDummyPushes" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
