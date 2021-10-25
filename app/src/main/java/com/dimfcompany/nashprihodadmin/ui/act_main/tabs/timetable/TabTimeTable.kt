@@ -18,6 +18,8 @@ import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_service_show.ActServiceShow
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
@@ -50,8 +52,7 @@ class TabTimeTable(val act_main: ActMain) : TabPresenter
                 .disposeBy(composite_disposable)
 
         ps_to_reload_services
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
-                .mainThreaded()
+                .throttleFirst(500, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .subscribe(
                     {
                         Log.e("TabTimeTable", "setEvents: clicked to realod servicesss ")
@@ -61,6 +62,14 @@ class TabTimeTable(val act_main: ActMain) : TabPresenter
                             })
                     })
                 .disposeBy(composite_disposable)
+    }
+
+    private fun toServiceShow(service_id: Long)
+    {
+        BuilderIntent()
+                .setActivityToStart(ActServiceShow::class.java)
+                .addParam(Constants.Extras.SERVICE_ID, service_id)
+                .startActivity(act_main)
     }
 
     inner class PresenterImplementer : LaTimeTableMvp.Presenter
@@ -86,7 +95,7 @@ class TabTimeTable(val act_main: ActMain) : TabPresenter
                     .setTitle(service.title)
                     .addBtn(BtnAction(getStringMy(R.string.watching),
                         {
-
+                            toServiceShow(service_id)
                         }))
                     .addBtn(BtnAction(getStringMy(R.string.editing),
                         {

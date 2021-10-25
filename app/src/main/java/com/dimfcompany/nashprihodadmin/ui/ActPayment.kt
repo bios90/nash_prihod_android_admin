@@ -29,10 +29,6 @@ class ActPayment : BaseActivity()
 
         setWebViewClient()
         makePay()
-//        runActionWithDelay(lifecycleScope, 4000,
-//            {
-//
-//            })
     }
 
     fun setNavStatus()
@@ -48,8 +44,7 @@ class ActPayment : BaseActivity()
     private fun makePay()
     {
         val order_id = getExtraOrderId()
-//        val sum = getExtraOrderSum()
-        val sum = 10
+        val sum = getExtraOrderSum()
         val url = "https://yoomoney.ru/quickpay/confirm.xml"
         val postData = "receiver=410016630036254" +
                 "&formcomment=" + "Пожертовования на записки".toUrlEncodePost() +

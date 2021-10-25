@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TvReg.L"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textColor="@color/gray7"
+            tools:text="Послание к Галатам Святого Апостола Павла" />
+
+        <TextView
+            android:id="@+id/tv_text"
+            style="@style/TvReg.M"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="left"
+            android:textSize="@dimen/size_ss"
+            android:textColor="@color/gray4"
+            tools:text="Lectus mauris ultrices eros in cursus turpis massa tincidunt dui. Sodales neque sodales ut etiam sit amet. Consectetur adipiscing elit duis tristique sollicitudin nibh sit. Donec enim diam vulputate ut. Netus et malesuada fames ac turpis. Donec ac odio tempor orci dapibus ultrices. Sem viverra aliquet eget sit amet tellus cras adipiscing. Cursus sit amet dictum sit amet justo donec enim diam. Et egestas quis ipsum suspendisse ultrices gravida. Nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc. Posuere urna nec tincidunt praesent semper feugiat nibh sed.\n\nMi quis hendrerit dolor magna eget est lorem ipsum. Pretium quam vulputate dignissim suspendisse in est ante in. In aliquam sem fringilla ut morbi tincidunt augue interdum velit. Et pharetra pharetra massa massa ultricies mi. Ut faucibus pulvinar elementum integer enim neque. Malesuada fames ac turpis egestas maecenas pharetra convallis posuere. Turpis egestas maecenas pharetra convallis posuere morbi leo. Volutpat sed cras ornare arcu dui. At imperdiet dui accumsan sit amet nulla. Lectus quam id leo in vitae turpis massa sed." />
+
+    </LinearLayout>
+</layout>

@@ -8,6 +8,7 @@ import com.dimfcompany.nashprihodadmin.logic.models.ModelNote
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
+import java.lang.RuntimeException
 
 interface ApiNotes
 {
@@ -42,7 +43,6 @@ interface ApiNotes
 
 suspend fun ApiNotes.insertNoteMy(note: ModelNote): Response<ResponseBody>
 {
-    //Todo laterrr remove 1
-    val user_id = SharedPrefsManager.pref_current_user.get().value?.id ?: 1
+    val user_id = SharedPrefsManager.pref_current_user.get().value?.id ?: throw RuntimeException("*** Error no user id ***")
     return insertNote(note.names!!, note.for_health!!.toInt(), user_id, note.donation_sum, note.donation_id)
 }

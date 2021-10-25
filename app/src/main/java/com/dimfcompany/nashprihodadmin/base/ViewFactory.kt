@@ -46,6 +46,8 @@ import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTi
 import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTimeAddEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEditMvpView
+import com.dimfcompany.nashprihodadmin.ui.act_service_show.ActServiceShowMvp
+import com.dimfcompany.nashprihodadmin.ui.act_service_show.ActServiceShowMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_user_edit.ActUserEditMvp
 import com.dimfcompany.nashprihodadmin.ui.act_user_edit.ActUserEditMvpView
 import com.dimfcompany.nashprihodadmin.ui.act_user_show.ActUserShowMvp
@@ -188,5 +190,10 @@ class ViewFactory @Inject constructor(private val activity: BaseActivity)
     fun getActFilterNotesMvpView(parent: ViewGroup?): ActFilterNotesMvp.MvpView
     {
         return ActFilterNotesMvpView(layout_inflater, parent)
+    }
+
+    fun getActServiceTextShowMvpView(parent: ViewGroup?): ActServiceShowMvp.MvpView
+    {
+        return ActServiceShowMvpView(layout_inflater, parent)
     }
 }

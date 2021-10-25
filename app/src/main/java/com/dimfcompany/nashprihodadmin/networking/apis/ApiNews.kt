@@ -27,6 +27,10 @@ interface ApiNews
     suspend fun getNewsById(@Query("news_id") news_id: Long): Response<ResponseBody>
 
     @FormUrlEncoded
+    @POST(Constants.Urls.DELETE_NEWS)
+    suspend fun deleteNews(@Field("news_id") news_id: Long): Response<ResponseBody>
+
+    @FormUrlEncoded
     @POST(Constants.Urls.INSERT_OR_UPDATE_NOTICE)
     suspend fun insertOrUpdateNotice(
             @Field("notice_id") news_id: Long?,

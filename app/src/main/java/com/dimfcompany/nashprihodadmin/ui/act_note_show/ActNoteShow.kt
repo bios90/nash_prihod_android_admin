@@ -74,7 +74,6 @@ class ActNoteShow : BaseActivity()
 
     private fun sendIsReadingStatus(note_id: Long)
     {
-        //Todo later changgeee
         val user_id = SharedPrefsManager.pref_current_user.get().value?.id ?: return
         base_networker.changeNoteStatus(note_id, TypeNoteStatus.IS_READING, user_id,
             {
@@ -83,11 +82,10 @@ class ActNoteShow : BaseActivity()
     }
 
 
-    private fun sendReadedStatus(note_id: Long)
+    private fun sendReadedStatus(note_id: Long, status: TypeNoteStatus)
     {
-        //Todo later changgeee
         val user_id = SharedPrefsManager.pref_current_user.get().value?.id ?: return
-        base_networker.changeNoteStatus(note_id, TypeNoteStatus.READED, user_id,
+        base_networker.changeNoteStatus(note_id, status, user_id,
             {
                 bs_note.onNext(it)
             })
@@ -103,8 +101,23 @@ class ActNoteShow : BaseActivity()
     {
         override fun clickedReaded()
         {
-            val note_id = bs_note.value?.id ?: return
-            sendReadedStatus(note_id)
+            val note = bs_note.value ?: return
+            val note_id = note.id ?: return
+            if (note.for_health == true)
+            {
+                sendReadedStatus(note_id, TypeNoteStatus.READED)
+            }
+            else
+            {
+                if (note.status == TypeNoteStatus.READED)
+                {
+                    sendReadedStatus(note_id,TypeNoteStatus.READED2)
+                }
+                else
+                {
+                    sendReadedStatus(note_id,TypeNoteStatus.READED)
+                }
+            }
         }
 
         override fun clickedUser()

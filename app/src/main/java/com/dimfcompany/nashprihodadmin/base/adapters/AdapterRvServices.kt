@@ -1,6 +1,7 @@
 package com.dimfcompany.nashprihodadmin.base.adapters
 
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.dimfcompany.nashprihodadmin.R
@@ -62,6 +63,8 @@ fun ItemServiceBinding.bindService(service: ModelService)
     {
         makeWhite()
     }
+
+    this.tvAuthor.visibility = View.GONE
 }
 
 fun ItemServiceBinding.makeWhite()

@@ -1,5 +1,6 @@
 package com.dimfcompany.nashprihodadmin.networking
 
+import android.util.Log
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.ObjWithMedia
 import com.dimfcompany.nashprihodadmin.base.enums.TypeMedia
@@ -7,6 +8,7 @@ import com.dimfcompany.nashprihodadmin.base.enums.TypeNoteStatus
 import com.dimfcompany.nashprihodadmin.base.enums.TypeSort
 import com.dimfcompany.nashprihodadmin.base.enums.TypeUserStatus
 import com.dimfcompany.nashprihodadmin.base.extensions.addParseCheckerForObj
+import com.dimfcompany.nashprihodadmin.base.extensions.toJsonMy
 import com.dimfcompany.nashprihodadmin.base.extensions.toObjOrThrow
 import com.dimfcompany.nashprihodadmin.logic.models.*
 import com.dimfcompany.nashprihodadmin.logic.models.responses.*
@@ -88,16 +90,18 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
             for (time in service_times)
             {
                 val time_str = time.time!!.formatToString(DateManager.FORMAT_FOR_SERVER_LARAVEL)
-                val id = api_service
+                val service = api_service
                         .insertServiceTime(time_str, time.text!!)
                         .toObjOrThrow(RespServiceTime::class.java)
                         .addParseCheckerForObj(
                             {
                                 return@addParseCheckerForObj it.service_time?.id != null
                             })
-                        .service_time!!.id!!
+                        .service_time!!
 
-                service_times_ids.add(id)
+                Log.e("BaseNetworker", "insertServiceTimes: Service is ${service.toJsonMy()}")
+
+                service_times_ids.add(service.id!!)
             }
 
             return service_times_ids
@@ -256,6 +260,27 @@ class BaseNetworker @Inject constructor(val base_act: BaseActivity)
                 .setActionSuccess(
                     {
                         action_success(it.news!!)
+                    })
+                .setActionError(
+                    {
+                        action_error?.invoke(it)
+                    })
+                .run()
+    }
+
+
+    fun deleteNews(news_id: Long, action_success: () -> Unit, action_error: ((Throwable) -> Unit)? = null)
+    {
+        BuilderNet<BaseResponse>()
+                .setBaseActivity(base_act)
+                .setActionResponseBody(
+                    {
+                        base_act.api_news.deleteNews(news_id)
+                    })
+                .setObjClass(BaseResponse::class.java)
+                .setActionSuccess(
+                    {
+                        action_success()
                     })
                 .setActionError(
                     {

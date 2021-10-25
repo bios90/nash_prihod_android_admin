@@ -81,6 +81,7 @@
             android:name=".ui.act_filter_notes.ActFilterNotes"
             android:theme="@style/Theme.Transparent" />
         <activity android:name=".ui.ActDummyPushes" />
+        <activity android:name=".ui.act_service_show.ActServiceShow" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

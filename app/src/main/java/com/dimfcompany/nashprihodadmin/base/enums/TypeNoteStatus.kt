@@ -14,7 +14,10 @@ enum class TypeNoteStatus
     IS_READING,
 
     @SerializedName("readed")
-    READED;
+    READED,
+
+    @SerializedName("readed2")
+    READED2;
 
 
     companion object
@@ -38,6 +41,7 @@ enum class TypeNoteStatus
             WAITS_FOR_READING -> "waits_for_reading"
             IS_READING -> "is_reading"
             READED -> "readed"
+            READED2 -> "readed2"
         }
     }
 
@@ -48,6 +52,7 @@ enum class TypeNoteStatus
             WAITS_FOR_READING -> getColorMy(R.color.yellow_type_event)
             IS_READING -> getColorMy(R.color.blue_type_news)
             READED -> getColorMy(R.color.green)
+            READED2 -> getColorMy(R.color.green)
         }
     }
 }
@@ -60,5 +65,6 @@ fun TypeNoteStatus?.getPosForRb(): Int
         TypeNoteStatus.WAITS_FOR_READING -> 1
         TypeNoteStatus.IS_READING -> 2
         TypeNoteStatus.READED -> 3
+        TypeNoteStatus.READED2 -> 4
     }
 }

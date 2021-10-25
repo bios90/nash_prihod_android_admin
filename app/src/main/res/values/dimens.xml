@@ -3,6 +3,7 @@
     <dimen name="size_xxs">8.4dp</dimen>
     <dimen name="size_xs">9.8dp</dimen>
     <dimen name="size_s">11.7dp</dimen>
+    <dimen name="size_ss">12.6dp</dimen>
     <dimen name="size_m">13.6dp</dimen>
     <dimen name="size_l">15dp</dimen>
     <dimen name="size_xl">17dp</dimen>

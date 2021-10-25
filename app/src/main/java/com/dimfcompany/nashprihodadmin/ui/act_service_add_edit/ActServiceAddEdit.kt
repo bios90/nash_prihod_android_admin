@@ -1,6 +1,7 @@
 package com.dimfcompany.nashprihodadmin.ui.act_service_add_edit
 
 import android.os.Bundle
+import android.util.Log
 import com.dimfcompany.nashprihodadmin.R
 import com.dimfcompany.nashprihodadmin.base.BaseActivity
 import com.dimfcompany.nashprihodadmin.base.BusMainEvents
@@ -216,6 +217,7 @@ class ActServiceAddEdit : BaseActivity()
                     .setTitle("Выберите дату службы")
                     .setActionSuccess(
                         {
+                            Log.e("PresenterImplementer", "clickedDate: Got date ${it.formatToString()}")
                             bs_date.onNext(it)
                         })
                     .show(supportFragmentManager)
@@ -234,6 +236,7 @@ class ActServiceAddEdit : BaseActivity()
                 data.showErrors(this@ActServiceAddEdit)
                 return
             }
+
 
             BuilderNet<Any>()
                     .setBaseActivity(this@ActServiceAddEdit)
@@ -257,6 +260,7 @@ class ActServiceAddEdit : BaseActivity()
                                             return@addParseCheckerForObj it.service?.id != null
                                         })
                                     .service
+
 
                             BusMainEvents.ps_service_add_or_edit.onNext(service!!.id!!)
                             finish()

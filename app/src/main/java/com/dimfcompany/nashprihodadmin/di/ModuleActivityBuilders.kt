@@ -17,6 +17,7 @@ import com.dimfcompany.nashprihodadmin.ui.act_register.ActRegister
 import com.dimfcompany.nashprihodadmin.ui.act_service_text_add_edit.ActServiceTextAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_service_time_add_edit.ActServiceTimeAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_service_add_edit.ActServiceAddEdit
+import com.dimfcompany.nashprihodadmin.ui.act_service_show.ActServiceShow
 import com.dimfcompany.nashprihodadmin.ui.act_user_edit.ActUserEdit
 import com.dimfcompany.nashprihodadmin.ui.act_user_show.ActUserShow
 import dagger.Binds
@@ -82,6 +83,9 @@ abstract class ModuleActivityBuilders
 
     @ContributesAndroidInjector(modules = [ModuleActFilterNotes::class])
     abstract fun contributeActFilterNotes(): ActFilterNotes
+
+    @ContributesAndroidInjector(modules = [ModuleActServiceShow::class])
+    abstract fun contributeActServiceShow(): ActServiceShow
 }
 
 @Module
@@ -216,4 +220,11 @@ abstract class ModuleActFilterNotes
 {
     @Binds
     abstract fun bindBaseActivity(act: ActFilterNotes): BaseActivity
+}
+
+@Module
+abstract class ModuleActServiceShow
+{
+    @Binds
+    abstract fun bindBaseActivity(act: ActServiceShow): BaseActivity
 }

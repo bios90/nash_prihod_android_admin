@@ -26,6 +26,7 @@ import com.dimfcompany.nashprihodadmin.ui.act_main.ActMain
 import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
 import com.dimfcompany.nashprihodadmin.ui.act_note_add.ActNoteAdd
 import com.dimfcompany.nashprihodadmin.ui.act_note_show.ActNoteShow
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import kotlinx.coroutines.Job
@@ -91,7 +92,7 @@ class TabNotes(val act_main: ActMain) : TabPresenter
                 .disposeBy(composite_disposable)
 
         ps_to_reload_notes
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .throttleFirst(500, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .mainThreaded()
                 .subscribe(
                     {

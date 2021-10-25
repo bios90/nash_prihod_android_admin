@@ -65,8 +65,7 @@ class TabProfile(val act_main: ActMain) : TabPresenter
 
     private fun loadUser()
     {
-//        val user_id = SharedPrefsManager.pref_current_user.get().value?.id ?: return
-        val user_id = 1L
+        val user_id = SharedPrefsManager.pref_current_user.get().value?.id ?: return
         base_networker.getUserById(user_id,
             {
                 SharedPrefsManager.pref_current_user.asConsumer().accept(it.asOptional())
@@ -77,9 +76,7 @@ class TabProfile(val act_main: ActMain) : TabPresenter
     {
         override fun clickedEdit()
         {
-//            val user_id = SharedPrefsManager.pref_current_user.get().value?.id ?: return
-            val user_id = 1L
-
+            val user_id = SharedPrefsManager.pref_current_user.get().value?.id ?: return
             BuilderIntent()
                     .setActivityToStart(ActUserEdit::class.java)
                     .addParam(Constants.Extras.USER_ID, user_id)

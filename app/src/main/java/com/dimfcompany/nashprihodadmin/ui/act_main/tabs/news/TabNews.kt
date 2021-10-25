@@ -23,6 +23,7 @@ import com.dimfcompany.nashprihodadmin.ui.act_main.tabs.TabPresenter
 import com.dimfcompany.nashprihodadmin.ui.act_news_add_edit.ActNewsAddEdit
 import com.dimfcompany.nashprihodadmin.ui.act_news_show.ActNewsShow
 import com.dimfcompany.nashprihodadmin.ui.act_notice_add_edit.ActNoticeAddEdit
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.PublishSubject
 import java.util.concurrent.TimeUnit
 
@@ -69,7 +70,7 @@ class TabNews(val act_main: ActMain) : TabPresenter
                 .disposeBy(composite_disposable)
 
         ps_to_reload_news
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .throttleFirst(500, TimeUnit.MILLISECONDS,AndroidSchedulers.mainThread())
                 .mainThreaded()
                 .subscribe(
                     {
@@ -82,7 +83,7 @@ class TabNews(val act_main: ActMain) : TabPresenter
                 .disposeBy(composite_disposable)
 
         ps_to_reload_notices
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .throttleFirst(500, TimeUnit.MILLISECONDS,AndroidSchedulers.mainThread())
                 .mainThreaded()
                 .subscribe(
                     {
@@ -137,6 +138,26 @@ class TabNews(val act_main: ActMain) : TabPresenter
                 .build(act_main)
     }
 
+    private fun clickedDeleteNews(news_id:Long)
+    {
+        BuilderDialogMy()
+                .setViewId(R.layout.la_dialog_simple)
+                .setTitle(getStringMy(R.string.deleting))
+                .setText(getStringMy(R.string.delete_this_news))
+                .setBtnOk(BtnAction(getStringMy(R.string.delete),
+                    {
+                        base_networker.deleteNews(news_id,
+                            {
+                                ps_to_reload_news.onNext(Any())
+                            },
+                            {
+                                ps_to_reload_news.onNext(Any())
+                            })
+                    }))
+                .setBtnCancel(BtnAction.getDefaultCancel())
+                .build(act_main)
+    }
+
 
     inner class PresenterImplementer() : LaNewsMvp.Presenter
     {
@@ -177,7 +198,7 @@ class TabNews(val act_main: ActMain) : TabPresenter
                         }))
                     .addBtn(BtnAction(getStringMy(R.string.delete),
                         {
-
+                            clickedDeleteNews(news_id)
                         }))
                     .show(act_main.supportFragmentManager)
         }

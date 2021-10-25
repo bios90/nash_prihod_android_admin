@@ -54,11 +54,24 @@ class ActNoteShowMvpView(layoutInflater: LayoutInflater, parent: ViewGroup?)
         val text_donation = (note.donation_sum ?: 0.0).formatAsMoney() + " р."
         bnd_note_show.tvDonation.text = text_donation
 
-        GlideManager.loadImage(bnd_note_show.cvAvatar.imgImg, note.user?.avatar?.url,show_failed_images = false)
+        GlideManager.loadImage(bnd_note_show.cvAvatar.imgImg, note.user?.avatar?.url, show_failed_images = false)
         bnd_note_show.tvUserName.text = note.user?.getFullName()
         bnd_note_show.tvDate.text = note.updated?.formatToString(DateManager.FORMAT_FOR_DISPLAY_WITH_TIME)
 
         bnd_note_show.tvNames.text = note.names?.replace("*", "\n")
-        bnd_note_show.tvReaded.visibility = (note.status != TypeNoteStatus.READED).toVisibility()
+        bnd_note_show.tvReaded.visibility = (note.status == TypeNoteStatus.WAITS_FOR_READING || note.status == TypeNoteStatus.IS_READING).toVisibility()
+
+        if (note.for_health == false)
+        {
+            bnd_note_show.tvReaded.visibility = (note.status != TypeNoteStatus.READED2).toVisibility()
+            if (note.status == TypeNoteStatus.READED)
+            {
+                bnd_note_show.tvReaded.text = "Прочитано"
+            }
+            else
+            {
+                bnd_note_show.tvReaded.text = "Прочитано на проскомидии"
+            }
+        }
     }
 }

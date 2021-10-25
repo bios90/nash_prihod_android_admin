@@ -20,6 +20,7 @@ class DateManager
         val FORMAT_DATE_WITHOUT_YEAR = getStringMy(R.string.format_without_year)
         val FORMAT_FOR_DISPLAY_WITH_TIME = getStringMy(R.string.format_for_display_with_time)
         val FORMAT_FOR_TIME = "HH:mm"
+        val FORMAT_DATE_WITH_WEEK_DAY = "dd MMMM yyyy EEEE"
     }
 }
 

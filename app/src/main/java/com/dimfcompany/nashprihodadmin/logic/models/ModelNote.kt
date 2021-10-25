@@ -50,15 +50,27 @@ data class ModelNote(
 
             TypeNoteStatus.READED ->
             {
-                val reader_name = reader?.getFullName()
-                if (reader_name == null)
+                if(this.for_health == false)
                 {
-                    return getStringMy(R.string.have_readed)
+                    return "Прочитана на проскомидии"
                 }
                 else
                 {
-                    return getStringMy(R.string.readed_by) + ": $reader_name"
+                    val reader_name = reader?.getFullName()
+                    if (reader_name == null)
+                    {
+                        return getStringMy(R.string.have_readed)
+                    }
+                    else
+                    {
+                        return getStringMy(R.string.readed_by) + ": $reader_name"
+                    }
                 }
+            }
+
+            TypeNoteStatus.READED2 ->
+            {
+                return getStringMy(R.string.have_readed)
             }
 
             else -> return null

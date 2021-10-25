@@ -12,7 +12,7 @@ object Constants
 
     object Urls
     {
-        const val test_mode = true
+        const val test_mode = false
         val URL_BASE: String
             get()
             {
@@ -21,7 +21,7 @@ object Constants
 //                    return "http://nashprihod.test"
 //                    return "http://10.0.2.2:8080/nash_prihod/"
 //                    return "http://192.168.1.68/akcsl/"
-                    return "http://192.168.1.68/"
+                    return "http://192.168.1.67/"
 //                    return "http://192.168.1.68/nash_prihod/"
                 }
                 else
@@ -38,6 +38,7 @@ object Constants
         const val INSERT_OR_UPDATE_NEWS = "upsert_news"
         const val GET_NEWS = "get_news"
         const val GET_NEWS_BY_ID = "get_news_by_id"
+        const val DELETE_NEWS = "delete_news"
         const val INSERT_OR_UPDATE_NOTICE = "upsert_notice"
         const val GET_NOTICES = "get_notices"
         const val GET_NOTICE_BY_ID = "get_notice_by_id"
@@ -68,7 +69,8 @@ object Constants
         const val MEDIA_VIDEO_TIME = "media_video_time"
         const val NEWS_ID = "news_to_edit"
         const val NOTICE_TO_EDIT = "notice_to_edit"
-        const val SERVICE_TO_EDIT = "notice_to_edit"
+        const val SERVICE_TO_EDIT = "service_to_edit"
+        const val SERVICE_ID = "service_id"
         const val MODEL_SERVICE_TIME = "model_service_time"
         const val MODEL_SERVICE_TEXT = "model_service_text"
         const val FILTER_DATA_USER = "filter_data_user"
